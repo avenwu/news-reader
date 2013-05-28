@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">RssReader</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+
+    <string name="url_home_page">http://feed.cnblogs.com/blog/sitehome/rss</string>
+    <string name="url_picked_page">http://feed.cnblogs.com/blog/picked/rss</string>
+    <string name="url_candidate_page">http://feed.cnblogs.com/blog/candidate/rss</string>
+    <string name="url_news_page">http://feed.cnblogs.com/news/rss</string>
+</resources>
