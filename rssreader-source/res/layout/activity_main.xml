@@ -1,15 +1,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity" >
+    android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/tv1"
+    <com.aphidmobile.flip.FlipViewController
+        android:id="@+id/flipview_rss"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </com.aphidmobile.flip.FlipViewController>
+
+    <ProgressBar
+        android:id="@+id/progressbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/hello_world" />
+        android:layout_centerInParent="true" />
 
 </RelativeLayout>

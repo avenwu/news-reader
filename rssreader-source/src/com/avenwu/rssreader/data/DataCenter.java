@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.avenwu.rssreader.con.RssConfig;
 import com.avenwu.rssreader.model.EntryItem;
 
 public class DataCenter {
     private List<EntryItem> pickedData = Collections.synchronizedList(new ArrayList<EntryItem>());
     private List<EntryItem> homeData = Collections.synchronizedList(new ArrayList<EntryItem>());;
     private List<EntryItem> candicateData = Collections.synchronizedList(new ArrayList<EntryItem>());
+    private List<EntryItem> newsData = Collections.synchronizedList(new ArrayList<EntryItem>());
     private static DataCenter instance;
 
     private DataCenter() {
@@ -57,5 +59,49 @@ public class DataCenter {
     public void replacePickedItems(ArrayList<EntryItem> collection) {
         pickedData.clear();
         addPickedItems(collection);
+    }
+
+    public String getArtical(int position, String url) {
+        String content = "";
+        try {
+            if (url.equals(RssConfig.getInstance().getHomeUrl())) {
+                content = getHomeData().get(position).getContent();
+            } else if (url.equals(RssConfig.getInstance().getPickedUrl())) {
+                content = getPickedData().get(position).getContent();
+            } else if (url.equals(RssConfig.getInstance().getCandicateUrl())) {
+                content = getCandicateData().get(position).getContent();
+            } else if (url.equals(RssConfig.getInstance().getNewsUrl())) {
+                content = getNewsData().get(position).getContent();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return content;
+    }
+
+    public EntryItem getDataItem(String url, int position) {
+        EntryItem item = null;
+        try {
+            if (url.equals(RssConfig.getInstance().getHomeUrl())) {
+                item = getHomeData().get(position);
+            } else if (url.equals(RssConfig.getInstance().getPickedUrl())) {
+                item = getPickedData().get(position);
+            } else if (url.equals(RssConfig.getInstance().getCandicateUrl())) {
+                item = getCandicateData().get(position);
+            } else if (url.equals(RssConfig.getInstance().getNewsUrl())) {
+                item = getNewsData().get(position);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return item;
+    }
+
+    public List<EntryItem> getNewsData() {
+        return newsData;
+    }
+
+    public void setNewsData(List<EntryItem> newsData) {
+        this.newsData = newsData;
     }
 }

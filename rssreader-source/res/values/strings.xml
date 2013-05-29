@@ -9,4 +9,13 @@
     <string name="url_picked_page">http://feed.cnblogs.com/blog/picked/rss</string>
     <string name="url_candidate_page">http://feed.cnblogs.com/blog/candidate/rss</string>
     <string name="url_news_page">http://feed.cnblogs.com/news/rss</string>
+    
+    <!-- cnblogs sumary fo each newsfeed -->
+    <string name="published_at"> published at </string>
+    <string name="comment">Comment(%s)</string>
+    <string name="read">Read(%s)</string>
+    
+    <!-- artical detail -->
+    <string name="author">Author: %s</string>
+    <string name="timestamp">Time: %s</string>
 </resources>
