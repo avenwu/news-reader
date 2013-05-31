@@ -1,5 +1,6 @@
 package com.avenwu.rssreader.activity;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import roboguice.activity.RoboActivity;
@@ -20,6 +21,7 @@ import com.avenwu.rssreader.adapter.CnblogPickedAdapter;
 import com.avenwu.rssreader.adapter.CnblogPickedAdapter.ArticalListener;
 import com.avenwu.rssreader.con.RssConfig;
 import com.avenwu.rssreader.dataprovider.DataCenter;
+import com.avenwu.rssreader.dataprovider.RssDaoManager;
 import com.avenwu.rssreader.model.EntryItem;
 import com.avenwu.rssreader.service.NetworkReceiver;
 import com.avenwu.rssreader.task.BaseListener;
@@ -43,6 +45,7 @@ public class RssMainActivity extends RoboActivity {
     @Inject
     private NetworkReceiver networkReceiver;
     private IntentFilter intentFilter;
+    private RssDaoManager daoManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,8 @@ public class RssMainActivity extends RoboActivity {
         flipview.setAnimationBitmapFormat(Config.RGB_565);
         RssConfig.getInstance().init(this);
         NetworkHelper.updateConnectionState(this);
+        daoManager = new RssDaoManager(this);
+        
         intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         this.registerReceiver(networkReceiver, intentFilter);
         startTask();
@@ -80,6 +85,12 @@ public class RssMainActivity extends RoboActivity {
                 Toast.makeText(RssMainActivity.this, "success", Toast.LENGTH_SHORT).show();
                 DataCenter.getInstance().addPickedItems(result);
                 pickedAdapter.notifyDataSetChanged();
+                try {
+                    daoManager.addEntryItems(result);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "failed to insert tinto table", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
