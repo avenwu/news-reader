@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.avenwu.rssreader.R;
 import com.avenwu.rssreader.con.Constant;
-import com.avenwu.rssreader.data.DataCenter;
+import com.avenwu.rssreader.dataprovider.DataCenter;
 import com.avenwu.rssreader.model.EntryItem;
 
 public class BlogArticalActivity extends RoboActivity {

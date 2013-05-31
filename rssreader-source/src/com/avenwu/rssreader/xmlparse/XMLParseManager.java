@@ -1,4 +1,4 @@
-package com.avenwu.rssreader.rssparse;
+package com.avenwu.rssreader.xmlparse;
 
 import java.io.IOException;
 import java.io.InputStream;

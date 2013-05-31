@@ -30,7 +30,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.BlogArticalActivity" >
+        <activity android:name="com.avenwu.rssreader.activity.BlogArticalActivity" >
         </activity>
     </application>
 

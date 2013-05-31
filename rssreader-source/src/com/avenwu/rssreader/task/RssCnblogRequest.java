@@ -9,8 +9,8 @@ import org.xml.sax.SAXException;
 
 import com.avenwu.rssreader.R;
 import com.avenwu.rssreader.model.EntryItem;
-import com.avenwu.rssreader.rssparse.XMLParseManager;
 import com.avenwu.rssreader.utils.NetworkHelper;
+import com.avenwu.rssreader.xmlparse.XMLParseManager;
 
 public class RssCnblogRequest<Void> implements BaseRequest {
     private BaseListener<?> listener;

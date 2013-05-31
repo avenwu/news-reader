@@ -1,4 +1,4 @@
-package com.avenwu.rssreader.data;
+package com.avenwu.rssreader.dataprovider;
 
 import java.util.ArrayList;
 import java.util.Collections;

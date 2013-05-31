@@ -19,7 +19,7 @@ import com.avenwu.rssreader.R;
 import com.avenwu.rssreader.adapter.CnblogPickedAdapter;
 import com.avenwu.rssreader.adapter.CnblogPickedAdapter.ArticalListener;
 import com.avenwu.rssreader.con.RssConfig;
-import com.avenwu.rssreader.data.DataCenter;
+import com.avenwu.rssreader.dataprovider.DataCenter;
 import com.avenwu.rssreader.model.EntryItem;
 import com.avenwu.rssreader.service.NetworkReceiver;
 import com.avenwu.rssreader.task.BaseListener;
