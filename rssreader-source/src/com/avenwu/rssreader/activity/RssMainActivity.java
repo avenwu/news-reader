@@ -2,13 +2,11 @@ package com.avenwu.rssreader.activity;
 
 import java.util.ArrayList;
 
-import android.app.Activity;
-import android.content.Intent;
+import roboguice.activity.RoboActivity;
+import roboguice.inject.InjectView;
 import android.graphics.Bitmap.Config;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -24,20 +22,20 @@ import com.avenwu.rssreader.task.BaseTask;
 import com.avenwu.rssreader.task.RssCnblogRequest;
 import com.avenwu.rssreader.task.TaskManager;
 
-public class RssMainActivity extends Activity {
+public class RssMainActivity extends RoboActivity {
 
     private final String TAG = "MainActivity";
+    @InjectView(R.id.flipview_rss)
     private FlipViewController flipview;
     private CnblogPickedAdapter pickedAdapter;
     private BaseTask task;
+    @InjectView(R.id.progressbar)
     private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        flipview = (FlipViewController) findViewById(R.id.flipview_rss);
-        progressBar = (ProgressBar) findViewById(R.id.progressbar);
         flipview.setAnimationBitmapFormat(Config.RGB_565);
 
         RssConfig.getInstance().init(this);
@@ -60,6 +58,14 @@ public class RssMainActivity extends Activity {
             public void onFailed() {
                 Toast.makeText(RssMainActivity.this, "failed to get rss content", Toast.LENGTH_SHORT).show();
             }
+
+            @Override
+            public void onError(Exception e) {
+                super.onError(e);
+                Toast.makeText(RssMainActivity.this, "failed to get rss content", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
+            }
+
         });
 
         task = new BaseTask(RssConfig.getInstance().getPickedUrl(), request);
