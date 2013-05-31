@@ -3,6 +3,7 @@ package com.avenwu.rssreader.activity;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 import android.os.Bundle;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
 
@@ -34,5 +35,8 @@ public class BlogArticalActivity extends RoboActivity {
         titleView.setText(item.getTitle());
         timeView.setText(getString(R.string.timestamp, item.getPublised_time()));
         contentView.loadDataWithBaseURL(null, item.getContent(), Constant.TEXT_HTML, Constant.UTF_8, null);
+        WebSettings webSettings = contentView.getSettings();
+        webSettings.setBlockNetworkImage(true);
+        webSettings.setBuiltInZoomControls(true);
     }
 }
