@@ -1,20 +1,33 @@
 package com.avenwu.rssreader.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
+@DatabaseTable(tableName = "picked_cnblogs")
 public class EntryItem {
-    private String id;
+    @DatabaseField(generatedId = true)
+    private int id;
+    @DatabaseField
+    private String feed_id;
+    @DatabaseField
     private String title;
+    @DatabaseField
     private String summary;
+    @DatabaseField
     private String publised_time;
+    @DatabaseField
     private String updated_time;
+    @DatabaseField(foreign = true)
     private AuthorInfo user;
+    @DatabaseField
     private String content;
 
     public String getId() {
-        return id;
+        return feed_id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.feed_id = id;
     }
 
     public String getTitle() {
