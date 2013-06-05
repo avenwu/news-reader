@@ -48,7 +48,7 @@ public class XmlOrmDBHelper extends OrmLiteSqliteOpenHelper {
 
     public Dao<AuthorInfo, Integer> getAuthorDao() throws SQLException {
         if (authorDao == null) {
-            authorDao = getDao(EntryItem.class);
+            authorDao = getDao(AuthorInfo.class);
         }
         return authorDao;
     }

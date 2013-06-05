@@ -30,9 +30,11 @@ public class RssDaoManager {
             Log.d(TAG, "start insert");
             long timeStart = System.currentTimeMillis();
             Dao<AuthorInfo, Integer> authorDao = xmlOrmDBHelper.getAuthorDao();
-            Dao<EntryItem, Integer> entryDao = xmlOrmDBHelper.getEntryItemDao();
             for (EntryItem entryItem : entryItems) {
                 authorDao.create(entryItem.getUser());
+            }
+            Dao<EntryItem, Integer> entryDao = xmlOrmDBHelper.getEntryItemDao();
+            for (EntryItem entryItem : entryItems) {
                 entryDao.create(entryItem);
             }
             Log.d(TAG, "time consumed: " + (System.currentTimeMillis() - timeStart));

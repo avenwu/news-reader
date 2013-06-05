@@ -1,4 +1,4 @@
-package com.avenwu.rssreader.con;
+package com.avenwu.rssreader.config;
 
 public class Constant {
     public static String UTF_8 = "utf-8";

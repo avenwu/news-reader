@@ -5,7 +5,7 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "author")
 public class AuthorInfo {
-    @DatabaseField
+	@DatabaseField(generatedId = true)
     private int id;
     @DatabaseField
     private String name;

@@ -19,7 +19,7 @@ import com.aphidmobile.flip.FlipViewController.ViewFlipListener;
 import com.avenwu.rssreader.R;
 import com.avenwu.rssreader.adapter.CnblogPickedAdapter;
 import com.avenwu.rssreader.adapter.CnblogPickedAdapter.ArticalListener;
-import com.avenwu.rssreader.con.RssConfig;
+import com.avenwu.rssreader.config.RssConfig;
 import com.avenwu.rssreader.dataprovider.DataCenter;
 import com.avenwu.rssreader.dataprovider.RssDaoManager;
 import com.avenwu.rssreader.model.EntryItem;
@@ -58,7 +58,8 @@ public class RssMainActivity extends RoboActivity {
         
         intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         this.registerReceiver(networkReceiver, intentFilter);
-        startTask();
+
+        
         listener = new ArticalListener() {
             @Override
             public void onClick(View v, int position) {
@@ -76,6 +77,14 @@ public class RssMainActivity extends RoboActivity {
                 listener.updatePosition(position);
             }
         });
+        try {
+        	DataCenter.getInstance().addPickedItems(daoManager.getEntryItems());
+        	pickedAdapter.notifyDataSetChanged();
+        	progressBar.setVisibility(View.GONE);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			startTask();
+		}
     }
 
     private void startTask() {
@@ -136,6 +145,7 @@ public class RssMainActivity extends RoboActivity {
     protected void onDestroy() {
         super.onDestroy();
         TaskManager.getInstance().cancellAll();
+        DataCenter.getInstance().clear();
         this.unregisterReceiver(networkReceiver);
     }
 }
