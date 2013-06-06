@@ -22,5 +22,7 @@
     <string name="wifi_connected">Wifi is connected.</string>
     <string name="network_lost">Network isn\'t connected!</string>
     <string name="failed_to_get_content">Failed to get content.</string>
+    <!-- news menu item -->
+    <string name="cnblog_description">The world is changing by code</string>
 
 </resources>
