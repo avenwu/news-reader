@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.avenwu.rssreader.config.RssConfig;
 import com.avenwu.rssreader.model.EntryItem;
+import com.avenwu.rssreader.model.NewsMenuItem;
 
 public class DataCenter {
 	private List<EntryItem> pickedData = Collections
@@ -16,6 +17,8 @@ public class DataCenter {
 			.synchronizedList(new ArrayList<EntryItem>());
 	private List<EntryItem> newsData = Collections
 			.synchronizedList(new ArrayList<EntryItem>());
+	private List<NewsMenuItem> menuData;
+
 	private static DataCenter instance;
 
 	private DataCenter() {
@@ -109,6 +112,17 @@ public class DataCenter {
 		this.newsData = newsData;
 	}
 
+	public void setMenuItems(ArrayList<NewsMenuItem> menuItems) {
+		this.menuData = menuItems;
+	}
+
+	public ArrayList<NewsMenuItem> getMenuItems() {
+		if (menuData == null) {
+			throw new RuntimeException("menu is not initialized");
+		}
+		return (ArrayList<NewsMenuItem>) menuData;
+	}
+
 	public void clear() {
 		if (pickedData != null) {
 			pickedData.clear();
@@ -121,6 +135,9 @@ public class DataCenter {
 		}
 		if (candicateData != null) {
 			candicateData.clear();
+		}
+		if (menuData != null) {
+			menuData.clear();
 		}
 		instance = null;
 	}

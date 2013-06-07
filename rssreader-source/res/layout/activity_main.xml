@@ -3,16 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <com.aphidmobile.flip.FlipViewController
-        android:id="@+id/flipview_rss"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </com.aphidmobile.flip.FlipViewController>
+    <com.markupartist.android.widget.ActionBar
+        android:id="@+id/actionbar"
+        style="@style/ActionBar" />
 
-    <ProgressBar
-        android:id="@+id/progressbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+    <FrameLayout
+        android:id="@+id/frame_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/actionbar" >
+    </FrameLayout>
 
 </RelativeLayout>

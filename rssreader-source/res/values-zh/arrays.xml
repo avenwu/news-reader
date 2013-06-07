@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="menu_titles">
+        <item>博客园</item>
+        <item>中国软件开发联盟</item>
+        <item>网易新闻</item>
+    </string-array>
+    <string-array name="menu_descriptions">
+        <item>代码改变世界</item>
+        <item>全球最大的中文IT社区</item>
+        <item>有态度的新闻</item>
+    </string-array>
+    <string-array name="cnblogs_catalog">
+        <item>博客园 - 首页</item>
+        <item>博客园 - 精华</item>
+        <item>博客园 - 候选</item>
+        <item>博客园 - 新闻</item>
+    </string-array>
+</resources>
