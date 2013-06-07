@@ -2,26 +2,20 @@ package com.avenwu.rssreader.activity;
 
 import java.util.ArrayList;
 
-import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectResource;
-import roboguice.inject.InjectView;
-import android.R.anim;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.GridView;
 
 import com.avenwu.rssreader.R;
-import com.avenwu.rssreader.adapter.MenuAdapter;
 import com.avenwu.rssreader.dataprovider.DataCenter;
+import com.avenwu.rssreader.model.MenuHelper;
 import com.avenwu.rssreader.model.NewsMenuItem;
+import com.avenwu.rssreader.task.TaskManager;
 
-public class MenuActivity extends RoboActivity {
-	@InjectView(R.id.gv_menu)
-	private GridView menubar;
-	private MenuAdapter menuAdapter;
+public class MenuActivity extends BaseMenuActivity implements MenuHelper {
 	@InjectResource(R.array.menu_titles)
 	private String[] menuTitles;
 	@InjectResource(R.array.menu_descriptions)
@@ -30,7 +24,17 @@ public class MenuActivity extends RoboActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.menu_layout);
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		TaskManager.getInstance().cancellAll();
+		DataCenter.getInstance().clear();
+	}
+
+	@Override
+	public ArrayList<NewsMenuItem> getMenuItems() {
 		ArrayList<NewsMenuItem> menuItems = new ArrayList<NewsMenuItem>();
 		for (int i = 0; i < menuTitles.length; i++) {
 			NewsMenuItem item = new NewsMenuItem();
@@ -39,21 +43,28 @@ public class MenuActivity extends RoboActivity {
 			menuItems.add(item);
 		}
 		DataCenter.getInstance().setMenuItems(menuItems);
-		menuAdapter = new MenuAdapter(this);
-		menubar.setAdapter(menuAdapter);
-		menubar.setOnItemClickListener(new OnItemClickListener() {
+		return DataCenter.getInstance().getMenuItems();
+	}
+
+	@Override
+	public OnItemClickListener getMenuListener() {
+		return new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View view,
 					int position, long id) {
 				if (position == 0) {
 					Intent intent = new Intent();
-					intent.setClass(MenuActivity.this, RssMainActivity.class);
+					intent.setClass(MenuActivity.this,
+							CnblogsNewsFeedActivity.class);
 					startActivity(intent);
-//					overridePendingTransition(android.R.anim.slide_out_right,
-//							android.R.anim.slide_in_left);
+					overridePendingTransition(android.R.anim.slide_in_left,
+							android.R.anim.fade_out);
+				} else {
+					Intent intent = new Intent();
+					intent.setClass(MenuActivity.this, TestClick.class);
+					startActivity(intent);
 				}
 			}
-		});
+		};
 	}
-
 }

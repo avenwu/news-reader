@@ -1,5 +1,6 @@
 package com.avenwu.rssreader.adapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -11,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.avenwu.rssreader.R;
-import com.avenwu.rssreader.dataprovider.DataCenter;
 import com.avenwu.rssreader.model.NewsMenuItem;
 
 public class MenuAdapter extends BaseAdapter {
@@ -19,8 +19,8 @@ public class MenuAdapter extends BaseAdapter {
 	private LayoutInflater inflater;
 	private int[] backgroundIds;
 
-	public MenuAdapter(Context context) {
-		menuDataList = DataCenter.getInstance().getMenuItems();
+	public MenuAdapter(Context context, ArrayList<NewsMenuItem> menuItems) {
+		menuDataList = menuItems;
 		inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		backgroundIds = new int[] { R.drawable.blue_bg, R.drawable.purple_bg,

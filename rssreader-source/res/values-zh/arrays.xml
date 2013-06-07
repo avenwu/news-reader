@@ -11,5 +11,10 @@
         <item>全球最大的中文IT社区</item>
         <item>有态度的新闻</item>
     </string-array>
-
-</resources>
+    <string-array name="cnblogs_catalog">
+        <item>博客园 - 首页</item>
+        <item>博客园 - 精华</item>
+        <item>博客园 - 候选</item>
+        <item>博客园 - 新闻</item>
+    </string-array>
+</resources>
