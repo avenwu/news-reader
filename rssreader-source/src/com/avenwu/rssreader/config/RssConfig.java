@@ -1,4 +1,4 @@
-package com.avenwu.rssreader.con;
+package com.avenwu.rssreader.config;
 
 import android.content.Context;
 

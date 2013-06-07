@@ -3,8 +3,7 @@ package com.avenwu.rssreader.adapter;
 import java.util.List;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,27 +12,19 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.avenwu.rssreader.R;
-import com.avenwu.rssreader.activity.BlogArticalActivity;
-import com.avenwu.rssreader.con.RssConfig;
-import com.avenwu.rssreader.data.DataCenter;
+import com.avenwu.rssreader.dataprovider.DataCenter;
 import com.avenwu.rssreader.model.EntryItem;
 
 public class CnblogPickedAdapter extends BaseAdapter {
+    private String TAG = "CnblogPickedAdapter";
     private List<EntryItem> dataItems;
     private LayoutInflater inflater;
-    private ArticalListener listener = new ArticalListener() {
-        @Override
-        public void onClick(View v, int position) {
-            Intent intent = new Intent(v.getContext(), BlogArticalActivity.class);
-            intent.putExtra("content_id", position);
-            intent.putExtra("content_type", RssConfig.getInstance().getPickedUrl());
-            v.getContext().startActivity(intent);
-        }
-    };
+    private ArticalListener listener;
 
-    public CnblogPickedAdapter(Context context) {
+    public CnblogPickedAdapter(Context context, ArticalListener listener) {
         this.inflater = LayoutInflater.from(context);
         this.dataItems = DataCenter.getInstance().getPickedData();
+        this.listener = listener;
     }
 
     @Override
@@ -53,6 +44,7 @@ public class CnblogPickedAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        Log.d(TAG, "getview, position=" + position);
         EntryItem entryItem = dataItems.get(position);
         ViewHolder viewHolder;
         if (convertView == null) {
@@ -69,7 +61,6 @@ public class CnblogPickedAdapter extends BaseAdapter {
         }
         viewHolder.tvTitle.setText(entryItem.getTitle());
         viewHolder.tvSummary.setText(entryItem.getSummary());
-        listener.setPosition(position);
         viewHolder.tvUserName.setText(entryItem.getUser().getName());
         viewHolder.tvPublished.setText(entryItem.getPublised_time());
         return convertView;
@@ -82,7 +73,7 @@ public class CnblogPickedAdapter extends BaseAdapter {
         public TextView tvPublished;
     }
 
-    private static abstract class ArticalListener implements OnClickListener {
+    public static abstract class ArticalListener implements OnClickListener {
         private int position = 0;
 
         @Override
@@ -92,7 +83,7 @@ public class CnblogPickedAdapter extends BaseAdapter {
 
         public abstract void onClick(View v, int position);
 
-        public void setPosition(int position) {
+        public void updatePosition(int position) {
             this.position = position;
         }
 
