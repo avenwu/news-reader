@@ -17,8 +17,12 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".activity.RssMainActivity"
-            android:label="@string/app_name" >
+            android:name=".activity.CnblogsNewsFeedActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.avenwu.rssreader.activity.MenuActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,7 +34,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="com.avenwu.rssreader.activity.BlogArticalActivity" >
+        <activity
+            android:name="com.avenwu.rssreader.activity.BlogArticalActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity android:name="com.avenwu.rssreader.activity.TestClick" >
         </activity>
     </application>
 
