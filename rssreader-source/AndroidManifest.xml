@@ -22,7 +22,7 @@
         </activity>
         <activity
             android:name="com.avenwu.rssreader.activity.MenuActivity"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:icon="@drawable/ic_launcher" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

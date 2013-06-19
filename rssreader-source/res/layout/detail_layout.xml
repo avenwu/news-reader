@@ -8,7 +8,6 @@
         android:id="@+id/tv_title"
         style="@style/BaseMargin"
         android:layout_alignParentLeft="true"
-        android:layout_below="@id/actionbar"
         android:text="News Title"
         android:textColor="@color/light_blue_0099cc"
         android:textSize="30sp" />

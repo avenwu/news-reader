@@ -26,21 +26,22 @@ import com.avenwu.rssreader.task.BaseListener;
 import com.avenwu.rssreader.task.BaseRequest;
 import com.avenwu.rssreader.task.BaseTask;
 import com.avenwu.rssreader.task.RssCnblogRequest;
-import com.markupartist.android.widget.ActionBar;
+import com.avenwu.rssreader.view.RefreshView;
+import com.avenwu.rssreader.view.RefreshView.RefreshListener;
 
 public class CnblogsPickedFragment extends RoboFragment {
 	@InjectView(R.id.flipview_rss)
 	private FlipViewController flipview;
+	@InjectView(R.id.refreshView1)
+	private RefreshView refreshView;
 	private CnblogPickedAdapter pickedAdapter;
 	private BaseTask task;
+	private BaseRequest request;
 	private CnblogPickedAdapter.ArticalListener listener;
-	private ActionBar actionBar;
 	private RssDaoManager daoManager;
 
-	public static CnblogsPickedFragment newInstance(ActionBar actionBar,
-			RssDaoManager rssDaoManager) {
+	public static CnblogsPickedFragment newInstance(RssDaoManager rssDaoManager) {
 		CnblogsPickedFragment fragment = new CnblogsPickedFragment();
-		fragment.actionBar = actionBar;
 		fragment.daoManager = rssDaoManager;
 		return fragment;
 	}
@@ -89,59 +90,65 @@ public class CnblogsPickedFragment extends RoboFragment {
 		});
 		if (pickedAdapter.getCount() != 0) {
 			pickedAdapter.notifyDataSetChanged();
-			actionBar.setProgressBarVisibility(View.GONE);
 		} else {
 			startTask();
 		}
+
+		refreshView.setRefreshListener(new RefreshListener() {
+			@Override
+			public void onStartRefresh() {
+				startTask();
+			}
+		});
 	}
 
 	private void startTask() {
-		BaseRequest request = new RssCnblogRequest<Void>(
-				new BaseListener<ArrayList<EntryItem>>() {
-					@Override
-					public void onSuccess(ArrayList<EntryItem> result) {
-						Toast.makeText(getActivity(), "success",
-								Toast.LENGTH_SHORT).show();
-						DataCenter.getInstance().addPickedItems(result);
-						pickedAdapter.notifyDataSetChanged();
-						try {
-							daoManager.addEntryItems(result);
-						} catch (SQLException e) {
-							e.printStackTrace();
-							Toast.makeText(getActivity(),
-									"failed to insert tinto table",
+		if (request == null) {
+			request = new RssCnblogRequest<Void>(
+					new BaseListener<ArrayList<EntryItem>>() {
+						@Override
+						public void onSuccess(ArrayList<EntryItem> result) {
+							Toast.makeText(getActivity(), "success",
 									Toast.LENGTH_SHORT).show();
+							DataCenter.getInstance().addPickedItems(result);
+							pickedAdapter.notifyDataSetChanged();
+							try {
+								daoManager.addEntryItems(result);
+							} catch (SQLException e) {
+								e.printStackTrace();
+								Toast.makeText(getActivity(),
+										"failed to insert tinto table",
+										Toast.LENGTH_SHORT).show();
+							}
 						}
-					}
 
-					@Override
-					public void onFailed(Object result) {
-						if (result instanceof Integer) {
-							Toast.makeText(getActivity(), (Integer) result,
-									Toast.LENGTH_SHORT).show();
-						} else if (result instanceof String) {
-							Toast.makeText(getActivity(), (String) result,
-									Toast.LENGTH_SHORT).show();
-						} else {
+						@Override
+						public void onFailed(Object result) {
+							if (result instanceof Integer) {
+								Toast.makeText(getActivity(), (Integer) result,
+										Toast.LENGTH_SHORT).show();
+							} else if (result instanceof String) {
+								Toast.makeText(getActivity(), (String) result,
+										Toast.LENGTH_SHORT).show();
+							} else {
+								Toast.makeText(getActivity(),
+										R.string.failed_to_get_content,
+										Toast.LENGTH_SHORT).show();
+							}
+						}
+
+						@Override
+						public void onError(Exception e) {
 							Toast.makeText(getActivity(),
 									R.string.failed_to_get_content,
 									Toast.LENGTH_SHORT).show();
 						}
-					}
 
-					@Override
-					public void onError(Exception e) {
-						Toast.makeText(getActivity(),
-								R.string.failed_to_get_content,
-								Toast.LENGTH_SHORT).show();
-					}
-
-					@Override
-					public void onFinished() {
-						actionBar.setProgressBarVisibility(View.GONE);
-					}
-				});
-
+						@Override
+						public void onFinished() {
+						}
+					});
+		}
 		task = new BaseTask(RssConfig.getInstance().getPickedUrl(), request);
 		task.start();
 	}
@@ -160,7 +167,9 @@ public class CnblogsPickedFragment extends RoboFragment {
 
 	@Override
 	public void onDestroy() {
+		if (task != null) {
+			task.cancel();
+		}
 		super.onDestroy();
-		task.cancel();
 	}
 }
