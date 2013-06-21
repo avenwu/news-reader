@@ -1,15 +1,16 @@
 package com.avenwu.rssreader.view;
 
-import com.avenwu.rssreader.R;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-public class RefreshView extends View {
+import com.avenwu.rssreader.R;
+
+public class RefreshView extends FrameLayout {
 	private boolean refreshState = false;// false stands for need refreshing
 	private ProgressBar progressBar;
 	private ImageView refreshView;
@@ -17,7 +18,7 @@ public class RefreshView extends View {
 
 	public RefreshView(Context context) {
 		super(context);
-
+		init(context);
 	}
 
 	public RefreshView(Context context, AttributeSet attrs) {
@@ -30,11 +31,12 @@ public class RefreshView extends View {
 		} finally {
 			a.recycle();
 		}
-
+		init(context);
 	}
 
 	public void init(Context context) {
 		View view = inflate(context, R.layout.refreshview, null);
+		addView(view);
 		progressBar = (ProgressBar) view.findViewById(R.id.pr_refreshing);
 		refreshView = (ImageView) view.findViewById(R.id.iv_refresh);
 		progressBar.setVisibility(refreshState ? View.VISIBLE : View.GONE);
@@ -42,11 +44,7 @@ public class RefreshView extends View {
 		refreshView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				v.setVisibility(View.GONE);
-				progressBar.setVisibility(View.VISIBLE);
-				if (listener != null) {
-					listener.onStartRefresh();
-				}
+				startRefresh();
 			}
 		});
 	}
@@ -63,6 +61,14 @@ public class RefreshView extends View {
 
 	public void setRefreshListener(RefreshListener listener) {
 		this.listener = listener;
+	}
+
+	public void startRefresh() {
+		refreshView.setVisibility(View.GONE);
+		progressBar.setVisibility(View.VISIBLE);
+		if (listener != null) {
+			listener.onStartRefresh();
+		}
 	}
 
 	public void completeRefresh() {

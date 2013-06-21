@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aphidmobile.flip.FlipViewController;
@@ -34,11 +36,20 @@ public class CnblogsPickedFragment extends RoboFragment {
 	private FlipViewController flipview;
 	@InjectView(R.id.refreshView1)
 	private RefreshView refreshView;
+	@InjectView(R.id.iv_back)
+	private ImageView ivHomeBack;
+	@InjectView(R.id.tv_title)
+	private TextView tvTitle;
 	private CnblogPickedAdapter pickedAdapter;
 	private BaseTask task;
+	@SuppressWarnings("rawtypes")
 	private BaseRequest request;
 	private CnblogPickedAdapter.ArticalListener listener;
 	private RssDaoManager daoManager;
+	private static final int HOME_INDEX = 0;
+	private static final int PICKED_INDEX = 1;
+	private static final int CANDICATE_INDEX = 2;
+	private static final int NEWS_INDEX = 3;
 
 	public static CnblogsPickedFragment newInstance(RssDaoManager rssDaoManager) {
 		CnblogsPickedFragment fragment = new CnblogsPickedFragment();
@@ -68,6 +79,9 @@ public class CnblogsPickedFragment extends RoboFragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		String[] titleArray = getResources().getStringArray(
+				R.array.cnblogs_catalog);
+		tvTitle.setText(titleArray[PICKED_INDEX]);
 		flipview.setAnimationBitmapFormat(Config.RGB_565);
 		listener = new ArticalListener() {
 			@Override
@@ -86,6 +100,9 @@ public class CnblogsPickedFragment extends RoboFragment {
 			@Override
 			public void onViewFlipped(View view, int position) {
 				listener.updatePosition(position);
+				if (position == 0) {
+					refreshView.startRefresh();
+				}
 			}
 		});
 		if (pickedAdapter.getCount() != 0) {
@@ -120,6 +137,7 @@ public class CnblogsPickedFragment extends RoboFragment {
 										"failed to insert tinto table",
 										Toast.LENGTH_SHORT).show();
 							}
+							flipview.setSelection(0);
 						}
 
 						@Override
@@ -146,6 +164,7 @@ public class CnblogsPickedFragment extends RoboFragment {
 
 						@Override
 						public void onFinished() {
+							refreshView.completeRefresh();
 						}
 					});
 		}

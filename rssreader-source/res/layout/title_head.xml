@@ -2,22 +2,35 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res/com.avenwu.rssreader"
     android:layout_width="match_parent"
-    android:layout_height="50dp" >
+    android:layout_height="48dp"
+    android:background="@android:color/white" >
 
     <com.avenwu.rssreader.view.RefreshView
         android:id="@+id/refreshView1"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
         custom:refreshState="false" />
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_navigation_left" />
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:text="TextView"
+        android:layout_centerInParent="true"
+        android:layout_toLeftOf="@id/refreshView1"
+        android:layout_toRightOf="@id/iv_back"
+        android:gravity="center"
+        android:text="@string/title_cnblogs"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@android:color/black" />
 
 </RelativeLayout>
