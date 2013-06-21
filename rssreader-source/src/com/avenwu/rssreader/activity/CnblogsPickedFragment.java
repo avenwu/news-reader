@@ -127,7 +127,7 @@ public class CnblogsPickedFragment extends RoboFragment {
 						public void onSuccess(ArrayList<EntryItem> result) {
 							Toast.makeText(getActivity(), "success",
 									Toast.LENGTH_SHORT).show();
-							DataCenter.getInstance().addPickedItems(result);
+							DataCenter.getInstance().replacePickedItems(result);
 							pickedAdapter.notifyDataSetChanged();
 							try {
 								daoManager.addEntryItems(result);

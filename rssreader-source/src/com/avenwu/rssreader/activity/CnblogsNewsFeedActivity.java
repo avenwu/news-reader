@@ -43,51 +43,6 @@ public class CnblogsNewsFeedActivity extends RoboFragmentActivity {
 		changeCatalog(CNBLOGS_PICKED);
 	}
 
-	// private void initTitleBar() {
-	// updateTitle(R.string.title_cnblogs);
-	// actionBar.setHomeAction(new IntentAction(this,
-	// UIHelper.back2Menu(this), R.drawable.ic_launcher));
-	// actionBar.setProgressBarVisibility(View.VISIBLE);
-	// actionBar.addAction(new Action() {
-	// @Override
-	// public void performAction(View view) {
-	// if (catalogDialog == null) {
-	// AlertDialog.Builder builder = new AlertDialog.Builder(
-	// CnblogsNewsFeedActivity.this);
-	// builder.setSingleChoiceItems(R.array.cnblogs_catalog, 0,
-	// new OnClickListener() {
-	// @Override
-	// public void onClick(DialogInterface dialog,
-	// int which) {
-	// updateTitle(catalogStrings[which]);
-	// changeCatalog(which);
-	// }
-	// }).setPositiveButton(R.string.confirm, null);
-	// catalogDialog = builder.create();
-	// }
-	// catalogDialog.show();
-	// }
-	//
-	// @Override
-	// public int getDrawable() {
-	// return 0;
-	// }
-	//
-	// @Override
-	// public int getContent() {
-	// return R.string.hello;
-	// }
-	// });
-	// }
-
-	// private void updateTitle(int titleId) {
-	// actionBar.setTitle(titleId);
-	// }
-
-	// private void updateTitle(String title) {
-	// actionBar.setTitle(title);
-	// }
-
 	private void changeCatalog(int which) {
 		if (curent_catalog_index != which) {
 			curent_catalog_index = which;

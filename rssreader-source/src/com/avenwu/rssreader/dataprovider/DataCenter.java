@@ -67,7 +67,10 @@ public class DataCenter {
 		pickedData.clear();
 		addPickedItems(collection);
 	}
-
+	public void replaceHomeItems(ArrayList<EntryItem> collection) {
+		homeData.clear();
+		addPickedItems(collection);
+	}
 	public String getArtical(int position, String url) {
 		String content = "";
 		try {
