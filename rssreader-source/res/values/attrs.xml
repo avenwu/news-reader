@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="RefreshView">
+        <attr name="refreshState" format="boolean" />
+    </declare-styleable>
+
+</resources>
