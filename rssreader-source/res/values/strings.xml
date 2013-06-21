@@ -9,20 +9,24 @@
     <string name="url_candidate_page">http://feed.cnblogs.com/blog/candidate/rss</string>
     <string name="url_news_page">http://feed.cnblogs.com/news/rss</string>
 
-    <!-- cnblogs sumary fo each newsfeed -->
-    <string name="published_at"> published at </string>
-    <string name="comment">Comment(%s)</string>
-    <string name="read">Read(%s)</string>
-
-    <!-- artical detail -->
-    <string name="author">Author: %s</string>
-    <string name="timestamp">Time: %s</string>
-
-    <!-- network -->
-    <string name="wifi_connected">Wifi is connected.</string>
-    <string name="network_lost">Network isn\'t connected!</string>
-    <string name="failed_to_get_content">Failed to get content.</string>
     <!-- news menu item -->
     <string name="cnblog_description">The world is changing by code</string>
+    <string name="app_name">资讯阅读</string>
+    <!-- cnblogs sumary fo each newsfeed -->
+    <string name="published_at"> 发表于 </string>
+    <string name="comment">评论(%s)</string>
+    <string name="read">阅读(%s)</string>
+
+    <!-- artical detail -->
+    <string name="author">作者: %s</string>
+    <string name="timestamp">时间: %s</string>
+
+    <!-- network -->
+    <string name="wifi_connected">Wifi 已连接.</string>
+    <string name="network_lost">网络未连接!</string>
+    <string name="failed_to_get_content">获取内容失败.</string>
+    <!-- news menu item -->
+    <string name="title_cnblogs">博客园</string>
+    <string name="confirm">确定</string>
 
 </resources>
