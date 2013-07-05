@@ -28,5 +28,9 @@
     <!-- news menu item -->
     <string name="title_cnblogs">博客园</string>
     <string name="confirm">确定</string>
+    <string name="cnblog_home">博客园 - 首页</string>
+    <string name="cnblog_picked">博客园 - 精华</string>
+    <string name="cnblog_candicate">博客园 - 候选</string>
+    <string name="cnblog_news">博客园 - 新闻</string>
 
 </resources>

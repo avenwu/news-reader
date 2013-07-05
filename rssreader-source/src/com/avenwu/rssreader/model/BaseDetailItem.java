@@ -1,10 +1,8 @@
 package com.avenwu.rssreader.model;
 
 import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable(tableName = "picked_cnblogs")
-public class EntryItem {
+public class BaseDetailItem {
     @DatabaseField(generatedId = true)
     private int id;
     @DatabaseField
@@ -21,7 +19,7 @@ public class EntryItem {
     private AuthorInfo user;
     @DatabaseField
     private String content;
-
+    
     public String getId() {
         return feed_id;
     }
