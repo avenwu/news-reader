@@ -5,143 +5,151 @@ import java.util.Collections;
 import java.util.List;
 
 import com.avenwu.rssreader.config.RssConfig;
-import com.avenwu.rssreader.model.EntryItem;
+import com.avenwu.rssreader.model.BaseDetailItem;
+import com.avenwu.rssreader.model.HomeDetailItem;
+import com.avenwu.rssreader.model.PickedDetailItem;
 import com.avenwu.rssreader.model.NewsMenuItem;
 
 public class DataCenter {
-	private List<EntryItem> pickedData = Collections
-			.synchronizedList(new ArrayList<EntryItem>());
-	private List<EntryItem> homeData = Collections
-			.synchronizedList(new ArrayList<EntryItem>());;
-	private List<EntryItem> candicateData = Collections
-			.synchronizedList(new ArrayList<EntryItem>());
-	private List<EntryItem> newsData = Collections
-			.synchronizedList(new ArrayList<EntryItem>());
-	private List<NewsMenuItem> menuData;
+    private List<PickedDetailItem> pickedData = Collections
+            .synchronizedList(new ArrayList<PickedDetailItem>());
+    private List<HomeDetailItem> homeData = Collections
+            .synchronizedList(new ArrayList<HomeDetailItem>());;
+    private List<PickedDetailItem> candicateData = Collections
+            .synchronizedList(new ArrayList<PickedDetailItem>());
+    private List<PickedDetailItem> newsData = Collections
+            .synchronizedList(new ArrayList<PickedDetailItem>());
+    private List<NewsMenuItem> menuData;
 
-	private static DataCenter instance;
+    private static DataCenter instance;
 
-	private DataCenter() {
-	}
+    private DataCenter() {
+    }
 
-	public static DataCenter getInstance() {
-		if (instance == null) {
-			synchronized (DataCenter.class) {
-				if (instance == null) {
-					instance = new DataCenter();
-				}
-			}
-		}
-		return instance;
-	}
+    public static DataCenter getInstance() {
+        if (instance == null) {
+            synchronized (DataCenter.class) {
+                if (instance == null) {
+                    instance = new DataCenter();
+                }
+            }
+        }
+        return instance;
+    }
 
-	public List<EntryItem> getPickedData() {
-		return pickedData;
-	}
+    public List<PickedDetailItem> getPickedData() {
+        return pickedData;
+    }
 
-	public void setPickedData(List<EntryItem> pickedData) {
-		this.pickedData = pickedData;
-	}
+    public void setPickedData(List<PickedDetailItem> pickedData) {
+        this.pickedData = pickedData;
+    }
 
-	public List<EntryItem> getHomeData() {
-		return homeData;
-	}
+    public List<HomeDetailItem> getHomeData() {
+        return homeData;
+    }
 
-	public void setHomeData(List<EntryItem> homeData) {
-		this.homeData = homeData;
-	}
+    public void setHomeData(List<HomeDetailItem> homeData) {
+        this.homeData = homeData;
+    }
 
-	public List<EntryItem> getCandicateData() {
-		return candicateData;
-	}
+    public List<PickedDetailItem> getCandicateData() {
+        return candicateData;
+    }
 
-	public void setCandicateData(List<EntryItem> candicateData) {
-		this.candicateData = candicateData;
-	}
+    public void setCandicateData(List<PickedDetailItem> candicateData) {
+        this.candicateData = candicateData;
+    }
 
-	public void addPickedItems(ArrayList<EntryItem> collection) {
-		pickedData.addAll(collection);
-	}
+    public void addPickedItems(ArrayList<PickedDetailItem> collection) {
+        pickedData.addAll(collection);
+    }
 
-	public void replacePickedItems(ArrayList<EntryItem> collection) {
-		pickedData.clear();
-		addPickedItems(collection);
-	}
-	public void replaceHomeItems(ArrayList<EntryItem> collection) {
-		homeData.clear();
-		addPickedItems(collection);
-	}
-	public String getArtical(int position, String url) {
-		String content = "";
-		try {
-			if (url.equals(RssConfig.getInstance().getHomeUrl())) {
-				content = getHomeData().get(position).getContent();
-			} else if (url.equals(RssConfig.getInstance().getPickedUrl())) {
-				content = getPickedData().get(position).getContent();
-			} else if (url.equals(RssConfig.getInstance().getCandicateUrl())) {
-				content = getCandicateData().get(position).getContent();
-			} else if (url.equals(RssConfig.getInstance().getNewsUrl())) {
-				content = getNewsData().get(position).getContent();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return content;
-	}
+    public void addHomeItems(ArrayList<HomeDetailItem> collection) {
+        homeData.addAll(collection);
+    }
 
-	public EntryItem getDataItem(String url, int position) {
-		EntryItem item = null;
-		try {
-			if (url.equals(RssConfig.getInstance().getHomeUrl())) {
-				item = getHomeData().get(position);
-			} else if (url.equals(RssConfig.getInstance().getPickedUrl())) {
-				item = getPickedData().get(position);
-			} else if (url.equals(RssConfig.getInstance().getCandicateUrl())) {
-				item = getCandicateData().get(position);
-			} else if (url.equals(RssConfig.getInstance().getNewsUrl())) {
-				item = getNewsData().get(position);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return item;
-	}
+    public void replacePickedItems(ArrayList<PickedDetailItem> collection) {
+        pickedData.clear();
+        addPickedItems(collection);
+    }
 
-	public List<EntryItem> getNewsData() {
-		return newsData;
-	}
+    public void replaceHomeItems(ArrayList<HomeDetailItem> collection) {
+        homeData.clear();
+        addHomeItems(collection);
+    }
 
-	public void setNewsData(List<EntryItem> newsData) {
-		this.newsData = newsData;
-	}
+    public String getArtical(int position, String url) {
+        String content = "";
+        try {
+            if (url.equals(RssConfig.getInstance().getHomeUrl())) {
+                content = getHomeData().get(position).getContent();
+            } else if (url.equals(RssConfig.getInstance().getPickedUrl())) {
+                content = getPickedData().get(position).getContent();
+            } else if (url.equals(RssConfig.getInstance().getCandicateUrl())) {
+                content = getCandicateData().get(position).getContent();
+            } else if (url.equals(RssConfig.getInstance().getNewsUrl())) {
+                content = getNewsData().get(position).getContent();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return content;
+    }
 
-	public void setMenuItems(ArrayList<NewsMenuItem> menuItems) {
-		this.menuData = menuItems;
-	}
+    public BaseDetailItem getDataItem(String url, int position) {
+        BaseDetailItem item = null;
+        try {
+            if (url.equals(RssConfig.getInstance().getHomeUrl())) {
+                item = getHomeData().get(position);
+            } else if (url.equals(RssConfig.getInstance().getPickedUrl())) {
+                item = getPickedData().get(position);
+            } else if (url.equals(RssConfig.getInstance().getCandicateUrl())) {
+                item = getCandicateData().get(position);
+            } else if (url.equals(RssConfig.getInstance().getNewsUrl())) {
+                item = getNewsData().get(position);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return item;
+    }
 
-	public ArrayList<NewsMenuItem> getMenuItems() {
-		if (menuData == null) {
-			throw new RuntimeException("menu is not initialized");
-		}
-		return (ArrayList<NewsMenuItem>) menuData;
-	}
+    public List<PickedDetailItem> getNewsData() {
+        return newsData;
+    }
 
-	public void clear() {
-		if (pickedData != null) {
-			pickedData.clear();
-		}
-		if (homeData != null) {
-			homeData.clear();
-		}
-		if (newsData != null) {
-			newsData.clear();
-		}
-		if (candicateData != null) {
-			candicateData.clear();
-		}
-		if (menuData != null) {
-			menuData.clear();
-		}
-		instance = null;
-	}
+    public void setNewsData(List<PickedDetailItem> newsData) {
+        this.newsData = newsData;
+    }
+
+    public void setMenuItems(ArrayList<NewsMenuItem> menuItems) {
+        this.menuData = menuItems;
+    }
+
+    public ArrayList<NewsMenuItem> getMenuItems() {
+        if (menuData == null) {
+            throw new RuntimeException("menu is not initialized");
+        }
+        return (ArrayList<NewsMenuItem>) menuData;
+    }
+
+    public void clear() {
+        if (pickedData != null) {
+            pickedData.clear();
+        }
+        if (homeData != null) {
+            homeData.clear();
+        }
+        if (newsData != null) {
+            newsData.clear();
+        }
+        if (candicateData != null) {
+            candicateData.clear();
+        }
+        if (menuData != null) {
+            menuData.clear();
+        }
+        instance = null;
+    }
 }

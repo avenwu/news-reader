@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_cnblog_home"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="@string/cnblog_home"/>
+    <item
+        android:id="@+id/menu_cnblog_picked"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/cnblog_picked"/>
+
+</menu>

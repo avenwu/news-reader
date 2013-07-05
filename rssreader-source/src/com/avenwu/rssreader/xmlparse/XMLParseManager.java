@@ -11,19 +11,36 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.SAXException;
 
 import com.avenwu.rssreader.downloader.RssLoaderManager;
-import com.avenwu.rssreader.model.EntryItem;
+import com.avenwu.rssreader.model.HomeDetailItem;
+import com.avenwu.rssreader.model.PickedDetailItem;
 
 public class XMLParseManager {
-
-    public static ArrayList<EntryItem> parseRssXML(String url) throws ParserConfigurationException, SAXException, IOException {
+    public static ArrayList<HomeDetailItem> parseHomeXML(String url)
+            throws ParserConfigurationException, SAXException, IOException {
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
-        RssHandler handler = new RssHandler();
-        InputStream inputStream = (InputStream) RssLoaderManager.getRssLoader().queryRssCotent(url, null);
+        HomeRssHandler handler = new HomeRssHandler();
+        InputStream inputStream = (InputStream) RssLoaderManager.getRssLoader()
+                .queryRssCotent(url, null);
         if (inputStream != null) {
             parser.parse(inputStream, handler);
             inputStream.close();
         }
         return handler.getEntryItems();
     }
+
+    public static ArrayList<PickedDetailItem> parsePickedXML(String url)
+            throws ParserConfigurationException, SAXException, IOException {
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        SAXParser parser = factory.newSAXParser();
+        PickedRssHandler handler = new PickedRssHandler();
+        InputStream inputStream = (InputStream) RssLoaderManager.getRssLoader()
+                .queryRssCotent(url, null);
+        if (inputStream != null) {
+            parser.parse(inputStream, handler);
+            inputStream.close();
+        }
+        return handler.getEntryItems();
+    }
+
 }
