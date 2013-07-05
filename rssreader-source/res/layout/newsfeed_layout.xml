@@ -3,15 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <include
-        android:id="@+id/title_view"
-        layout="@layout/title_head" />
-
     <com.aphidmobile.flip.FlipViewController
         android:id="@+id/flipview_rss"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/title_view" >
+        android:layout_height="match_parent" >
     </com.aphidmobile.flip.FlipViewController>
 
 </RelativeLayout>

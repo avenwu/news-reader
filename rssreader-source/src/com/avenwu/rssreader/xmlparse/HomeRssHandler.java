@@ -9,12 +9,13 @@ import org.xml.sax.helpers.DefaultHandler;
 import android.util.Log;
 
 import com.avenwu.rssreader.model.AuthorInfo;
-import com.avenwu.rssreader.model.EntryItem;
+import com.avenwu.rssreader.model.HomeDetailItem;
+import com.avenwu.rssreader.model.PickedDetailItem;
 
-public class RssHandler extends DefaultHandler {
-    private ArrayList<EntryItem> itemList;
+public class HomeRssHandler extends DefaultHandler {
+    private ArrayList<HomeDetailItem> itemList;
     private final String TAG = "RssHandler";
-    private EntryItem entryItem;
+    private HomeDetailItem entryItem;
     private AuthorInfo authorInfo;
     private StringBuffer tempContent;
     private boolean isEntryStarted = false;
@@ -23,7 +24,7 @@ public class RssHandler extends DefaultHandler {
     public void startDocument() throws SAXException {
         super.startDocument();
         Log.d(TAG, "start parse document");
-        itemList = new ArrayList<EntryItem>();
+        itemList = new ArrayList<HomeDetailItem>();
         tempContent = new StringBuffer();
     }
 
@@ -34,18 +35,20 @@ public class RssHandler extends DefaultHandler {
     }
 
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+    public void startElement(String uri, String localName, String qName,
+            Attributes attributes) throws SAXException {
         super.startElement(uri, localName, qName, attributes);
         if (qName.equals(Element.entry)) {
             isEntryStarted = true;
-            entryItem = new EntryItem();
+            entryItem = new HomeDetailItem();
         } else if (qName.equals(Element.author)) {
             authorInfo = new AuthorInfo();
         }
     }
 
     @Override
-    public void endElement(String uri, String localName, String qName) throws SAXException {
+    public void endElement(String uri, String localName, String qName)
+            throws SAXException {
         super.endElement(uri, localName, qName);
         if (!isEntryStarted) {
             return;
@@ -77,7 +80,8 @@ public class RssHandler extends DefaultHandler {
     }
 
     @Override
-    public void characters(char[] ch, int start, int length) throws SAXException {
+    public void characters(char[] ch, int start, int length)
+            throws SAXException {
         super.characters(ch, start, length);
         if (!isEntryStarted) {
             return;
@@ -85,7 +89,7 @@ public class RssHandler extends DefaultHandler {
         tempContent.append(ch, start, length);
     }
 
-    public ArrayList<EntryItem> getEntryItems() {
+    public ArrayList<HomeDetailItem> getEntryItems() {
         return itemList;
     }
 }

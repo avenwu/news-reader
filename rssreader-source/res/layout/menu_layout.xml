@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:horizontalSpacing="5dp"
+        android:layoutAnimation="@anim/layout_grid_inverse_fade"
         android:listSelector="@null"
         android:numColumns="2"
         android:stretchMode="columnWidth"

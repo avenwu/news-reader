@@ -3,10 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <include
+        android:id="@+id/title_view"
+        layout="@layout/title_head" />
+
     <FrameLayout
         android:id="@+id/frame_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:layout_below="@id/title_view"
+        android:background="@android:color/white" >
     </FrameLayout>
 
 </RelativeLayout>

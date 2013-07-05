@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.avenwu.rssreader.R;
 import com.avenwu.rssreader.config.Constant;
 import com.avenwu.rssreader.dataprovider.DataCenter;
-import com.avenwu.rssreader.model.EntryItem;
+import com.avenwu.rssreader.model.BaseDetailItem;
 
 public class BlogArticalActivity extends RoboActivity {
     private int contentId;
@@ -30,11 +30,14 @@ public class BlogArticalActivity extends RoboActivity {
         setContentView(R.layout.artical_layout);
         contentId = getIntent().getIntExtra("content_id", 0);
         contentType = getIntent().getStringExtra("content_type");
-        EntryItem item = DataCenter.getInstance().getDataItem(contentType, contentId);
-        authorView.setText(getString(R.string.author, item.getUser().getName()));
+        BaseDetailItem item = DataCenter.getInstance().getDataItem(contentType,
+                contentId);
+        authorView
+                .setText(getString(R.string.author, item.getUser().getName()));
         titleView.setText(item.getTitle());
         timeView.setText(getString(R.string.timestamp, item.getPublised_time()));
-        contentView.loadDataWithBaseURL(null, item.getContent(), Constant.TEXT_HTML, Constant.UTF_8, null);
+        contentView.loadDataWithBaseURL(null, item.getContent(),
+                Constant.TEXT_HTML, Constant.UTF_8, null);
         WebSettings webSettings = contentView.getSettings();
         webSettings.setBlockNetworkImage(true);
         webSettings.setBuiltInZoomControls(true);

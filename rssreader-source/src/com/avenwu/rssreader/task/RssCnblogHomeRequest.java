@@ -8,14 +8,14 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 import com.avenwu.rssreader.R;
-import com.avenwu.rssreader.model.EntryItem;
+import com.avenwu.rssreader.model.HomeDetailItem;
 import com.avenwu.rssreader.utils.NetworkHelper;
 import com.avenwu.rssreader.xmlparse.XMLParseManager;
 
-public class RssCnblogRequest<Void> implements BaseRequest {
+public class RssCnblogHomeRequest<Void> implements BaseRequest {
     private BaseListener<?> listener;
 
-    public RssCnblogRequest(BaseListener<?> listener) {
+    public RssCnblogHomeRequest(BaseListener<?> listener) {
         this.listener = listener;
     }
 
@@ -26,7 +26,7 @@ public class RssCnblogRequest<Void> implements BaseRequest {
             return null;
         }
         try {
-            ArrayList<EntryItem> dataList = XMLParseManager.parseRssXML(url);
+            ArrayList<HomeDetailItem> dataList = XMLParseManager.parseHomeXML(url);
             if (dataList == null) {
                 listener.sendResult(BaseListener.FAILED, null);
             } else {

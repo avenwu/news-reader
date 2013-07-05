@@ -13,17 +13,17 @@ import android.widget.TextView;
 
 import com.avenwu.rssreader.R;
 import com.avenwu.rssreader.dataprovider.DataCenter;
-import com.avenwu.rssreader.model.PickedDetailItem;
+import com.avenwu.rssreader.model.HomeDetailItem;
 
-public class CnblogPickedAdapter extends BaseAdapter {
+public class CnblogHomeAdapter extends BaseAdapter {
     private String TAG = "CnblogPickedAdapter";
-    private List<PickedDetailItem> dataItems;
+    private List<HomeDetailItem> dataItems;
     private LayoutInflater inflater;
     private ArticalListener listener;
 
-    public CnblogPickedAdapter(Context context, ArticalListener listener) {
+    public CnblogHomeAdapter(Context context, ArticalListener listener) {
         this.inflater = LayoutInflater.from(context);
-        this.dataItems = DataCenter.getInstance().getPickedData();
+        this.dataItems = DataCenter.getInstance().getHomeData();
         this.listener = listener;
     }
 
@@ -45,7 +45,7 @@ public class CnblogPickedAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Log.d(TAG, "getview, position=" + position);
-        PickedDetailItem entryItem = dataItems.get(position);
+        HomeDetailItem entryItem = dataItems.get(position);
         ViewHolder viewHolder;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.detail_layout, null);
