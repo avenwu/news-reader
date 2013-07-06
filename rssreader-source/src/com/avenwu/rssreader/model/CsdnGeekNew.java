@@ -7,9 +7,10 @@ public class CsdnGeekNew {
     public String link;
     public String description;
     public String lastBuildDate;
-    private ArrayList<CsdnNewsItem> itemList = new ArrayList<CsdnNewsItem>();
+    public ArrayList<CsdnNewsItem> itemList = new ArrayList<CsdnNewsItem>();
 
     public void addItem(CsdnNewsItem item) {
         itemList.add(item);
     }
+
 }

@@ -7,7 +7,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
-import com.avenwu.rssreader.R;
+import com.avenwu.ereader.R;
 import com.avenwu.rssreader.model.PickedDetailItem;
 import com.avenwu.rssreader.utils.NetworkHelper;
 import com.avenwu.rssreader.xmlparse.XMLParseManager;

@@ -12,4 +12,8 @@
     <color name="light_red_FF4444">#FF4444</color>
     <color name="light_red_CC0000">#CC0000</color>
 
+    <!-- item background -->
+    <color name="blue_2cb1e1">#2cb1e1</color>
+    <color name="blue_50c0e9">#50c0e9</color>
+
 </resources>

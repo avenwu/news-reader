@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.avenwu.rssreader.config.RssConfig;
 import com.avenwu.rssreader.model.BaseDetailItem;
+import com.avenwu.rssreader.model.CsdnNewsItem;
 import com.avenwu.rssreader.model.HomeDetailItem;
 import com.avenwu.rssreader.model.PickedDetailItem;
 import com.avenwu.rssreader.model.NewsMenuItem;
@@ -20,7 +21,8 @@ public class DataCenter {
     private List<PickedDetailItem> newsData = Collections
             .synchronizedList(new ArrayList<PickedDetailItem>());
     private List<NewsMenuItem> menuData;
-
+    private List<CsdnNewsItem> csdnNewsData = Collections
+            .synchronizedList(new ArrayList<CsdnNewsItem>());
     private static DataCenter instance;
 
     private DataCenter() {
@@ -39,6 +41,14 @@ public class DataCenter {
 
     public List<PickedDetailItem> getPickedData() {
         return pickedData;
+    }
+
+    public List<CsdnNewsItem> getCsdnNewsData() {
+        return csdnNewsData;
+    }
+
+    public void setCsdnNewsData(List<CsdnNewsItem> csdnNewsData) {
+        this.csdnNewsData = csdnNewsData;
     }
 
     public void setPickedData(List<PickedDetailItem> pickedData) {
@@ -72,6 +82,10 @@ public class DataCenter {
     public void replacePickedItems(ArrayList<PickedDetailItem> collection) {
         pickedData.clear();
         addPickedItems(collection);
+    }
+
+    public void addCsdnNewsItems(ArrayList<CsdnNewsItem> collection) {
+        csdnNewsData.addAll(collection);
     }
 
     public void replaceHomeItems(ArrayList<HomeDetailItem> collection) {

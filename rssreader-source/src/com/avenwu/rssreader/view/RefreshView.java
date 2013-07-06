@@ -8,7 +8,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-import com.avenwu.rssreader.R;
+import com.avenwu.ereader.R;
 
 public class RefreshView extends FrameLayout {
     private boolean refreshState = false;// false stands for need refreshing
