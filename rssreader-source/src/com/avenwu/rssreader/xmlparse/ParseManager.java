@@ -8,17 +8,18 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.dom4j.Document;
 import org.dom4j.DocumentException;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Element;
 import org.xml.sax.SAXException;
 
-import com.avenwu.rssreader.activity.CSDNNewsFeedActivity;
+import com.avenwu.rssreader.config.Constant;
 import com.avenwu.rssreader.downloader.RssLoaderManager;
 import com.avenwu.rssreader.model.CsdnNewsItem;
 import com.avenwu.rssreader.model.HomeDetailItem;
 import com.avenwu.rssreader.model.PickedDetailItem;
 
-public class XMLParseManager {
+public class ParseManager {
     public static ArrayList<HomeDetailItem> parseHomeXML(String url)
             throws ParserConfigurationException, SAXException, IOException {
         SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -53,4 +54,11 @@ public class XMLParseManager {
         handler.parse(url);
         return handler.getEntryItems();
     }
+
+    public static String jsoupParse(String url) throws IOException {
+        org.jsoup.nodes.Document doc1 = Jsoup.connect(url).get();
+        Element element = doc1.select("a").get(Constant.TARGET_URL_INDEX);
+        return element.attr("abs:href");
+    }
+
 }

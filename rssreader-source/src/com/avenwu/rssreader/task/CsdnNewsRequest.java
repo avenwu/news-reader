@@ -7,7 +7,7 @@ import org.dom4j.DocumentException;
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.model.CsdnNewsItem;
 import com.avenwu.rssreader.utils.NetworkHelper;
-import com.avenwu.rssreader.xmlparse.XMLParseManager;
+import com.avenwu.rssreader.xmlparse.ParseManager;
 
 public class CsdnNewsRequest<Void> implements BaseRequest {
     private BaseListener<?> listener;
@@ -24,7 +24,7 @@ public class CsdnNewsRequest<Void> implements BaseRequest {
         }
         ArrayList<CsdnNewsItem> dataList;
         try {
-            dataList = XMLParseManager.parseCsdnNews(url);
+            dataList = ParseManager.parseCsdnNews(url);
             if (dataList == null) {
                 listener.sendResult(BaseListener.FAILED, null);
             } else {

@@ -39,6 +39,7 @@ public class CsdnParseHandler {
                     currentItem.title = node.getStringValue();
                 } else {
                     currentItem = new CsdnNewsItem();
+                    currentItem.title = node.getStringValue();
                 }
             } else if ("link".equals(node.getName())) {
                 Log.d(TAG, node.getStringValue());

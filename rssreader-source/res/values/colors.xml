@@ -15,5 +15,6 @@
     <!-- item background -->
     <color name="blue_2cb1e1">#2cb1e1</color>
     <color name="blue_50c0e9">#50c0e9</color>
+    <color name="grey_f1f1f1">#f1f1f1</color>
 
 </resources>

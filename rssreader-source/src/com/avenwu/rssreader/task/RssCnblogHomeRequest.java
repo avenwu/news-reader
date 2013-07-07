@@ -10,7 +10,7 @@ import org.xml.sax.SAXException;
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.model.HomeDetailItem;
 import com.avenwu.rssreader.utils.NetworkHelper;
-import com.avenwu.rssreader.xmlparse.XMLParseManager;
+import com.avenwu.rssreader.xmlparse.ParseManager;
 
 public class RssCnblogHomeRequest<Void> implements BaseRequest {
     private BaseListener<?> listener;
@@ -26,7 +26,7 @@ public class RssCnblogHomeRequest<Void> implements BaseRequest {
             return null;
         }
         try {
-            ArrayList<HomeDetailItem> dataList = XMLParseManager.parseHomeXML(url);
+            ArrayList<HomeDetailItem> dataList = ParseManager.parseHomeXML(url);
             if (dataList == null) {
                 listener.sendResult(BaseListener.FAILED, null);
             } else {

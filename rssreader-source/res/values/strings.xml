@@ -33,5 +33,6 @@
     <string name="cnblog_picked">博客园 - 精华</string>
     <string name="cnblog_candicate">博客园 - 候选</string>
     <string name="cnblog_news">博客园 - 新闻</string>
+    <string name="geek_news">极客头条</string>
 
 </resources>

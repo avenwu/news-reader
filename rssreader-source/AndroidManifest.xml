@@ -40,7 +40,9 @@
         </activity>
         <activity android:name="com.avenwu.rssreader.activity.TestClick" >
         </activity>
-        <activity android:name="com.avenwu.rssreader.activity.CSDNNewsFeedActivity" >
+        <activity
+            android:name="com.avenwu.rssreader.activity.CSDNNewsFeedActivity"
+            android:label="@string/geek_news" >
         </activity>
     </application>
 

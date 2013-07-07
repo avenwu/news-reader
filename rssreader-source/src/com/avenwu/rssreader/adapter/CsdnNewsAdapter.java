@@ -57,8 +57,8 @@ public class CsdnNewsAdapter extends BaseAdapter {
         } else {
             viewHolder = (NewsHolder) convertView.getTag();
         }
-        convertView
-                .setBackgroundColor(colorArray[position % colorArray.length]);
+//        convertView
+//                .setBackgroundColor(colorArray[position % colorArray.length]);
         viewHolder.titleView.setText(dataItem.title);
         viewHolder.timestampView.setText(dataItem.pubDate);
         return convertView;

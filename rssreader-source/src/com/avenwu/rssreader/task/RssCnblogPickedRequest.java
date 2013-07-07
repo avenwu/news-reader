@@ -10,7 +10,7 @@ import org.xml.sax.SAXException;
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.model.PickedDetailItem;
 import com.avenwu.rssreader.utils.NetworkHelper;
-import com.avenwu.rssreader.xmlparse.XMLParseManager;
+import com.avenwu.rssreader.xmlparse.ParseManager;
 
 public class RssCnblogPickedRequest<Void> implements BaseRequest {
     private BaseListener<?> listener;
@@ -26,7 +26,7 @@ public class RssCnblogPickedRequest<Void> implements BaseRequest {
             return null;
         }
         try {
-            ArrayList<PickedDetailItem> dataList = XMLParseManager.parsePickedXML(url);
+            ArrayList<PickedDetailItem> dataList = ParseManager.parsePickedXML(url);
             if (dataList == null) {
                 listener.sendResult(BaseListener.FAILED, null);
             } else {
