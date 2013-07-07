@@ -9,6 +9,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import org.dom4j.DocumentException;
+import org.json.JSONException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.xml.sax.SAXException;
@@ -17,7 +18,9 @@ import com.avenwu.rssreader.config.Constant;
 import com.avenwu.rssreader.downloader.RssLoaderManager;
 import com.avenwu.rssreader.model.CsdnNewsItem;
 import com.avenwu.rssreader.model.HomeDetailItem;
+import com.avenwu.rssreader.model.PhotoFeedItem;
 import com.avenwu.rssreader.model.PickedDetailItem;
+import com.avenwu.rssreader.task.HttpManager;
 
 public class ParseManager {
     public static ArrayList<HomeDetailItem> parseHomeXML(String url)
@@ -61,4 +64,8 @@ public class ParseManager {
         return element.attr("abs:href");
     }
 
+    public static ArrayList<PhotoFeedItem> parsePhotos(String url) throws JSONException {
+        String result = HttpManager.getInstance().queryPhotos(url);
+        return JsonParser.getPhotos(result);
+    }
 }

@@ -34,5 +34,6 @@
     <string name="cnblog_candicate">博客园 - 候选</string>
     <string name="cnblog_news">博客园 - 新闻</string>
     <string name="geek_news">极客头条</string>
+    <string name="baidu_photos">百度热图</string>
 
 </resources>

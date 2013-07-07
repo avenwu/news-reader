@@ -44,6 +44,10 @@
             android:name="com.avenwu.rssreader.activity.CSDNNewsFeedActivity"
             android:label="@string/geek_news" >
         </activity>
+        <activity
+            android:name="com.avenwu.rssreader.activity.BaiduPhotosActivity"
+            android:label="@string/baidu_photos" >
+        </activity>
     </application>
 
 </manifest>

@@ -60,7 +60,6 @@ public class MenuActivity extends BaseMenuActivity implements MenuHelper {
                 Intent intent = new Intent();
                 switch (position) {
                 case 0:
-
                     intent.setClass(MenuActivity.this,
                             CnblogsNewsFeedActivity.class);
                     startActivity(intent);
@@ -70,6 +69,13 @@ public class MenuActivity extends BaseMenuActivity implements MenuHelper {
                 case 1:
                     intent.setClass(MenuActivity.this,
                             CSDNNewsFeedActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(android.R.anim.slide_in_left,
+                            android.R.anim.fade_out);
+                    break;
+                case 3:
+                    intent.setClass(MenuActivity.this,
+                            BaiduPhotosActivity.class);
                     startActivity(intent);
                     overridePendingTransition(android.R.anim.slide_in_left,
                             android.R.anim.fade_out);
