@@ -1,21 +1,18 @@
 package com.avenwu.rssreader.task;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.xml.sax.SAXException;
+import org.dom4j.DocumentException;
 
 import com.avenwu.ereader.R;
-import com.avenwu.rssreader.model.HomeDetailItem;
+import com.avenwu.rssreader.model.CsdnNewsItem;
 import com.avenwu.rssreader.utils.NetworkHelper;
 import com.avenwu.rssreader.xmlparse.ParseManager;
 
-public class RssCnblogHomeRequest<Void> implements BaseRequest {
+public class CsdnNewsRequest<Void> implements BaseRequest {
     private BaseListener<?> listener;
 
-    public RssCnblogHomeRequest(BaseListener<?> listener) {
+    public CsdnNewsRequest(BaseListener<?> listener) {
         this.listener = listener;
     }
 
@@ -25,20 +22,15 @@ public class RssCnblogHomeRequest<Void> implements BaseRequest {
             listener.sendResult(BaseListener.FAILED, R.string.network_lost);
             return null;
         }
+        ArrayList<CsdnNewsItem> dataList;
         try {
-            ArrayList<HomeDetailItem> dataList = ParseManager.parseHomeXML(url);
+            dataList = ParseManager.parseCsdnNews(url);
             if (dataList == null) {
                 listener.sendResult(BaseListener.FAILED, null);
             } else {
                 listener.sendResult(BaseListener.SUCCESS, dataList);
             }
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-            listener.sendResult(BaseListener.ERROR, e);
-        } catch (SAXException e) {
-            e.printStackTrace();
-            listener.sendResult(BaseListener.ERROR, e);
-        } catch (IOException e) {
+        } catch (DocumentException e) {
             e.printStackTrace();
             listener.sendResult(BaseListener.ERROR, e);
         }

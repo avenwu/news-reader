@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.aphidmobile.flip.FlipViewController;
 import com.aphidmobile.flip.FlipViewController.ViewFlipListener;
-import com.avenwu.rssreader.R;
+import com.avenwu.ereader.R;
 import com.avenwu.rssreader.adapter.CnblogPickedAdapter;
 import com.avenwu.rssreader.adapter.CnblogPickedAdapter.ArticalListener;
 import com.avenwu.rssreader.config.RssConfig;

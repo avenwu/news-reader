@@ -7,7 +7,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
 
-import com.avenwu.rssreader.R;
+import com.avenwu.ereader.R;
 import com.avenwu.rssreader.config.Constant;
 import com.avenwu.rssreader.dataprovider.DataCenter;
 import com.avenwu.rssreader.model.BaseDetailItem;

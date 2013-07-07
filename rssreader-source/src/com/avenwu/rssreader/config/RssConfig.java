@@ -2,7 +2,7 @@ package com.avenwu.rssreader.config;
 
 import android.content.Context;
 
-import com.avenwu.rssreader.R;
+import com.avenwu.ereader.R;
 
 public class RssConfig {
 	private String homeUrl;

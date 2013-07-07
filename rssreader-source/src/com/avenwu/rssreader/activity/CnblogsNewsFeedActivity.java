@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-import com.avenwu.rssreader.R;
+import com.avenwu.ereader.R;
 import com.avenwu.rssreader.config.Constant;
 import com.avenwu.rssreader.config.RssConfig;
 import com.avenwu.rssreader.dataprovider.RssDaoManager;
@@ -28,12 +28,7 @@ import com.google.inject.Inject;
 
 public class CnblogsNewsFeedActivity extends RoboFragmentActivity implements
         RefreshListener {
-
     private final String TAG = "MainActivity";
-
-    @Inject
-    private NetworkReceiver networkReceiver;
-    private IntentFilter intentFilter;
     private RssDaoManager daoManager;
     @InjectResource(R.array.cnblogs_catalog)
     private String[] catalogStrings;
@@ -52,10 +47,7 @@ public class CnblogsNewsFeedActivity extends RoboFragmentActivity implements
         setContentView(R.layout.activity_main);
         RssConfig.getInstance().init(this);
         titleArray = getResources().getStringArray(R.array.cnblogs_catalog);
-        NetworkHelper.updateConnectionState(this);
         daoManager = new RssDaoManager(this);
-        intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        this.registerReceiver(networkReceiver, intentFilter);
         changeCatalog(Constant.CNBLOGS_HOME);
 
         refreshView.setRefreshListener(this);
@@ -130,12 +122,6 @@ public class CnblogsNewsFeedActivity extends RoboFragmentActivity implements
     @Override
     protected void onPause() {
         super.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        this.unregisterReceiver(networkReceiver);
     }
 
     @Override

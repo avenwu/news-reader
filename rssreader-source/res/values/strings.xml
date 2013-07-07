@@ -8,7 +8,8 @@
     <string name="url_picked_page">http://feed.cnblogs.com/blog/picked/rss</string>
     <string name="url_candidate_page">http://feed.cnblogs.com/blog/candidate/rss</string>
     <string name="url_news_page">http://feed.cnblogs.com/news/rss</string>
-
+    <!-- csdn -->
+    <string name="url_csdn_geek_news">http://geek.csdn.net/news/rss</string>
     <!-- news menu item -->
     <string name="cnblog_description">The world is changing by code</string>
     <string name="app_name">资讯阅读</string>
@@ -32,5 +33,6 @@
     <string name="cnblog_picked">博客园 - 精华</string>
     <string name="cnblog_candicate">博客园 - 候选</string>
     <string name="cnblog_news">博客园 - 新闻</string>
+    <string name="geek_news">极客头条</string>
 
 </resources>
