@@ -1,6 +1,6 @@
 package com.avenwu.rssreader.service;
 
-import com.avenwu.rssreader.R;
+import com.avenwu.ereader.R;
 import com.avenwu.rssreader.utils.NetworkHelper;
 
 import android.content.BroadcastReceiver;

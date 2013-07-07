@@ -5,7 +5,7 @@ import roboguice.inject.InjectView;
 import android.os.Bundle;
 import android.widget.GridView;
 
-import com.avenwu.rssreader.R;
+import com.avenwu.ereader.R;
 import com.avenwu.rssreader.adapter.MenuAdapter;
 import com.avenwu.rssreader.model.MenuHelper;
 

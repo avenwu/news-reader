@@ -7,4 +7,5 @@ public class Constant {
     public static final int CNBLOGS_PICKED = 1;
     public static final int CNBLOGS_CANDICATE = 2;
     public static final int CNBLOGS_NEWS = 3;
+    public static final int TARGET_URL_INDEX = 5;
 }
