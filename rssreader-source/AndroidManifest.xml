@@ -48,6 +48,10 @@
             android:name="com.avenwu.rssreader.activity.BaiduPhotosActivity"
             android:label="@string/baidu_photos" >
         </activity>
+        <activity
+            android:name="com.avenwu.rssreader.activity.PhotoDetailActivity"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen" >
+        </activity>
     </application>
 
 </manifest>
