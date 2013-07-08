@@ -3,9 +3,7 @@ package com.avenwu.rssreader.model;
 import com.j256.ormlite.field.DatabaseField;
 
 public class BaseDetailItem {
-    @DatabaseField(generatedId = true)
-    private int id;
-    @DatabaseField
+    @DatabaseField(id = true)
     private String feed_id;
     @DatabaseField
     private String title;
@@ -19,7 +17,7 @@ public class BaseDetailItem {
     private AuthorInfo user;
     @DatabaseField
     private String content;
-    
+
     public String getId() {
         return feed_id;
     }

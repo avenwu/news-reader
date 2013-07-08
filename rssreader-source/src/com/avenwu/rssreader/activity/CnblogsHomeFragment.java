@@ -20,7 +20,7 @@ import com.avenwu.rssreader.adapter.CnblogHomeAdapter;
 import com.avenwu.rssreader.adapter.CnblogHomeAdapter.ArticalListener;
 import com.avenwu.rssreader.config.RssConfig;
 import com.avenwu.rssreader.dataprovider.DataCenter;
-import com.avenwu.rssreader.dataprovider.RssDaoManager;
+import com.avenwu.rssreader.dataprovider.DaoManager;
 import com.avenwu.rssreader.model.HomeDetailItem;
 import com.avenwu.rssreader.model.QueryListener;
 import com.avenwu.rssreader.task.BaseListener;
@@ -29,7 +29,7 @@ import com.avenwu.rssreader.task.BaseTask;
 import com.avenwu.rssreader.task.RssCnblogHomeRequest;
 import com.avenwu.rssreader.view.RefreshView.RefreshListener;
 
-public class CnblogsHomeFragment extends RoboFragment implements QueryListener{
+public class CnblogsHomeFragment extends RoboFragment implements QueryListener {
     @InjectView(R.id.flipview_rss)
     private FlipViewController flipview;
     private CnblogHomeAdapter homeAdapter;
@@ -37,12 +37,11 @@ public class CnblogsHomeFragment extends RoboFragment implements QueryListener{
     @SuppressWarnings("rawtypes")
     private BaseRequest request;
     private ArticalListener listener;
-    private RssDaoManager daoManager;
+    private DaoManager daoManager;
     private RefreshListener refreshListener;
 
-    public static CnblogsHomeFragment newInstance(RssDaoManager rssDaoManager) {
+    public static CnblogsHomeFragment newInstance() {
         CnblogsHomeFragment fragment = new CnblogsHomeFragment();
-        fragment.daoManager = rssDaoManager;
         return fragment;
     }
 
@@ -50,6 +49,7 @@ public class CnblogsHomeFragment extends RoboFragment implements QueryListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
+            daoManager = DaoManager.getInstance(getActivity());
             DataCenter.getInstance().replaceHomeItems(
                     daoManager.getHomeEntryItems());
         } catch (SQLException e) {

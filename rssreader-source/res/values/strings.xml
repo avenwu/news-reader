@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">RssReader</string>
-    <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="url_home_page">http://feed.cnblogs.com/blog/sitehome/rss</string>
     <string name="url_picked_page">http://feed.cnblogs.com/blog/picked/rss</string>
@@ -12,7 +10,7 @@
     <string name="url_csdn_geek_news">http://geek.csdn.net/news/rss</string>
     <!-- news menu item -->
     <string name="cnblog_description">The world is changing by code</string>
-    <string name="app_name">资讯阅读</string>
+    <string name="app_name">壹读</string>
     <!-- cnblogs sumary fo each newsfeed -->
     <string name="published_at"> 发表于 </string>
     <string name="comment">评论(%s)</string>
@@ -34,5 +32,8 @@
     <string name="cnblog_candicate">博客园 - 候选</string>
     <string name="cnblog_news">博客园 - 新闻</string>
     <string name="geek_news">极客头条</string>
+    <string name="baidu_photos">百度热图</string>
+    <string name="refresh">刷新</string>
+    <string name="load_more">更多</string>
 
 </resources>

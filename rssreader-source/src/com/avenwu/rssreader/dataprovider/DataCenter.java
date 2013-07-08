@@ -8,6 +8,7 @@ import com.avenwu.rssreader.config.RssConfig;
 import com.avenwu.rssreader.model.BaseDetailItem;
 import com.avenwu.rssreader.model.CsdnNewsItem;
 import com.avenwu.rssreader.model.HomeDetailItem;
+import com.avenwu.rssreader.model.PhotoFeedItem;
 import com.avenwu.rssreader.model.PickedDetailItem;
 import com.avenwu.rssreader.model.NewsMenuItem;
 
@@ -24,6 +25,8 @@ public class DataCenter {
     private List<CsdnNewsItem> csdnNewsData = Collections
             .synchronizedList(new ArrayList<CsdnNewsItem>());
     private static DataCenter instance;
+    private List<PhotoFeedItem> photoFeedItems = Collections
+            .synchronizedList(new ArrayList<PhotoFeedItem>());
 
     private DataCenter() {
     }
@@ -79,9 +82,22 @@ public class DataCenter {
         homeData.addAll(collection);
     }
 
+    public void addPhotoItems(ArrayList<PhotoFeedItem> collection) {
+        photoFeedItems.addAll(collection);
+    }
+
+    public List<PhotoFeedItem> getPhotoFeedsItems() {
+        return photoFeedItems;
+    }
+
     public void replacePickedItems(ArrayList<PickedDetailItem> collection) {
         pickedData.clear();
         addPickedItems(collection);
+    }
+
+    public void replacePhotoItems(ArrayList<PhotoFeedItem> collection) {
+        photoFeedItems.clear();
+        addPhotoItems(collection);
     }
 
     public void addCsdnNewsItems(ArrayList<CsdnNewsItem> collection) {
@@ -91,6 +107,11 @@ public class DataCenter {
     public void replaceHomeItems(ArrayList<HomeDetailItem> collection) {
         homeData.clear();
         addHomeItems(collection);
+    }
+
+    public void replaceCsdnNewsItems(ArrayList<CsdnNewsItem> collection) {
+        csdnNewsData.clear();
+        addCsdnNewsItems(collection);
     }
 
     public String getArtical(int position, String url) {
