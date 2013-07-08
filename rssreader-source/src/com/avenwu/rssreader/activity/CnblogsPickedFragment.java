@@ -20,7 +20,7 @@ import com.avenwu.rssreader.adapter.CnblogPickedAdapter;
 import com.avenwu.rssreader.adapter.CnblogPickedAdapter.ArticalListener;
 import com.avenwu.rssreader.config.RssConfig;
 import com.avenwu.rssreader.dataprovider.DataCenter;
-import com.avenwu.rssreader.dataprovider.RssDaoManager;
+import com.avenwu.rssreader.dataprovider.DaoManager;
 import com.avenwu.rssreader.model.PickedDetailItem;
 import com.avenwu.rssreader.model.QueryListener;
 import com.avenwu.rssreader.task.BaseListener;
@@ -38,12 +38,11 @@ public class CnblogsPickedFragment extends RoboFragment implements
     @SuppressWarnings("rawtypes")
     private BaseRequest request;
     private CnblogPickedAdapter.ArticalListener listener;
-    private RssDaoManager daoManager;
+    private DaoManager daoManager;
     private RefreshListener refreshListener;
 
-    public static CnblogsPickedFragment newInstance(RssDaoManager rssDaoManager) {
+    public static CnblogsPickedFragment newInstance() {
         CnblogsPickedFragment fragment = new CnblogsPickedFragment();
-        fragment.daoManager = rssDaoManager;
         return fragment;
     }
 
@@ -51,6 +50,7 @@ public class CnblogsPickedFragment extends RoboFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
+            daoManager = DaoManager.getInstance(getActivity());
             DataCenter.getInstance().replacePickedItems(
                     daoManager.getPickedEntryItems());
         } catch (SQLException e) {
