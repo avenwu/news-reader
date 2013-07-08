@@ -90,6 +90,7 @@ public class MenuActivity extends BaseMenuActivity implements MenuHelper {
     @Override
     protected void onDestroy() {
         TaskManager.getInstance().cancellAll();
+        unregisterReceiver(networkReceiver);
         DataCenter.getInstance().clear();
         super.onDestroy();
     }

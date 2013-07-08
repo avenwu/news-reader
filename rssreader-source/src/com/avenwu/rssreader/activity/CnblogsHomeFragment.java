@@ -29,7 +29,7 @@ import com.avenwu.rssreader.task.BaseTask;
 import com.avenwu.rssreader.task.RssCnblogHomeRequest;
 import com.avenwu.rssreader.view.RefreshView.RefreshListener;
 
-public class CnblogsHomeFragment extends RoboFragment implements QueryListener{
+public class CnblogsHomeFragment extends RoboFragment implements QueryListener {
     @InjectView(R.id.flipview_rss)
     private FlipViewController flipview;
     private CnblogHomeAdapter homeAdapter;
@@ -40,9 +40,8 @@ public class CnblogsHomeFragment extends RoboFragment implements QueryListener{
     private RssDaoManager daoManager;
     private RefreshListener refreshListener;
 
-    public static CnblogsHomeFragment newInstance(RssDaoManager rssDaoManager) {
+    public static CnblogsHomeFragment newInstance() {
         CnblogsHomeFragment fragment = new CnblogsHomeFragment();
-        fragment.daoManager = rssDaoManager;
         return fragment;
     }
 
@@ -50,6 +49,7 @@ public class CnblogsHomeFragment extends RoboFragment implements QueryListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
+            daoManager = RssDaoManager.getInstance(getActivity());
             DataCenter.getInstance().replaceHomeItems(
                     daoManager.getHomeEntryItems());
         } catch (SQLException e) {

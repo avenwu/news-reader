@@ -35,5 +35,7 @@
     <string name="cnblog_news">博客园 - 新闻</string>
     <string name="geek_news">极客头条</string>
     <string name="baidu_photos">百度热图</string>
+    <string name="refresh">刷新</string>
+    <string name="load_more">更多</string>
 
 </resources>

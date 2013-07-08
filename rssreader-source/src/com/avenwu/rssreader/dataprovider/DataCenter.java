@@ -95,6 +95,11 @@ public class DataCenter {
         addPickedItems(collection);
     }
 
+    public void replacePhotoItems(ArrayList<PhotoFeedItem> collection) {
+        photoFeedItems.clear();
+        addPhotoItems(collection);
+    }
+
     public void addCsdnNewsItems(ArrayList<CsdnNewsItem> collection) {
         csdnNewsData.addAll(collection);
     }

@@ -3,8 +3,6 @@ package com.avenwu.rssreader.activity;
 import roboguice.activity.RoboFragmentActivity;
 import roboguice.inject.InjectResource;
 import roboguice.inject.InjectView;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -18,18 +16,13 @@ import android.widget.TextView;
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.config.Constant;
 import com.avenwu.rssreader.config.RssConfig;
-import com.avenwu.rssreader.dataprovider.RssDaoManager;
 import com.avenwu.rssreader.model.QueryListener;
-import com.avenwu.rssreader.service.NetworkReceiver;
-import com.avenwu.rssreader.utils.NetworkHelper;
 import com.avenwu.rssreader.view.RefreshView;
 import com.avenwu.rssreader.view.RefreshView.RefreshListener;
-import com.google.inject.Inject;
 
 public class CnblogsNewsFeedActivity extends RoboFragmentActivity implements
         RefreshListener {
     private final String TAG = "MainActivity";
-    private RssDaoManager daoManager;
     @InjectResource(R.array.cnblogs_catalog)
     private String[] catalogStrings;
     private int curent_catalog_index = -1;
@@ -47,7 +40,6 @@ public class CnblogsNewsFeedActivity extends RoboFragmentActivity implements
         setContentView(R.layout.activity_main);
         RssConfig.getInstance().init(this);
         titleArray = getResources().getStringArray(R.array.cnblogs_catalog);
-        daoManager = new RssDaoManager(this);
         changeCatalog(Constant.CNBLOGS_HOME);
 
         refreshView.setRefreshListener(this);
@@ -75,11 +67,11 @@ public class CnblogsNewsFeedActivity extends RoboFragmentActivity implements
             switch (which) {
             case Constant.CNBLOGS_HOME:
                 tr.replace(R.id.frame_content,
-                        CnblogsHomeFragment.newInstance(daoManager));
+                        CnblogsHomeFragment.newInstance());
                 break;
             case Constant.CNBLOGS_PICKED:
                 tr.replace(R.id.frame_content,
-                        CnblogsPickedFragment.newInstance(daoManager));
+                        CnblogsPickedFragment.newInstance());
                 break;
             case Constant.CNBLOGS_CANDICATE:
 

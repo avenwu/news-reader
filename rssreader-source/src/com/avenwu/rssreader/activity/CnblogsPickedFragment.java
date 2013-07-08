@@ -41,9 +41,8 @@ public class CnblogsPickedFragment extends RoboFragment implements
     private RssDaoManager daoManager;
     private RefreshListener refreshListener;
 
-    public static CnblogsPickedFragment newInstance(RssDaoManager rssDaoManager) {
+    public static CnblogsPickedFragment newInstance() {
         CnblogsPickedFragment fragment = new CnblogsPickedFragment();
-        fragment.daoManager = rssDaoManager;
         return fragment;
     }
 
@@ -51,6 +50,7 @@ public class CnblogsPickedFragment extends RoboFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
+            daoManager = RssDaoManager.getInstance(getActivity());
             DataCenter.getInstance().replacePickedItems(
                     daoManager.getPickedEntryItems());
         } catch (SQLException e) {
