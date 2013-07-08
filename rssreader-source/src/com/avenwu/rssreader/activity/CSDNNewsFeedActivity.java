@@ -2,6 +2,7 @@ package com.avenwu.rssreader.activity;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import android.app.Activity;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.adapter.CsdnNewsAdapter;
+import com.avenwu.rssreader.dataprovider.DaoManager;
 import com.avenwu.rssreader.dataprovider.DataCenter;
 import com.avenwu.rssreader.model.CsdnNewsItem;
 import com.avenwu.rssreader.task.BaseListener;
@@ -27,13 +29,13 @@ import com.avenwu.rssreader.xmlparse.ParseManager;
 
 public class CSDNNewsFeedActivity extends Activity {
     private String TAG = "CSDN";
-
     private ListView newsListView;
     private CsdnNewsAdapter newsAdapter;
     private CsdnNewsRequest<Void> request;
     private BaseTask task;
     private UrlHandler urlHandler;
     private BaseListener<ArrayList<CsdnNewsItem>> listener;
+    private DaoManager daoManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,11 @@ public class CSDNNewsFeedActivity extends Activity {
         setContentView(R.layout.csdn_feed_layout);
         initData();
         setListeners();
-        startTask();
+        if (newsAdapter.getCount() != 0) {
+            newsAdapter.notifyDataSetChanged();
+        } else {
+            startTask();
+        }
     }
 
     private void setListeners() {
@@ -69,16 +75,22 @@ public class CSDNNewsFeedActivity extends Activity {
     }
 
     private void initData() {
+        daoManager = DaoManager.getInstance(this);
         newsListView = (ListView) findViewById(R.id.lv_csdn_news);
         urlHandler = new UrlHandler(this);
         listener = new BaseListener<ArrayList<CsdnNewsItem>>() {
             @Override
             public void onSuccess(ArrayList<CsdnNewsItem> result) {
-                DataCenter.getInstance().addCsdnNewsItems(result);
+                DataCenter.getInstance().replaceCsdnNewsItems(result);
                 if (CSDNNewsFeedActivity.this.isFinishing()) {
                     return;
                 }
                 newsAdapter.notifyDataSetChanged();
+                try {
+                    daoManager.addCsdnNewsItemse(result);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
@@ -145,7 +157,9 @@ public class CSDNNewsFeedActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-        task.cancel();
+        if (task != null) {
+            task.cancel();
+        }
         super.onDestroy();
     }
 }

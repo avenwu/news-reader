@@ -109,6 +109,11 @@ public class DataCenter {
         addHomeItems(collection);
     }
 
+    public void replaceCsdnNewsItems(ArrayList<CsdnNewsItem> collection) {
+        csdnNewsData.clear();
+        addCsdnNewsItems(collection);
+    }
+
     public String getArtical(int position, String url) {
         String content = "";
         try {

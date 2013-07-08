@@ -1,11 +1,15 @@
 package com.avenwu.rssreader.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
+@DatabaseTable(tableName = "csdn_news")
 public class CsdnNewsItem {
-    // <title><![CDATA[推荐Juniper副总裁Bob Muglia写的“解密SDN”]]></title>
-    // <link><![CDATA[http://geek.csdn.net/news/detail/1638]]></link>
-    // <pubDate>Sat, 06 Jul 2013 07:34:36</pubDate>
+    @DatabaseField
     public String title;
+    @DatabaseField(id = true)
     public String link;
+    @DatabaseField
     public String pubDate;
 
 }

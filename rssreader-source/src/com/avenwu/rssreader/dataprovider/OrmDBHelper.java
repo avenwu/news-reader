@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.avenwu.rssreader.model.AuthorInfo;
+import com.avenwu.rssreader.model.CsdnNewsItem;
 import com.avenwu.rssreader.model.HomeDetailItem;
 import com.avenwu.rssreader.model.PhotoFeedItem;
 import com.avenwu.rssreader.model.PickedDetailItem;
@@ -22,6 +23,7 @@ public class OrmDBHelper extends OrmLiteSqliteOpenHelper {
     private Dao<HomeDetailItem, Integer> homeEntryDao;
     private Dao<AuthorInfo, Integer> authorDao;
     private Dao<PhotoFeedItem, Integer> photoDao;
+    private Dao<CsdnNewsItem, Integer> geekNewsDao;
 
     public OrmDBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -39,6 +41,7 @@ public class OrmDBHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(connectionSource, PickedDetailItem.class);
             TableUtils.createTable(connectionSource, HomeDetailItem.class);
             TableUtils.createTable(connectionSource, PhotoFeedItem.class);
+            TableUtils.createTable(connectionSource, CsdnNewsItem.class);
         } catch (SQLException e) {
             Log.e(OrmDBHelper.class.getName(), "Can't create database", e);
             throw new RuntimeException(e);
@@ -75,6 +78,13 @@ public class OrmDBHelper extends OrmLiteSqliteOpenHelper {
         return photoDao;
     }
 
+    public Dao<CsdnNewsItem, Integer> getGeekNewsDao() throws SQLException {
+        if (geekNewsDao == null) {
+            geekNewsDao = getDao(CsdnNewsItem.class);
+        }
+        return geekNewsDao;
+    }
+
     @Override
     public synchronized void close() {
         super.close();
@@ -82,6 +92,7 @@ public class OrmDBHelper extends OrmLiteSqliteOpenHelper {
         homeEntryDao = null;
         pickedEntryDao = null;
         authorDao = null;
+        geekNewsDao = null;
     }
 
     @Override
@@ -94,6 +105,7 @@ public class OrmDBHelper extends OrmLiteSqliteOpenHelper {
                     .dropTable(connectionSource, PickedDetailItem.class, true);
             TableUtils.dropTable(connectionSource, HomeDetailItem.class, true);
             TableUtils.dropTable(connectionSource, PhotoFeedItem.class, true);
+            TableUtils.dropTable(connectionSource, CsdnNewsItem.class, true);
             createTables(connectionSource);
         } catch (SQLException e) {
             Log.e(OrmDBHelper.class.getName(), "Can't drop databases", e);

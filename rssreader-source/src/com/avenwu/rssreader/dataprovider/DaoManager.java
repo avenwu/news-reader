@@ -7,26 +7,27 @@ import android.content.Context;
 import android.util.Log;
 
 import com.avenwu.rssreader.model.AuthorInfo;
+import com.avenwu.rssreader.model.CsdnNewsItem;
 import com.avenwu.rssreader.model.HomeDetailItem;
 import com.avenwu.rssreader.model.PhotoFeedItem;
 import com.avenwu.rssreader.model.PickedDetailItem;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 
-public class RssDaoManager {
+public class DaoManager {
     private OrmDBHelper ormDBHelper;
     private final String TAG = "DaoManager";
-    private static RssDaoManager instance;
+    private static DaoManager instance;
 
-    private RssDaoManager(Context context) {
+    private DaoManager(Context context) {
         initHelper(context);
     }
 
-    public static RssDaoManager getInstance(Context context) {
+    public static DaoManager getInstance(Context context) {
         if (instance == null) {
-            synchronized (RssDaoManager.class) {
+            synchronized (DaoManager.class) {
                 if (instance == null) {
-                    instance = new RssDaoManager(context);
+                    instance = new DaoManager(context);
                 }
             }
         }
@@ -116,6 +117,29 @@ public class RssDaoManager {
             Log.d(TAG, "time consumed: "
                     + (System.currentTimeMillis() - timeStart));
         }
+    }
+
+    public ArrayList<CsdnNewsItem> getCsdnNewsItems() throws SQLException {
+        ArrayList<CsdnNewsItem> items;
+        Dao<CsdnNewsItem, Integer> newsDao = ormDBHelper.getGeekNewsDao();
+        items = (ArrayList<CsdnNewsItem>) newsDao.queryForAll();
+        return items;
+
+    }
+
+    public void addCsdnNewsItemse(ArrayList<CsdnNewsItem> newsItems)
+            throws SQLException {
+        if (ormDBHelper == null) {
+            Log.d(TAG, "start insert");
+            long timeStart = System.currentTimeMillis();
+            Dao<CsdnNewsItem, Integer> newsDao = ormDBHelper.getGeekNewsDao();
+            for (CsdnNewsItem item : newsItems) {
+                newsDao.create(item);
+            }
+            Log.d(TAG, "time consumed: "
+                    + (System.currentTimeMillis() - timeStart));
+        }
+
     }
 
     public void release() {
