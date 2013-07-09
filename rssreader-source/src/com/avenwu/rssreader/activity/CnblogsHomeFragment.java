@@ -3,11 +3,10 @@ package com.avenwu.rssreader.activity;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import roboguice.fragment.RoboFragment;
-import roboguice.inject.InjectView;
 import android.content.Intent;
 import android.graphics.Bitmap.Config;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +18,8 @@ import com.avenwu.ereader.R;
 import com.avenwu.rssreader.adapter.CnblogHomeAdapter;
 import com.avenwu.rssreader.adapter.CnblogHomeAdapter.ArticalListener;
 import com.avenwu.rssreader.config.RssConfig;
-import com.avenwu.rssreader.dataprovider.DataCenter;
 import com.avenwu.rssreader.dataprovider.DaoManager;
+import com.avenwu.rssreader.dataprovider.DataCenter;
 import com.avenwu.rssreader.model.HomeDetailItem;
 import com.avenwu.rssreader.model.QueryListener;
 import com.avenwu.rssreader.task.BaseListener;
@@ -29,8 +28,7 @@ import com.avenwu.rssreader.task.BaseTask;
 import com.avenwu.rssreader.task.RssCnblogHomeRequest;
 import com.avenwu.rssreader.view.RefreshView.RefreshListener;
 
-public class CnblogsHomeFragment extends RoboFragment implements QueryListener {
-    @InjectView(R.id.flipview_rss)
+public class CnblogsHomeFragment extends Fragment implements QueryListener {
     private FlipViewController flipview;
     private CnblogHomeAdapter homeAdapter;
     private BaseTask task;
@@ -63,6 +61,7 @@ public class CnblogsHomeFragment extends RoboFragment implements QueryListener {
             Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.newsfeed_layout, null);
+        flipview = (FlipViewController) view.findViewById(R.id.flipview_rss);
         return view;
     }
 

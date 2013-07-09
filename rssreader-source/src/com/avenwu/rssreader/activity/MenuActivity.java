@@ -2,7 +2,6 @@ package com.avenwu.rssreader.activity;
 
 import java.util.ArrayList;
 
-import roboguice.inject.InjectResource;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -18,23 +17,23 @@ import com.avenwu.rssreader.model.NewsMenuItem;
 import com.avenwu.rssreader.service.NetworkReceiver;
 import com.avenwu.rssreader.task.TaskManager;
 import com.avenwu.rssreader.utils.NetworkHelper;
-import com.google.inject.Inject;
 
 public class MenuActivity extends BaseMenuActivity implements MenuHelper {
-    @InjectResource(R.array.menu_titles)
     private String[] menuTitles;
-    @InjectResource(R.array.menu_descriptions)
     private String[] menuDescriptions;
-    @Inject
     private NetworkReceiver networkReceiver;
     private IntentFilter intentFilter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        menuTitles = getResources().getStringArray(R.array.menu_titles);
+        menuDescriptions = getResources().getStringArray(
+                R.array.menu_descriptions);
         super.onCreate(savedInstanceState);
         NetworkHelper.updateConnectionState(this);
 
         intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        networkReceiver = new NetworkReceiver();
         this.registerReceiver(networkReceiver, intentFilter);
     }
 
