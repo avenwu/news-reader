@@ -53,6 +53,10 @@
             android:name="com.avenwu.rssreader.activity.PhotoDetailActivity"
             android:theme="@style/Theme.Sherlock.NoActionBar" >
         </activity>
+        <activity
+            android:name="com.avenwu.rssreader.activity.WebNewsActivity"
+            android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
+        </activity>
     </application>
 
 </manifest>

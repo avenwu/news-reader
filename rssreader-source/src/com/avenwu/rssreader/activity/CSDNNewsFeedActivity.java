@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -17,6 +16,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Window;
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.adapter.CsdnNewsAdapter;
 import com.avenwu.rssreader.dataprovider.DaoManager;
@@ -39,12 +39,15 @@ public class CSDNNewsFeedActivity extends SherlockActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.csdn_feed_layout);
+        setSupportProgressBarIndeterminateVisibility(true);
         initData();
         setListeners();
         if (newsAdapter.getCount() != 0) {
             newsAdapter.notifyDataSetChanged();
+            setSupportProgressBarIndeterminateVisibility(false);
         } else {
             startTask();
         }
@@ -121,6 +124,12 @@ public class CSDNNewsFeedActivity extends SherlockActivity {
                             .show();
                 }
             }
+
+            @Override
+            public void onFinished() {
+                super.onFinished();
+                setSupportProgressBarIndeterminateVisibility(false);
+            }
         };
         request = new CsdnNewsRequest<Void>(listener);
         newsAdapter = new CsdnNewsAdapter(this, DataCenter.getInstance()
@@ -128,6 +137,7 @@ public class CSDNNewsFeedActivity extends SherlockActivity {
     }
 
     private void startTask() {
+        setSupportProgressBarIndeterminateVisibility(true);
         if (task != null)
             task.cancel();
         task = new BaseTask(getString(R.string.url_csdn_geek_news), request);
@@ -145,11 +155,14 @@ public class CSDNNewsFeedActivity extends SherlockActivity {
         public void handleMessage(Message msg) {
             if (activity.get() != null) {
                 Intent intent = new Intent();
-                intent.setAction("android.intent.action.VIEW");
-                Uri content_url = Uri.parse((String) msg.obj);
-                intent.setData(content_url);
-                intent.setClassName("com.android.browser",
-                        "com.android.browser.BrowserActivity");
+                // intent.setAction("android.intent.action.VIEW");
+                // Uri content_url = Uri.parse((String) msg.obj);
+                // intent.setData(content_url);
+                // intent.setClassName("com.android.browser",
+                // "com.android.browser.BrowserActivity");
+                // activity.get().startActivity(intent);
+                intent.setClass(activity.get(), WebNewsActivity.class);
+                intent.putExtra("url", (String) msg.obj);
                 activity.get().startActivity(intent);
             }
         }

@@ -13,7 +13,9 @@ public class NetworkHelper {
     public static boolean MOBILE_CONNECTED;
 
     public static NetworkInfo getNetworkInfo(Context context) {
-        return ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+        return ((ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE))
+                .getActiveNetworkInfo();
     }
 
     public static void updateConnectionState(Context context) {

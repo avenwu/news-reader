@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.GridView;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Window;
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.adapter.PhotoFeedAdapter;
 import com.avenwu.rssreader.config.Constant;
@@ -34,13 +35,16 @@ public class BaiduPhotosActivity extends SherlockActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.photo_feed_layout);
+        setSupportProgressBarIndeterminateVisibility(true);
         initData();
         setListeners();
         if (photoFeedAdapter.getCount() != 0) {
             photoFeedAdapter.notifyDataSetChanged();
             refreshBtn.setVisibility(View.VISIBLE);
+            setSupportProgressBarIndeterminateVisibility(false);
         } else {
             startTask();
         }
@@ -87,6 +91,7 @@ public class BaiduPhotosActivity extends SherlockActivity {
             public void onFinished() {
                 super.onFinished();
                 refreshBtn.setVisibility(View.VISIBLE);
+                setSupportProgressBarIndeterminateVisibility(false);
             }
         };
         request = new BaiduPhotoRequest<Void>(listener);
@@ -116,6 +121,7 @@ public class BaiduPhotosActivity extends SherlockActivity {
     }
 
     void startTask() {
+        setSupportProgressBarIndeterminateVisibility(true);
         if (task != null) {
             task.cancel();
         }
