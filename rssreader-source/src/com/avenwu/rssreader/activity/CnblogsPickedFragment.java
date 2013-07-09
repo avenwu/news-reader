@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import android.content.Intent;
 import android.graphics.Bitmap.Config;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.actionbarsherlock.app.SherlockFragment;
 import com.aphidmobile.flip.FlipViewController;
 import com.aphidmobile.flip.FlipViewController.ViewFlipListener;
 import com.avenwu.ereader.R;
@@ -28,7 +28,7 @@ import com.avenwu.rssreader.task.BaseTask;
 import com.avenwu.rssreader.task.RssCnblogPickedRequest;
 import com.avenwu.rssreader.view.RefreshView.RefreshListener;
 
-public class CnblogsPickedFragment extends Fragment implements QueryListener {
+public class CnblogsPickedFragment extends SherlockFragment implements QueryListener {
     private FlipViewController flipview;
     private CnblogPickedAdapter pickedAdapter;
     private BaseTask task;

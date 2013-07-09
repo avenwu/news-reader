@@ -1,17 +1,17 @@
 package com.avenwu.rssreader.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
 
+import com.actionbarsherlock.app.SherlockActivity;
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.config.Constant;
 import com.avenwu.rssreader.dataprovider.DataCenter;
 import com.avenwu.rssreader.model.BaseDetailItem;
 
-public class BlogArticalActivity extends Activity {
+public class BlogArticalActivity extends SherlockActivity {
     private int contentId;
     private String contentType;
     private TextView authorView;

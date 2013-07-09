@@ -3,7 +3,6 @@ package com.avenwu.rssreader.activity;
 import uk.co.senab.photoview.PhotoView;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +10,12 @@ import android.view.animation.OvershootInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 
+import com.actionbarsherlock.app.SherlockFragment;
 import com.avenwu.ereader.R;
 import com.koushikdutta.urlimageviewhelper.UrlImageViewCallback;
 import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
 
-public class PhotoFragment extends Fragment {
+public class PhotoFragment extends SherlockFragment {
     private PhotoView photoView;
     private String photoUrl;
 

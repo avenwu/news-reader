@@ -2,7 +2,6 @@ package com.avenwu.rssreader.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.config.Constant;
 import com.avenwu.rssreader.config.RssConfig;
@@ -18,7 +18,7 @@ import com.avenwu.rssreader.model.QueryListener;
 import com.avenwu.rssreader.view.RefreshView;
 import com.avenwu.rssreader.view.RefreshView.RefreshListener;
 
-public class CnblogsNewsFeedActivity extends FragmentActivity implements
+public class CnblogsNewsFeedActivity extends SherlockFragmentActivity implements
         RefreshListener {
     private final String TAG = "MainActivity";
     private String[] catalogStrings;

@@ -3,7 +3,6 @@ package com.avenwu.rssreader.activity;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,17 +12,18 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.GridView;
 
+import com.actionbarsherlock.app.SherlockActivity;
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.adapter.PhotoFeedAdapter;
 import com.avenwu.rssreader.config.Constant;
-import com.avenwu.rssreader.dataprovider.DataCenter;
 import com.avenwu.rssreader.dataprovider.DaoManager;
+import com.avenwu.rssreader.dataprovider.DataCenter;
 import com.avenwu.rssreader.model.PhotoFeedItem;
 import com.avenwu.rssreader.task.BaiduPhotoRequest;
 import com.avenwu.rssreader.task.BaseListener;
 import com.avenwu.rssreader.task.BaseTask;
 
-public class BaiduPhotosActivity extends Activity {
+public class BaiduPhotosActivity extends SherlockActivity {
     private GridView photoFeedListView;
     private PhotoFeedAdapter photoFeedAdapter;
     private BaseListener<ArrayList<PhotoFeedItem>> listener;

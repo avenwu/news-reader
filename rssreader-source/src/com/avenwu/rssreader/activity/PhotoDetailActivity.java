@@ -1,14 +1,14 @@
 package com.avenwu.rssreader.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.adapter.PhotoDetailAdapter;
 import com.avenwu.rssreader.dataprovider.DataCenter;
 
-public class PhotoDetailActivity extends FragmentActivity {
+public class PhotoDetailActivity extends SherlockFragmentActivity {
     private ViewPager photoPager;
     private PhotoDetailAdapter photoAdapter;
 

@@ -18,11 +18,12 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.avenwu.rssreader.activity.CnblogsNewsFeedActivity"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
         </activity>
         <activity
             android:name="com.avenwu.rssreader.activity.MenuActivity"
-            android:icon="@drawable/icon_logo" >
+            android:icon="@drawable/icon_logo"
+            android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,21 +37,21 @@
         </activity>
         <activity
             android:name="com.avenwu.rssreader.activity.BlogArticalActivity"
-            android:theme="@android:style/Theme.NoTitleBar" >
-        </activity>
-        <activity android:name="com.avenwu.rssreader.activity.TestClick" >
+            android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
         </activity>
         <activity
             android:name="com.avenwu.rssreader.activity.CSDNNewsFeedActivity"
-            android:label="@string/geek_news" >
+            android:label="@string/geek_news"
+            android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
         </activity>
         <activity
             android:name="com.avenwu.rssreader.activity.BaiduPhotosActivity"
-            android:label="@string/baidu_photos" >
+            android:label="@string/baidu_photos"
+            android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
         </activity>
         <activity
             android:name="com.avenwu.rssreader.activity.PhotoDetailActivity"
-            android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen" >
+            android:theme="@style/Theme.Sherlock.NoActionBar" >
         </activity>
     </application>
 

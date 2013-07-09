@@ -5,7 +5,6 @@ import java.lang.ref.WeakReference;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +16,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.actionbarsherlock.app.SherlockActivity;
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.adapter.CsdnNewsAdapter;
 import com.avenwu.rssreader.dataprovider.DaoManager;
@@ -27,7 +27,7 @@ import com.avenwu.rssreader.task.BaseTask;
 import com.avenwu.rssreader.task.CsdnNewsRequest;
 import com.avenwu.rssreader.xmlparse.ParseManager;
 
-public class CSDNNewsFeedActivity extends Activity {
+public class CSDNNewsFeedActivity extends SherlockActivity {
     private String TAG = "CSDN";
     private ListView newsListView;
     private CsdnNewsAdapter newsAdapter;
