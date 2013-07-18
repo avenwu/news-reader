@@ -13,7 +13,7 @@
         android:horizontalSpacing="5dp"
         android:layoutAnimation="@anim/layout_grid_inverse_fade"
         android:listSelector="@null"
-        android:numColumns="2"
+        android:numColumns="1"
         android:stretchMode="columnWidth"
         android:verticalSpacing="5dp" >
     </GridView>

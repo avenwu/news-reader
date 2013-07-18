@@ -28,7 +28,8 @@ import com.avenwu.rssreader.task.BaseTask;
 import com.avenwu.rssreader.task.RssCnblogPickedRequest;
 import com.avenwu.rssreader.view.RefreshView.RefreshListener;
 
-public class CnblogsPickedFragment extends SherlockFragment implements QueryListener {
+public class CnblogsPickedFragment extends SherlockFragment implements
+        QueryListener {
     private FlipViewController flipview;
     private CnblogPickedAdapter pickedAdapter;
     private BaseTask task;
@@ -72,11 +73,10 @@ public class CnblogsPickedFragment extends SherlockFragment implements QueryList
         listener = new ArticalListener() {
             @Override
             public void onClick(View v, int position) {
-                Intent intent = new Intent(v.getContext(),
-                        BlogArticalActivity.class);
-                intent.putExtra("content_id", position);
-                intent.putExtra("content_type", RssConfig.getInstance()
-                        .getPickedUrl());
+                Intent intent = new Intent();
+                intent.setClass(v.getContext(), WebNewsActivity.class);
+                intent.putExtra("url", DataCenter.getInstance().getPickedData()
+                        .get(position).getId());
                 v.getContext().startActivity(intent);
             }
         };
