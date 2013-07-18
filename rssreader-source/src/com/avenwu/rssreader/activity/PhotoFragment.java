@@ -45,11 +45,16 @@ public class PhotoFragment extends SherlockFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         UrlImageViewHelper.setUrlDrawable(photoView, photoUrl,
-                R.drawable.loading, new UrlImageViewCallback() {
+                R.drawable.default_loading, new UrlImageViewCallback() {
                     @Override
                     public void onLoaded(ImageView imageView,
                             Bitmap loadedBitmap, String url,
                             boolean loadedFromCache) {
+                        float s = loadedBitmap.getHeight()
+                                / loadedBitmap.getWidth();
+                        if (s >= 2 || s <= 0.5) {
+                            ((PhotoView) imageView).setZoomable(false);
+                        }
                         if (!loadedFromCache) {
                             ScaleAnimation scale = new ScaleAnimation(0, 1, 0,
                                     1, ScaleAnimation.RELATIVE_TO_SELF, .5f,

@@ -62,7 +62,7 @@ public class PhotoFeedAdapter extends BaseAdapter {
         }
         holder.thumbnailView.setAnimation(null);
         UrlImageViewHelper.setUrlDrawable(holder.thumbnailView,
-                dataItem.thumbPhotoUrl, R.drawable.loading,
+                dataItem.thumbPhotoUrl, R.drawable.default_loading,
                 new UrlImageViewCallback() {
                     @Override
                     public void onLoaded(ImageView imageView,
