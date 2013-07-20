@@ -3,8 +3,6 @@ package com.avenwu.rssreader.activity;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import roboguice.fragment.RoboFragment;
-import roboguice.inject.InjectView;
 import android.content.Intent;
 import android.graphics.Bitmap.Config;
 import android.os.Bundle;
@@ -13,14 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.actionbarsherlock.app.SherlockFragment;
 import com.aphidmobile.flip.FlipViewController;
 import com.aphidmobile.flip.FlipViewController.ViewFlipListener;
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.adapter.CnblogHomeAdapter;
 import com.avenwu.rssreader.adapter.CnblogHomeAdapter.ArticalListener;
 import com.avenwu.rssreader.config.RssConfig;
-import com.avenwu.rssreader.dataprovider.DataCenter;
 import com.avenwu.rssreader.dataprovider.DaoManager;
+import com.avenwu.rssreader.dataprovider.DataCenter;
 import com.avenwu.rssreader.model.HomeDetailItem;
 import com.avenwu.rssreader.model.QueryListener;
 import com.avenwu.rssreader.task.BaseListener;
@@ -29,8 +28,8 @@ import com.avenwu.rssreader.task.BaseTask;
 import com.avenwu.rssreader.task.RssCnblogHomeRequest;
 import com.avenwu.rssreader.view.RefreshView.RefreshListener;
 
-public class CnblogsHomeFragment extends RoboFragment implements QueryListener {
-    @InjectView(R.id.flipview_rss)
+public class CnblogsHomeFragment extends SherlockFragment implements
+        QueryListener {
     private FlipViewController flipview;
     private CnblogHomeAdapter homeAdapter;
     private BaseTask task;
@@ -63,6 +62,7 @@ public class CnblogsHomeFragment extends RoboFragment implements QueryListener {
             Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.newsfeed_layout, null);
+        flipview = (FlipViewController) view.findViewById(R.id.flipview_rss);
         return view;
     }
 
@@ -73,11 +73,10 @@ public class CnblogsHomeFragment extends RoboFragment implements QueryListener {
         listener = new ArticalListener() {
             @Override
             public void onClick(View v, int position) {
-                Intent intent = new Intent(v.getContext(),
-                        BlogArticalActivity.class);
-                intent.putExtra("content_id", position);
-                intent.putExtra("content_type", RssConfig.getInstance()
-                        .getPickedUrl());
+                Intent intent = new Intent();
+                intent.setClass(v.getContext(), WebNewsActivity.class);
+                intent.putExtra("url", DataCenter.getInstance().getHomeData()
+                        .get(position).getId());
                 v.getContext().startActivity(intent);
             }
         };
@@ -182,6 +181,7 @@ public class CnblogsHomeFragment extends RoboFragment implements QueryListener {
         if (task != null) {
             task.cancel();
         }
+        DataCenter.getInstance().getHomeData().clear();
         super.onDestroy();
     }
 }

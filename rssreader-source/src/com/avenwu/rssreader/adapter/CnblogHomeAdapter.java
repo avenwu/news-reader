@@ -9,7 +9,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import cn.waps.AdView;
 
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.dataprovider.DataCenter;
@@ -55,6 +58,8 @@ public class CnblogHomeAdapter extends BaseAdapter {
             viewHolder.tvUserName = (TextView) convertView.findViewById(R.id.tv_author_name);
             viewHolder.tvPublished = (TextView) convertView.findViewById(R.id.tv_published);
             viewHolder.tvSummary.setOnClickListener(listener);
+            viewHolder.llAdLayout = (LinearLayout) convertView.findViewById(R.id.ll_ad);
+            viewHolder.adView =  new AdView(inflater.getContext(), viewHolder.llAdLayout);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -63,6 +68,7 @@ public class CnblogHomeAdapter extends BaseAdapter {
         viewHolder.tvSummary.setText(entryItem.getSummary());
         viewHolder.tvUserName.setText(entryItem.getUser().getName());
         viewHolder.tvPublished.setText(entryItem.getPublised_time());
+        viewHolder.adView.DisplayAd();
         return convertView;
     }
 
@@ -71,6 +77,8 @@ public class CnblogHomeAdapter extends BaseAdapter {
         public TextView tvSummary;
         public TextView tvUserName;
         public TextView tvPublished;
+        public LinearLayout llAdLayout;
+        public AdView adView;
     }
 
     public static abstract class ArticalListener implements OnClickListener {
