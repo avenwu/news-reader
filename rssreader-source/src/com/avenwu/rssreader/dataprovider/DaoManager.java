@@ -53,7 +53,7 @@ public class DaoManager {
             Dao<PickedDetailItem, Integer> entryDao = ormDBHelper
                     .getPickedEntryItemDao();
             for (PickedDetailItem entryItem : entryItems) {
-                entryDao.create(entryItem);
+                entryDao.createIfNotExists(entryItem);
             }
             Log.d(TAG, "time consumed: "
                     + (System.currentTimeMillis() - timeStart));
@@ -112,7 +112,7 @@ public class DaoManager {
             long timeStart = System.currentTimeMillis();
             Dao<PhotoFeedItem, Integer> photoDao = ormDBHelper.getPhotoDao();
             for (PhotoFeedItem photoItem : photoFeedItems) {
-                photoDao.create(photoItem);
+                photoDao.createIfNotExists(photoItem);
             }
             Log.d(TAG, "time consumed: "
                     + (System.currentTimeMillis() - timeStart));
@@ -129,12 +129,12 @@ public class DaoManager {
 
     public void addCsdnNewsItemse(ArrayList<CsdnNewsItem> newsItems)
             throws SQLException {
-        if (ormDBHelper == null) {
+        if (ormDBHelper != null) {
             Log.d(TAG, "start insert");
             long timeStart = System.currentTimeMillis();
             Dao<CsdnNewsItem, Integer> newsDao = ormDBHelper.getGeekNewsDao();
             for (CsdnNewsItem item : newsItems) {
-                newsDao.create(item);
+                newsDao.createIfNotExists(item);
             }
             Log.d(TAG, "time consumed: "
                     + (System.currentTimeMillis() - timeStart));

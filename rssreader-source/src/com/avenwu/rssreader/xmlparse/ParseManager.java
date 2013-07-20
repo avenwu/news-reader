@@ -61,10 +61,15 @@ public class ParseManager {
     public static String jsoupParse(String url) throws IOException {
         org.jsoup.nodes.Document doc1 = Jsoup.connect(url).get();
         Element element = doc1.select("a").get(Constant.TARGET_URL_INDEX);
-        return element.attr("abs:href");
+        String deString = element.attr("abs:href");
+        if (deString == null || deString.isEmpty()) {
+            deString = url;
+        }
+        return deString;
     }
 
-    public static ArrayList<PhotoFeedItem> parsePhotos(String url) throws JSONException {
+    public static ArrayList<PhotoFeedItem> parsePhotos(String url)
+            throws JSONException {
         String result = HttpManager.getInstance().queryPhotos(url);
         return JsonParser.getPhotos(result);
     }

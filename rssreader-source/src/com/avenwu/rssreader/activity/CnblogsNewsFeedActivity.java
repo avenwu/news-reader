@@ -1,8 +1,5 @@
 package com.avenwu.rssreader.activity;
 
-import roboguice.activity.RoboFragmentActivity;
-import roboguice.inject.InjectResource;
-import roboguice.inject.InjectView;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -13,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Window;
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.config.Constant;
 import com.avenwu.rssreader.config.RssConfig;
@@ -20,24 +19,22 @@ import com.avenwu.rssreader.model.QueryListener;
 import com.avenwu.rssreader.view.RefreshView;
 import com.avenwu.rssreader.view.RefreshView.RefreshListener;
 
-public class CnblogsNewsFeedActivity extends RoboFragmentActivity implements
+public class CnblogsNewsFeedActivity extends SherlockFragmentActivity implements
         RefreshListener {
     private final String TAG = "MainActivity";
-    @InjectResource(R.array.cnblogs_catalog)
     private String[] catalogStrings;
     private int curent_catalog_index = -1;
-    @InjectView(R.id.refreshView1)
     private RefreshView refreshView;
-    @InjectView(R.id.iv_back)
     private ImageView ivHomeBack;
-    @InjectView(R.id.tv_title)
     private TextView tvTitle;
     private String[] titleArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initViews();
         RssConfig.getInstance().init(this);
         titleArray = getResources().getStringArray(R.array.cnblogs_catalog);
         changeCatalog(Constant.CNBLOGS_HOME);
@@ -55,6 +52,13 @@ public class CnblogsNewsFeedActivity extends RoboFragmentActivity implements
                 onBackPressed();
             }
         });
+    }
+
+    private void initViews() {
+        catalogStrings = getResources().getStringArray(R.array.cnblogs_catalog);
+        refreshView = (RefreshView) findViewById(R.id.refreshView1);
+        ivHomeBack = (ImageView) findViewById(R.id.iv_back);
+        tvTitle = (TextView) findViewById(R.id.tv_title);
     }
 
     private void changeCatalog(int which) {

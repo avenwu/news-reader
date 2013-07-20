@@ -1,33 +1,29 @@
 package com.avenwu.rssreader.activity;
 
-import roboguice.activity.RoboActivity;
-import roboguice.inject.InjectView;
 import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
 
+import com.actionbarsherlock.app.SherlockActivity;
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.config.Constant;
 import com.avenwu.rssreader.dataprovider.DataCenter;
 import com.avenwu.rssreader.model.BaseDetailItem;
 
-public class BlogArticalActivity extends RoboActivity {
+public class BlogArticalActivity extends SherlockActivity {
     private int contentId;
     private String contentType;
-    @InjectView(R.id.tv_artical_author)
     private TextView authorView;
-    @InjectView(R.id.tv_artical_timestamp)
     private TextView timeView;
-    @InjectView(R.id.tv_content)
     private WebView contentView;
-    @InjectView(R.id.tv_artical_title)
     private TextView titleView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.artical_layout);
+        intiViews();
         contentId = getIntent().getIntExtra("content_id", 0);
         contentType = getIntent().getStringExtra("content_type");
         BaseDetailItem item = DataCenter.getInstance().getDataItem(contentType,
@@ -41,5 +37,12 @@ public class BlogArticalActivity extends RoboActivity {
         WebSettings webSettings = contentView.getSettings();
         webSettings.setBlockNetworkImage(true);
         webSettings.setBuiltInZoomControls(true);
+    }
+
+    private void intiViews() {
+        authorView = (TextView) findViewById(R.id.tv_artical_author);
+        timeView = (TextView) findViewById(R.id.tv_artical_timestamp);
+        contentView = (WebView) findViewById(R.id.tv_content);
+        titleView = (TextView) findViewById(R.id.tv_artical_title);
     }
 }

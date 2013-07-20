@@ -9,13 +9,22 @@
     <GridView
         android:id="@+id/gv_menu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:horizontalSpacing="5dp"
         android:layoutAnimation="@anim/layout_grid_inverse_fade"
         android:listSelector="@null"
-        android:numColumns="2"
+        android:numColumns="1"
         android:stretchMode="columnWidth"
         android:verticalSpacing="5dp" >
     </GridView>
+
+    <LinearLayout
+        android:id="@+id/ll_ad"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gv_menu"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" />
 
 </RelativeLayout>

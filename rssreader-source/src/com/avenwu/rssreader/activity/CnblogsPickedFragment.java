@@ -3,8 +3,6 @@ package com.avenwu.rssreader.activity;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import roboguice.fragment.RoboFragment;
-import roboguice.inject.InjectView;
 import android.content.Intent;
 import android.graphics.Bitmap.Config;
 import android.os.Bundle;
@@ -13,14 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.actionbarsherlock.app.SherlockFragment;
 import com.aphidmobile.flip.FlipViewController;
 import com.aphidmobile.flip.FlipViewController.ViewFlipListener;
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.adapter.CnblogPickedAdapter;
 import com.avenwu.rssreader.adapter.CnblogPickedAdapter.ArticalListener;
 import com.avenwu.rssreader.config.RssConfig;
-import com.avenwu.rssreader.dataprovider.DataCenter;
 import com.avenwu.rssreader.dataprovider.DaoManager;
+import com.avenwu.rssreader.dataprovider.DataCenter;
 import com.avenwu.rssreader.model.PickedDetailItem;
 import com.avenwu.rssreader.model.QueryListener;
 import com.avenwu.rssreader.task.BaseListener;
@@ -29,9 +28,8 @@ import com.avenwu.rssreader.task.BaseTask;
 import com.avenwu.rssreader.task.RssCnblogPickedRequest;
 import com.avenwu.rssreader.view.RefreshView.RefreshListener;
 
-public class CnblogsPickedFragment extends RoboFragment implements
+public class CnblogsPickedFragment extends SherlockFragment implements
         QueryListener {
-    @InjectView(R.id.flipview_rss)
     private FlipViewController flipview;
     private CnblogPickedAdapter pickedAdapter;
     private BaseTask task;
@@ -64,6 +62,7 @@ public class CnblogsPickedFragment extends RoboFragment implements
             Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.newsfeed_layout, null);
+        flipview = (FlipViewController) view.findViewById(R.id.flipview_rss);
         return view;
     }
 
@@ -74,11 +73,10 @@ public class CnblogsPickedFragment extends RoboFragment implements
         listener = new ArticalListener() {
             @Override
             public void onClick(View v, int position) {
-                Intent intent = new Intent(v.getContext(),
-                        BlogArticalActivity.class);
-                intent.putExtra("content_id", position);
-                intent.putExtra("content_type", RssConfig.getInstance()
-                        .getPickedUrl());
+                Intent intent = new Intent();
+                intent.setClass(v.getContext(), WebNewsActivity.class);
+                intent.putExtra("url", DataCenter.getInstance().getPickedData()
+                        .get(position).getId());
                 v.getContext().startActivity(intent);
             }
         };
@@ -183,6 +181,7 @@ public class CnblogsPickedFragment extends RoboFragment implements
         if (task != null) {
             task.cancel();
         }
+        DataCenter.getInstance().getPickedData().clear();
         super.onDestroy();
     }
 }
