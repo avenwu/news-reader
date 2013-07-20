@@ -49,6 +49,8 @@ public class CsdnNewsAdapter extends BaseAdapter {
         if (convertView == null) {
             viewHolder = new NewsHolder();
             convertView = inflater.inflate(R.layout.csdn_new_item, null);
+            viewHolder.indexView = (TextView) convertView
+                    .findViewById(R.id.tv_top_index);
             viewHolder.titleView = (TextView) convertView
                     .findViewById(R.id.tv_csdn_news_title);
             viewHolder.timestampView = (TextView) convertView
@@ -57,14 +59,17 @@ public class CsdnNewsAdapter extends BaseAdapter {
         } else {
             viewHolder = (NewsHolder) convertView.getTag();
         }
-//        convertView
-//                .setBackgroundColor(colorArray[position % colorArray.length]);
+        // convertView
+        // .setBackgroundColor(colorArray[position % colorArray.length]);
+        viewHolder.indexView.setText(position < 9 ? "0" + (position + 1)
+                : (position + 1) + "");
         viewHolder.titleView.setText(dataItem.title);
         viewHolder.timestampView.setText(dataItem.pubDate);
         return convertView;
     }
 
     static class NewsHolder {
+        public TextView indexView;
         public TextView titleView;
         public TextView contentView;
         public TextView timestampView;

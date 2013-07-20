@@ -181,6 +181,7 @@ public class CnblogsHomeFragment extends SherlockFragment implements
         if (task != null) {
             task.cancel();
         }
+        DataCenter.getInstance().getHomeData().clear();
         super.onDestroy();
     }
 }

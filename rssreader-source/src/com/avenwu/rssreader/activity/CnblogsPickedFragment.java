@@ -181,6 +181,7 @@ public class CnblogsPickedFragment extends SherlockFragment implements
         if (task != null) {
             task.cancel();
         }
+        DataCenter.getInstance().getPickedData().clear();
         super.onDestroy();
     }
 }

@@ -7,28 +7,47 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.OvershootInterpolator;
+import android.view.animation.ScaleAnimation;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.avenwu.ereader.R;
+import com.avenwu.rssreader.activity.BaseMenuActivity;
 import com.avenwu.rssreader.model.NewsMenuItem;
 
 public class MenuAdapter extends BaseAdapter {
     private List<NewsMenuItem> menuDataList;
     private LayoutInflater inflater;
     private int[] backgroundIds;
-    private int[] siteIcons;
-    public int columnNumber = 1;
+    private int columnNumber;
+    private boolean columnChanged;
+    private ScaleAnimation scaleAnimation;
+
+    public int getColumnNumber() {
+        return columnNumber;
+    }
+
+    public void setColumnNumber(int columnNumber) {
+        if (columnNumber != this.columnNumber) {
+            columnChanged = true;
+        }
+        this.columnNumber = columnNumber;
+    }
 
     public MenuAdapter(Context context, ArrayList<NewsMenuItem> menuItems) {
+        columnNumber = ((BaseMenuActivity) context).tempColumn;
         menuDataList = menuItems;
         inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         backgroundIds = new int[] { R.drawable.blue_bg, R.drawable.purple_bg,
                 R.drawable.green_bg, R.drawable.orange_bg, R.drawable.red_bg };
-        siteIcons = new int[] { R.drawable.icon_cnblog, R.drawable.icon_csdn,
-                R.drawable.ic_home, R.drawable.icon_baidu };
+        scaleAnimation = new ScaleAnimation(0, 1, 0, 1,
+                ScaleAnimation.RELATIVE_TO_SELF, .5f,
+                ScaleAnimation.RELATIVE_TO_SELF, .5f);
+        scaleAnimation.setDuration(500);
+        scaleAnimation.setInterpolator(new OvershootInterpolator());
     }
 
     @Override
@@ -50,7 +69,7 @@ public class MenuAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         NewsMenuItem item = menuDataList.get(position);
-        if (convertView == null) {
+        if (convertView == null || columnChanged) {
             holder = new ViewHolder();
             convertView = inflater.inflate(
                     columnNumber == 1 ? R.layout.menu_item_detail_list
@@ -60,7 +79,6 @@ public class MenuAdapter extends BaseAdapter {
                     .findViewById(R.id.tv_menu_title);
             holder.tvDescription = (TextView) convertView
                     .findViewById(R.id.tv_menu_description);
-            holder.ivIcon = (ImageView) convertView.findViewById(R.id.iv_icon);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -68,7 +86,10 @@ public class MenuAdapter extends BaseAdapter {
         holder.parentLayout.setBackgroundResource(backgroundIds[position]);
         holder.tvTitle.setText(item.getMenuTitle());
         holder.tvDescription.setText(item.getMenuDescription());
-        holder.ivIcon.setImageResource(siteIcons[position]);
+        if (position == menuDataList.size() - 1) {
+            columnChanged = false;
+        }
+        convertView.startAnimation(scaleAnimation);
         return convertView;
     }
 

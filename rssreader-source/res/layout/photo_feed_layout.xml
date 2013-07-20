@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/grey_background_pattern" >
 
-    <GridView
+    <com.handmark.pulltorefresh.library.PullToRefreshGridView
         android:id="@+id/lv_photo_feed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,15 +15,16 @@
         android:paddingRight="10dp"
         android:paddingTop="5dp"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="5dp" >
-    </GridView>
+        android:verticalSpacing="5dp" />
 
-    <Button
-        android:id="@+id/btn_refresh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/iv_up_top"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:text="@string/refresh" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:onClick="up2Top"
+        android:src="@drawable/arrow_up" />
 
 </RelativeLayout>

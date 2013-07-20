@@ -36,5 +36,28 @@
     <string name="refresh">刷新</string>
     <string name="load_more">更多</string>
     <string name="url_invalid">呃，出错了，休息一下吧！</string>
+    <!-- net ease -->
+    <string name="netease">网易新闻</string>
+    <string name="netease_news">新闻</string>
+    <string name="netease_sports">体育</string>
+    <string name="netease_entertainment">娱乐</string>
+    <string name="netease_video">视频</string>
+    <string name="netease_science">科技</string>
+    <string name="netease_finace_economics">财经</string>
+    <string name="netease_car">汽车</string>
+    <string name="netease_digital">数码</string>
+    <string name="netease_phone">手机</string>
+    <string name="netease_women">女性</string>
+    <string name="netease_estate">房产</string>
+    <string name="netease_games">游戏</string>
+    <string name="netease_books">读书</string>
+    <string name="netease_media">媒体</string>
+    <string name="netease_community">公益</string>
+    <string name="netease_campus">校园</string>
+    <string name="netease_travel">旅游</string>
+    <string name="netease_education">教育</string>
+    <string name="netease_bbs">论坛</string>
+    <string name="netease_blog">博客</string>
+    <string name="netease_marketing">营销</string>
 
 </resources>

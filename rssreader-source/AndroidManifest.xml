@@ -8,8 +8,15 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="16" />
 
+    <supports-screens android:anyDensity="true" />
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -21,14 +28,23 @@
             android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
         </activity>
         <activity
-            android:name="com.avenwu.rssreader.activity.MenuActivity"
-            android:icon="@drawable/icon_logo"
-            android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
+            android:name="com.avenwu.rssreader.ad.LoadActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.avenwu.rssreader.ad.Splash"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="com.avenwu.rssreader.activity.MenuActivity"
+            android:icon="@drawable/icon_logo"
+            android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
 
@@ -57,6 +73,34 @@
             android:name="com.avenwu.rssreader.activity.WebNewsActivity"
             android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
         </activity>
+        <activity
+            android:name="com.avenwu.rssreader.activity.NeteaseActivity"
+            android:label="@string/netease"
+            android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
+        </activity>
+        <!-- 需要注册的自定义activity -->
+        <activity
+            android:name="com.avenwu.rssreader.ad.MyActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 需要注册的自定义receiver -->
+        <receiver android:name="com.avenwu.rssreader.ad.MyMR" >
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.avenwu.rssreader.ad.MyAdView"
+            android:configChanges="keyboardHidden|orientation" />
     </application>
 
 </manifest>

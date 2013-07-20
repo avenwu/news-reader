@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager_contents"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/hs_menus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/btn_new"
+                style="@style/NET_EASE_MENU_STYLE"
+                android:text="@string/netease_news" />
+
+            <TextView
+                android:id="@+id/btn_sports"
+                style="@style/NET_EASE_MENU_STYLE"
+                android:text="@string/netease_sports" />
+
+            <TextView
+                android:id="@+id/btn_entertainment"
+                style="@style/NET_EASE_MENU_STYLE"
+                android:text="@string/netease_entertainment" />
+
+            <TextView
+                android:id="@+id/btn_video"
+                style="@style/NET_EASE_MENU_STYLE"
+                android:text="@string/netease_video" />
+
+            <TextView
+                android:id="@+id/btn_science"
+                style="@style/NET_EASE_MENU_STYLE"
+                android:text="@string/netease_science" />
+
+            <TextView
+                android:id="@+id/btn_finace_e"
+                style="@style/NET_EASE_MENU_STYLE"
+                android:text="@string/netease_finace_economics" />
+
+            <TextView
+                android:id="@+id/btn_car"
+                style="@style/NET_EASE_MENU_STYLE"
+                android:text="@string/netease_car" />
+
+            <TextView
+                android:id="@+id/btn_digital"
+                style="@style/NET_EASE_MENU_STYLE"
+                android:text="@string/netease_digital" />
+
+            <TextView
+                android:id="@+id/btn_phone"
+                style="@style/NET_EASE_MENU_STYLE"
+                android:text="@string/netease_phone" />
+
+            <TextView
+                android:id="@+id/btn_women"
+                style="@style/NET_EASE_MENU_STYLE"
+                android:text="@string/netease_women" />
+
+            <TextView
+                android:id="@+id/btn_estate"
+                style="@style/NET_EASE_MENU_STYLE"
+                android:text="@string/netease_estate" />
+
+            <TextView
+                android:id="@+id/btn_game"
+                style="@style/NET_EASE_MENU_STYLE"
+                android:text="@string/netease_games" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>

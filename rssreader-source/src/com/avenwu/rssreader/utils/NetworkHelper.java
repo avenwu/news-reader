@@ -27,6 +27,7 @@ public class NetworkHelper {
             WIFI_CONNECTED = false;
             MOBILE_CONNECTED = false;
         }
+        CURENT_NETWORK_TYPE = WIFI_CONNECTED ? WIFI : ANY;
     }
 
     public static boolean isNetworkActive() {
