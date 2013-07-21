@@ -1,5 +1,6 @@
 package com.avenwu.rssreader.xmlparse;
 
+
 public class Element {
     public static final String entry = "entry";
     public static final String id = "id";
@@ -12,4 +13,8 @@ public class Element {
     public static final String uri = "uri";
     public static final String link = "link";
     public static final String content = "content";
+    public static final String description = "description";
+    public static final String pubDate = "pubDate";
+    public static final String guid = "guid";
+    public static final String item = "item";
 }

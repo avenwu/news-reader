@@ -20,7 +20,7 @@ public class LoadActivity extends Activity {
 
     private final ScheduledExecutorService scheduler = Executors
             .newScheduledThreadPool(1);
-    private final int time = 4;
+    private final int time = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

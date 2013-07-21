@@ -18,6 +18,7 @@ import com.avenwu.rssreader.config.Constant;
 import com.avenwu.rssreader.downloader.RssLoaderManager;
 import com.avenwu.rssreader.model.CsdnNewsItem;
 import com.avenwu.rssreader.model.HomeDetailItem;
+import com.avenwu.rssreader.model.NeteaseNewsItem;
 import com.avenwu.rssreader.model.PhotoFeedItem;
 import com.avenwu.rssreader.model.PickedDetailItem;
 import com.avenwu.rssreader.task.HttpManager;
@@ -56,6 +57,20 @@ public class ParseManager {
         CsdnParseHandler handler = new CsdnParseHandler();
         handler.parse(url);
         return handler.getEntryItems();
+    }
+
+    public static ArrayList<NeteaseNewsItem> parseNeteaseNews(String url)
+            throws ParserConfigurationException, SAXException, IOException {
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        SAXParser parser = factory.newSAXParser();
+        NeteaseNewsHandler handler = new NeteaseNewsHandler();
+        InputStream inputStream = (InputStream) RssLoaderManager.getRssLoader()
+                .queryRssCotent(url, null);
+        if (inputStream != null) {
+            parser.parse(inputStream, handler);
+            inputStream.close();
+        }
+        return handler.getDataList();
     }
 
     public static String jsoupParse(String url) throws IOException {

@@ -29,10 +29,13 @@ import com.avenwu.rssreader.task.BaseListener;
 import com.avenwu.rssreader.task.BaseTask;
 import com.avenwu.rssreader.task.CsdnNewsRequest;
 import com.avenwu.rssreader.xmlparse.ParseManager;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 public class CSDNNewsFeedActivity extends SherlockActivity {
     private String TAG = "CSDN";
-    private ListView newsListView;
+    private PullToRefreshListView newsListView;
     private CsdnNewsAdapter newsAdapter;
     private CsdnNewsRequest<Void> request;
     private BaseTask task;
@@ -80,6 +83,13 @@ public class CSDNNewsFeedActivity extends SherlockActivity {
                 }).start();
             }
         });
+        newsListView.setOnRefreshListener(new OnRefreshListener<ListView>() {
+
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+              startTask();
+            }
+        });
     }
 
     @Override
@@ -97,9 +107,9 @@ public class CSDNNewsFeedActivity extends SherlockActivity {
 
     private void initData() {
         daoManager = DaoManager.getInstance(this);
-        newsListView = (ListView) findViewById(R.id.lv_csdn_news);
+        newsListView = (PullToRefreshListView) findViewById(R.id.lv_csdn_news);
         footerView = View.inflate(this, R.layout.ll_ad_layout, null);
-        newsListView.addFooterView(footerView);
+        newsListView.getRefreshableView().addHeaderView(footerView);
         new AdView(this, (LinearLayout) footerView).DisplayAd();
         urlHandler = new UrlHandler(this);
         listener = new BaseListener<ArrayList<CsdnNewsItem>>() {
@@ -149,6 +159,7 @@ public class CSDNNewsFeedActivity extends SherlockActivity {
             @Override
             public void onFinished() {
                 super.onFinished();
+                newsListView.onRefreshComplete();
                 setSupportProgressBarIndeterminateVisibility(false);
             }
         };

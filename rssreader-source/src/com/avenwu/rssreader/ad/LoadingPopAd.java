@@ -27,11 +27,11 @@ public class LoadingPopAd {
         if (loadingAppPopAd == null) {
             loadingAppPopAd = new LoadingPopAd();
         }
-        if (mHandler == null) {
-            mHandler = new Handler();
-        }
         if (Looper.myLooper() == null) {
             Looper.prepare();
+        }
+        if (mHandler == null) {
+            mHandler = new Handler();
         }
         return loadingAppPopAd;
     }

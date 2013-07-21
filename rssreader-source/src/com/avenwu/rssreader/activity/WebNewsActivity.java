@@ -1,5 +1,7 @@
 package com.avenwu.rssreader.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.webkit.WebView;
@@ -7,6 +9,7 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.Window;
 import com.avenwu.ereader.R;
@@ -17,7 +20,8 @@ public class WebNewsActivity extends SherlockActivity {
     private CountDownTimer timer;
     private final int MILLS_IN_FUTURE = 2000;
     private final int COUNTDOWN_INTERVAL = 1000;
-    
+    private String url;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
@@ -25,10 +29,10 @@ public class WebNewsActivity extends SherlockActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.web_news_layout);
         webView = (WebView) findViewById(R.id.wv_news);
-        String url = getIntent().getStringExtra("url");
+        url = getIntent().getStringExtra("url");
         if (Toolkit.isUrlValid(url)) {
             getSupportActionBar().setTitle(url);
-            WebViewClient client = new WebViewClient(){
+            WebViewClient client = new WebViewClient() {
                 @Override
                 public void onPageFinished(WebView view, String url) {
                     setSupportProgressBarIndeterminateVisibility(false);
@@ -40,7 +44,7 @@ public class WebNewsActivity extends SherlockActivity {
                     setSupportProgressBarIndeterminateVisibility(true);
                     super.onLoadResource(view, url);
                 }
-                
+
             };
             webView.setWebViewClient(client);
             webView.loadUrl(url);
@@ -61,6 +65,20 @@ public class WebNewsActivity extends SherlockActivity {
             };
             timer.start();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuItem item = menu.add(R.string.web_client);
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        item.setIcon(R.drawable.ic_browse);
+        Intent intent = new Intent();
+        intent.setAction("android.intent.action.VIEW");
+        intent.setData(Uri.parse(url));
+        // intent.setClassName("com.android.browser",
+        // "com.android.browser.BrowserActivity");
+        item.setIntent(intent);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
