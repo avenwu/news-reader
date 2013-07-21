@@ -38,7 +38,6 @@ public class LoadActivity extends Activity {
             this.setContentView(loadingAdView);
         }
 
-        // 设置延时跳转到主界面
         scheduler.schedule(new Runnable() {
             @Override
             public void run() {

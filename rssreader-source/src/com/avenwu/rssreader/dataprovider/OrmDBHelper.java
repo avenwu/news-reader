@@ -78,6 +78,10 @@ public class OrmDBHelper extends OrmLiteSqliteOpenHelper {
         return photoDao;
     }
 
+    public void clearPhotos() throws SQLException {
+        TableUtils.clearTable(getConnectionSource(), PhotoFeedItem.class);
+    }
+
     public Dao<CsdnNewsItem, Integer> getGeekNewsDao() throws SQLException {
         if (geekNewsDao == null) {
             geekNewsDao = getDao(CsdnNewsItem.class);

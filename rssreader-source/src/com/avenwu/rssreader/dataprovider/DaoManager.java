@@ -2,6 +2,7 @@ package com.avenwu.rssreader.dataprovider;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Context;
 import android.util.Log;
@@ -15,7 +16,7 @@ import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 
 public class DaoManager {
-    private OrmDBHelper ormDBHelper;
+    private static OrmDBHelper ormDBHelper;
     private final String TAG = "DaoManager";
     private static DaoManager instance;
 
@@ -32,6 +33,18 @@ public class DaoManager {
             }
         }
         return instance;
+    }
+
+    public static OrmDBHelper getDbHelper(Context context) {
+        if (ormDBHelper == null) {
+            synchronized (DaoManager.class) {
+                if (ormDBHelper == null) {
+                    ormDBHelper = OpenHelperManager.getHelper(context,
+                            OrmDBHelper.class);
+                }
+            }
+        }
+        return ormDBHelper;
     }
 
     private void initHelper(Context context) {
@@ -105,7 +118,7 @@ public class DaoManager {
         return items;
     }
 
-    public void addPhotoItems(ArrayList<PhotoFeedItem> photoFeedItems)
+    public void addPhotoItems(List<PhotoFeedItem> photoFeedItems)
             throws SQLException {
         if (ormDBHelper != null) {
             Log.d(TAG, "start insert");

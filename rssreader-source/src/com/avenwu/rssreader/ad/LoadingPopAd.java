@@ -63,7 +63,6 @@ public class LoadingPopAd {
         timeView.setPadding(8, 3, 6, 2);
 
         int num = 12;
-        // 对手机进行屏幕判�?
         int displaySize = SDKUtils.getDisplaySize(context);
         if (displaySize == 320) {
             num = 8;
@@ -81,15 +80,13 @@ public class LoadingPopAd {
         timeView_shapeDrawable.getPaint().setColor(
                 Color.argb(255, 255, 255, 255));
         timeView.setBackgroundDrawable(timeView_shapeDrawable);
-        // 异步执行倒计�?
-        // 异步加载广告图片
         new ShowPopAdTask(context, pop_layout, timeView).execute();
         new TimeCountDownTask(timeView, time).execute();
 
         TextView textView = new TextView(context);
         textView.setLayoutParams(new LinearLayout.LayoutParams(
                 LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT, 5f));
-        textView.setText("正在启动,请稍等...");
+        textView.setText("启动中，请稍等...");
         textView.setGravity(Gravity.CENTER);
         textView.setTextColor(Color.WHITE);
 

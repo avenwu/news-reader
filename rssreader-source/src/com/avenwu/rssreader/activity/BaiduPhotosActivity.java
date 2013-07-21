@@ -1,6 +1,5 @@
 package com.avenwu.rssreader.activity;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import android.content.Intent;
@@ -12,10 +11,10 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
+import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AbsListView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,15 +23,19 @@ import cn.waps.AdView;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.Window;
+import com.android.volley.Response.ErrorListener;
+import com.android.volley.Response.Listener;
+import com.android.volley.VolleyError;
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.adapter.PhotoFeedAdapter;
-import com.avenwu.rssreader.dataprovider.DaoManager;
+import com.avenwu.rssreader.bdphotos.BDProcessor;
+import com.avenwu.rssreader.bdphotos.BDProvider;
+import com.avenwu.rssreader.bdphotos.PhotoCacheRequest;
 import com.avenwu.rssreader.dataprovider.DataCenter;
 import com.avenwu.rssreader.model.PhotoFeedItem;
-import com.avenwu.rssreader.model.PhotoParams;
-import com.avenwu.rssreader.task.BaiduPhotoRequest;
-import com.avenwu.rssreader.task.BaseListener;
-import com.avenwu.rssreader.task.BaseTask;
+import com.avenwu.rssreader.request.BDPhotoParams;
+import com.avenwu.rssreader.request.BDPhotoRequest;
+import com.avenwu.volleyhelper.ApiManager;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
@@ -42,14 +45,13 @@ import com.handmark.pulltorefresh.library.internal.LoadingLayout;
 public class BaiduPhotosActivity extends SherlockActivity {
     private PullToRefreshGridView photoFeedListView;
     private PhotoFeedAdapter photoFeedAdapter;
-    private BaseListener<ArrayList<PhotoFeedItem>> refreshListener,
-            loadMoreListener;
-    private BaiduPhotoRequest<Void> refreshRequest, loadmoreRequest;
-    private BaseTask task;
-    private DaoManager daoManager;
-    private PhotoParams photoParams = new PhotoParams();
     private ImageView upTop;
     private Animation updownAnimation;
+    private BDPhotoParams params;
+    private BDPhotoRequest photoRequest;
+    private BDProcessor processor;
+    private PhotoCacheRequest cacheRequest;
+    private ErrorListener errorListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +62,6 @@ public class BaiduPhotosActivity extends SherlockActivity {
         setSupportProgressBarIndeterminateVisibility(true);
         initData();
         setListeners();
-        if (photoFeedAdapter.getCount() != 0) {
-            photoFeedAdapter.notifyDataSetChanged();
-            setSupportProgressBarIndeterminateVisibility(false);
-        } else {
-            refreshTask();
-        }
     }
 
     @Override
@@ -82,80 +78,56 @@ public class BaiduPhotosActivity extends SherlockActivity {
     }
 
     private void initData() {
-        daoManager = DaoManager.getInstance(this);
-        try {
-            DataCenter.getInstance().replacePhotoItems(
-                    daoManager.getPhotoFeedItems());
-        } catch (SQLException e1) {
-            e1.printStackTrace();
-        }
+        ApiManager.init(this);
         upTop = (ImageView) findViewById(R.id.iv_up_top);
         photoFeedListView = (PullToRefreshGridView) findViewById(R.id.lv_photo_feed);
         photoFeedAdapter = new PhotoFeedAdapter(this, DataCenter.getInstance()
                 .getPhotoFeedsItems());
         photoFeedListView.setAdapter(photoFeedAdapter);
-        refreshListener = new BaseListener<ArrayList<PhotoFeedItem>>() {
-            @Override
-            public void onSuccess(ArrayList<PhotoFeedItem> result) {
-                if (result != null && !result.isEmpty()) {
-                    DataCenter.getInstance().replacePhotoItems(result);
-                    photoFeedAdapter.notifyDataSetChanged();
-                    try {
-                        daoManager.addPhotoItems(result);
-                    } catch (SQLException e) {
-                        e.printStackTrace();
+
+        params = new BDPhotoParams();
+        processor = new BDProcessor(this,
+                new Listener<ArrayList<PhotoFeedItem>>() {
+                    @Override
+                    public void onResponse(ArrayList<PhotoFeedItem> response) {
+                        Log.d("test", response.toString());
+                        if (params.getCurrentPage() == 0) {
+                            DataCenter.getInstance().getPhotoFeedsItems()
+                                    .clear();
+                        }
+                        DataCenter.getInstance().addPhotoItems(response);
+                        photoFeedAdapter.notifyDataSetChanged();
+                        photoFeedListView.onRefreshComplete();
+                        setSupportProgressBarIndeterminateVisibility(false);
                     }
-                }
-            }
-
+                }, true);
+        errorListener = new ErrorListener() {
             @Override
-            public void onFailed(Object result) {
-            }
-
-            @Override
-            public void onError(Exception e) {
-                super.onError(e);
-            }
-
-            @Override
-            public void onFinished() {
-                super.onFinished();
+            public void onErrorResponse(VolleyError error) {
+                Log.d("test", error.toString());
                 photoFeedListView.onRefreshComplete();
                 setSupportProgressBarIndeterminateVisibility(false);
             }
         };
-        loadMoreListener = new BaseListener<ArrayList<PhotoFeedItem>>() {
-            @Override
-            public void onSuccess(ArrayList<PhotoFeedItem> result) {
-                if (result != null && !result.isEmpty()) {
-                    DataCenter.getInstance().addPhotoItems(result);
-                    photoFeedAdapter.notifyDataSetChanged();
-                    try {
-                        daoManager.addPhotoItems(result);
-                    } catch (SQLException e) {
-                        e.printStackTrace();
+        // try to get cached photos
+        cacheRequest = new PhotoCacheRequest(new BDProvider(this),
+                new Listener<ArrayList<PhotoFeedItem>>() {
+                    @Override
+                    public void onResponse(ArrayList<PhotoFeedItem> response) {
+                        if (response.isEmpty()) {
+                            refreshTask();
+                        } else {
+                            Log.d("test", response.toString());
+                            DataCenter.getInstance()
+                                    .replacePhotoItems(response);
+                            photoFeedAdapter.notifyDataSetChanged();
+                            photoFeedListView.onRefreshComplete();
+                            setSupportProgressBarIndeterminateVisibility(false);
+                        }
                     }
-                }
-            }
+                });
+        cacheRequest.excute();
 
-            @Override
-            public void onFailed(Object result) {
-            }
-
-            @Override
-            public void onError(Exception e) {
-                super.onError(e);
-            }
-
-            @Override
-            public void onFinished() {
-                super.onFinished();
-                photoFeedListView.onRefreshComplete();
-                setSupportProgressBarIndeterminateVisibility(false);
-            }
-        };
-        refreshRequest = new BaiduPhotoRequest<Void>(refreshListener);
-        loadmoreRequest = new BaiduPhotoRequest<Void>(loadMoreListener);
         // set up animation
         updownAnimation = new TranslateAnimation(0.0f, upTop.getWidth()
                 - upTop.getWidth() - upTop.getPaddingLeft()
@@ -239,29 +211,29 @@ public class BaiduPhotosActivity extends SherlockActivity {
     }
 
     void refreshTask() {
-        photoParams.pageCount = 1;
-        setSupportProgressBarIndeterminateVisibility(true);
-        if (task != null) {
-            task.cancel();
+        params.resetPage();
+        if (photoRequest != null) {
+            photoRequest.cancel();
         }
-        task = new BaseTask(photoParams.getRequest(), refreshRequest);
-        task.start();
+        processor.setClearOld(true);
+        photoRequest = new BDPhotoRequest(params, processor, errorListener);
+        photoRequest.excute();
     }
 
     void loadMoreTask() {
-        photoParams.pageCount++;
-        setSupportProgressBarIndeterminateVisibility(true);
-        if (task != null) {
-            task.cancel();
+        params.updatePage();
+        if (photoRequest != null) {
+            photoRequest.cancel();
         }
-        task = new BaseTask(photoParams.getRequest(), loadmoreRequest);
-        task.start();
+        processor.setClearOld(false);
+        photoRequest = new BDPhotoRequest(params, processor, errorListener);
+        photoRequest.excute();
     }
 
     @Override
     protected void onDestroy() {
-        if (task != null) {
-            task.cancel();
+        if (photoRequest != null) {
+            photoRequest.cancel();
         }
         DataCenter.getInstance().getPhotoFeedsItems().clear();
         super.onDestroy();
