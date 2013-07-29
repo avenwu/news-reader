@@ -9,7 +9,7 @@ import com.avenwu.rssreader.model.CsdnNewsItem;
 import com.avenwu.rssreader.utils.NetworkHelper;
 import com.avenwu.rssreader.xmlparse.ParseManager;
 
-public class CsdnNewsRequest<Void> implements BaseRequest {
+public class CsdnNewsRequest implements BaseRequest<Void> {
     private BaseListener<?> listener;
 
     public CsdnNewsRequest(BaseListener<?> listener) {

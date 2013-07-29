@@ -15,5 +15,7 @@ public class NeteaseNewsItem {
     public String pubDate;
     @DatabaseField
     public String guid;
+    @DatabaseField
+    public String channel;
 
 }

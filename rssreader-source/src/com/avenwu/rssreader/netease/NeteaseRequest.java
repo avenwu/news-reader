@@ -1,4 +1,4 @@
-package com.avenwu.rssreader.task;
+package com.avenwu.rssreader.netease;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,28 +9,37 @@ import org.xml.sax.SAXException;
 
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.model.NeteaseNewsItem;
+import com.avenwu.rssreader.task.BaseListener;
+import com.avenwu.rssreader.task.BaseRequest;
 import com.avenwu.rssreader.utils.NetworkHelper;
 import com.avenwu.rssreader.xmlparse.ParseManager;
 
-public class NeteaseRequest<Void> implements BaseRequest {
+public class NeteaseRequest implements BaseRequest<NeteaseNewsItem> {
     private BaseListener<?> listener;
+    private NeteaseProvider provider;
+    private boolean clearOld;
 
-    public NeteaseRequest(BaseListener<?> listener) {
+    public NeteaseRequest(NeteaseProvider provider, BaseListener<?> listener,
+            boolean clearOld) {
+        this.provider = provider;
         this.listener = listener;
+        this.clearOld = clearOld;
     }
 
     @Override
-    public Void doInbackground(String url) {
+    public NeteaseNewsItem doInbackground(String url) {
         if (!NetworkHelper.isNetworkActive()) {
             listener.sendResult(BaseListener.FAILED, R.string.network_lost);
             return null;
         }
         try {
-            ArrayList<NeteaseNewsItem> dataList = ParseManager.parseNeteaseNews(url);
+            ArrayList<NeteaseNewsItem> dataList = ParseManager
+                    .parseNeteaseNews(url);
             if (dataList == null) {
                 listener.sendResult(BaseListener.FAILED, null);
             } else {
                 listener.sendResult(BaseListener.SUCCESS, dataList);
+                provider.addAll(dataList, clearOld);
             }
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
@@ -44,5 +53,4 @@ public class NeteaseRequest<Void> implements BaseRequest {
         }
         return null;
     }
-
 }

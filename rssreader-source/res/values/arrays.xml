@@ -19,5 +19,19 @@
         <item>博客园 - 候选</item>
         <item>博客园 - 新闻</item>
     </string-array>
+    <string-array name="netease_channels">
+        <item>http://news.163.com/special/00011K6L/rss_newstop.xml</item>
+        <item>http://sports.163.com/special/00051K7F/rss_sportslq.xml</item>
+        <item>http://ent.163.com/special/00031K7Q/rss_toutiao.xml</item>
+        <item>http://v.163.com/special/008544NC/vheadline.xml</item>
+        <item>http://tech.163.com/special/000944OI/headlines.xml</item>
+        <item>http://money.163.com/special/00252EQ2/toutiaorss.xml</item>
+        <item>http://auto.163.com/special/00081K7D/rsstoutiao.xml</item>
+        <item>http://tech.163.com/digi/special/00161K7K/rss_digixj.xml</item>
+        <item>http://lady.163.com/special/00261R8C/ladyrss1.xml</item>
+        <item>http://gz.house.163.com/special/00873E0M/rss.xml</item>
+        <item>http://game.163.com/special/003144N4/rss_gametop.xml</item>
+        <item>http://book.163.com/special/0092451H/rss_online.xml</item>
+    </string-array>
 
 </resources>

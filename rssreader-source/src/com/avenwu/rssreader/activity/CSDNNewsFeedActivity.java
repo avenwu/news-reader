@@ -37,7 +37,7 @@ public class CSDNNewsFeedActivity extends SherlockActivity {
     private String TAG = "CSDN";
     private PullToRefreshListView newsListView;
     private CsdnNewsAdapter newsAdapter;
-    private CsdnNewsRequest<Void> request;
+    private CsdnNewsRequest request;
     private BaseTask task;
     private UrlHandler urlHandler;
     private BaseListener<ArrayList<CsdnNewsItem>> listener;
@@ -87,7 +87,7 @@ public class CSDNNewsFeedActivity extends SherlockActivity {
 
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-              startTask();
+                startTask();
             }
         });
     }
@@ -163,7 +163,7 @@ public class CSDNNewsFeedActivity extends SherlockActivity {
                 setSupportProgressBarIndeterminateVisibility(false);
             }
         };
-        request = new CsdnNewsRequest<Void>(listener);
+        request = new CsdnNewsRequest(listener);
         try {
             DataCenter.getInstance().replaceCsdnNewsItems(
                     daoManager.getCsdnNewsItems());

@@ -1,5 +1,6 @@
 package com.avenwu.rssreader.request;
 
+import com.avenwu.rssreader.config.Constant;
 import com.avenwu.volleyhelper.MultiApiParams;
 
 public class BDPhotoParams extends MultiApiParams {
@@ -34,7 +35,7 @@ public class BDPhotoParams extends MultiApiParams {
         endIndex = stratIndex + countPerPage;
         // "http://image.baidu.com/channel/listjson?fr=channel&tag1=%E7%BE%8E%E5%A5%B3&tag2=%E6%80%A7%E6%84%9F&sorttype=1&pn=0&rn=30&ie=utf8&oe=utf-8"
         StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append("http://image.baidu.com/channel/listjson?");
+        stringBuffer.append(Constant.PHOTO_REQUEST_PREFIX);
         stringBuffer
                 .append("fr=channel&tag1=%E7%BE%8E%E5%A5%B3&tag2=%E6%80%A7%E6%84%9F&sorttype=1&pn=")
                 .append(stratIndex).append("&rn=").append(endIndex)

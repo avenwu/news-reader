@@ -12,7 +12,7 @@ public class PhotoParams {
     public String getRequest() {
         stratIndex = pageCount * countPerPage;
         endIndex = stratIndex + countPerPage;
-        request = Constant.photo_request_predix
+        request = Constant.PHOTO_REQUEST_PREFIX
                 + "?fr=channel&tag1=%E7%BE%8E%E5%A5%B3&tag2=%E6%80%A7%E6%84%9F&sorttype=1&pn=%1&rn=%2&ie=utf8&oe=utf-8"
                         .replace("%1", stratIndex + "").replace("%2",
                                 endIndex + "");
