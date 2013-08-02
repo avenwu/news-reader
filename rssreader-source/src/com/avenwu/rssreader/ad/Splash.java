@@ -28,7 +28,6 @@ public class Splash extends Activity {
         AppConnect.getInstance(this).setAdViewClassName(
                 "com.avenwu.rssreader.activity.MyAdView");
         AppConnect.getInstance(this).setCrashReport(false);
-        // 初始化插屏广告数据
         AppConnect.getInstance(this).initPopAd(this);
         AppConnect.getInstance(this).showPopAd(this);
         timer = new CountDownTimer(MILLIS, INTERVAL) {

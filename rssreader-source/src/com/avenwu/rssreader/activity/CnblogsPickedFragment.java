@@ -1,8 +1,5 @@
 package com.avenwu.rssreader.activity;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-
 import android.content.Intent;
 import android.graphics.Bitmap.Config;
 import android.os.Bundle;
@@ -27,6 +24,9 @@ import com.avenwu.rssreader.task.BaseRequest;
 import com.avenwu.rssreader.task.BaseTask;
 import com.avenwu.rssreader.task.RssCnblogPickedRequest;
 import com.avenwu.rssreader.view.RefreshView.RefreshListener;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class CnblogsPickedFragment extends SherlockFragment implements
         QueryListener {
