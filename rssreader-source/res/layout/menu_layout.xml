@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/parent_rl"
     android:layout_gravity="center"
     android:background="@drawable/grey_background_pattern"
     android:orientation="vertical" >
@@ -17,14 +18,15 @@
         android:stretchMode="columnWidth"
         android:verticalSpacing="5dp" >
     </GridView>
+    <!--android:layout_below="@id/gv_menu"-->
 
     <LinearLayout
         android:id="@+id/ll_ad"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/gv_menu"
         android:layout_marginTop="5dp"
+        android:layout_alignParentBottom="true"
         android:gravity="center_horizontal"
         android:orientation="vertical" />
 
-</RelativeLayout>
+</LinearLayout>

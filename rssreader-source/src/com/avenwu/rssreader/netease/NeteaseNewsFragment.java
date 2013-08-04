@@ -12,10 +12,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.android.volley.Response;
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.model.NeteaseNewsItem;
 import com.avenwu.rssreader.task.BaseListener;
 import com.avenwu.rssreader.task.BaseTask;
+import com.avenwu.volleyhelper.QueryDbTask;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 public class NeteaseNewsFragment extends SherlockFragment {
@@ -28,17 +30,21 @@ public class NeteaseNewsFragment extends SherlockFragment {
     private BaseListener<ArrayList<NeteaseNewsItem>> listener;
     private String url;
     private NeteaseProvider provider;
+    private String channel;
+    private QueryDbTask<NeteaseNewsItem> cacheTask;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         adapter = new NeteaseNewsAdapter();
         url = getArguments().getString("url");
-        provider = new NeteaseProvider(getActivity());
+        channel = getArguments().getString("channel");
+        provider = new NeteaseProvider(getActivity(), channel);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.netease_feed_layout, null);
         listView = (PullToRefreshListView) view
                 .findViewById(R.id.lv_netease_news);
@@ -49,8 +55,21 @@ public class NeteaseNewsFragment extends SherlockFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        cacheTask = new QueryDbTask<NeteaseNewsItem>(provider, new Response.Listener<ArrayList<NeteaseNewsItem>>() {
+            @Override
+            public void onResponse(ArrayList<NeteaseNewsItem> neteaseNewsItems) {
+                if (neteaseNewsItems == null || neteaseNewsItems.isEmpty()) {
+                    task.start();
+                } else {
+                    Toast.makeText(getSherlockActivity(), "cache received", Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "cache received");
+                    dataList.addAll(neteaseNewsItems);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        });
+        cacheTask.excute();
         listener = new BaseListener<ArrayList<NeteaseNewsItem>>() {
-
             @Override
             public void onSuccess(ArrayList<NeteaseNewsItem> result) {
                 Log.d(TAG, result.toString());
@@ -66,7 +85,6 @@ public class NeteaseNewsFragment extends SherlockFragment {
 
             @Override
             public void onFailed(Object result) {
-
                 if (result instanceof Integer) {
                     Toast.makeText(getActivity(), (Integer) result,
                             Toast.LENGTH_SHORT).show();
@@ -87,7 +105,14 @@ public class NeteaseNewsFragment extends SherlockFragment {
         };
         request = new NeteaseRequest(provider, listener, true);
         task = new BaseTask(url, request);
-        task.start();
+    }
+
+    @Override
+    public void onDestroy() {
+        if (task != null)
+            task.cancel();
+        task = null;
+        super.onDestroy();
     }
 
     private class NeteaseNewsAdapter extends BaseAdapter {

@@ -9,12 +9,11 @@ import cn.waps.AppConnect;
 
 import com.avenwu.ereader.R;
 import com.avenwu.rssreader.activity.MenuActivity;
+import com.avenwu.rssreader.config.Constant;
 
 public class Splash extends Activity {
-    private final String KUGUO_APP_ID = "13bb74a44903443ba53e76526086065c";
-    private final String WAPS_APP_ID = "d2c72e069bde92b7e86f87c0bc9431e2";
     private CountDownTimer timer;
-    private final int MILLIS = 4000;
+    private final int MILLIS = 2000;
     private final int INTERVAL = 1000;
 
     @Override
@@ -24,7 +23,7 @@ public class Splash extends Activity {
         setContentView(R.layout.splash);
         // MediaManager.startAd(MenuActivity.this,
         // MediaManager.LEFT_TOP, KUGUO_APP_ID, "m-appchina");
-        AppConnect.getInstance(WAPS_APP_ID, "WAPS", this);
+        AppConnect.getInstance(Constant.WAPS_APP_ID, "WAPS", this);
         AppConnect.getInstance(this).setAdViewClassName(
                 "com.avenwu.rssreader.activity.MyAdView");
         AppConnect.getInstance(this).setCrashReport(false);

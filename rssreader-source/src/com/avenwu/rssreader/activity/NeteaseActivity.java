@@ -12,21 +12,30 @@ import android.widget.Toast;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.avenwu.ereader.R;
+import com.avenwu.rssreader.model.NetEaseChannel;
 import com.avenwu.rssreader.netease.NeteaseNewsFragment;
 import com.avenwu.volleyhelper.ApiManager;
+
+import java.util.ArrayList;
 
 public class NeteaseActivity extends SherlockFragmentActivity {
     private static final String TAG = "NeteaseActivity";
     private ViewPager contentPager;
-    private String[] channels;
+    private ArrayList<NetEaseChannel> channels = new ArrayList<NetEaseChannel>();
 
     @Override
     protected void onCreate(Bundle arg0) {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(arg0);
         setContentView(R.layout.net_ease_layout);
-        channels = getResources().getStringArray(R.array.netease_channels);
-        ApiManager.init(this);
+        String[] links = getResources().getStringArray(R.array.netease_channel_links);
+        String[] names = getResources().getStringArray(R.array.netease_channel_names);
+        for (int i = 0; i < links.length; i++) {
+            NetEaseChannel item = new NetEaseChannel();
+            item.channelLink = links[i];
+            item.channelName = names[i];
+            channels.add(item);
+        }
         contentPager = (ViewPager) findViewById(R.id.pager_contents);
         contentPager.setAdapter(new NeteasePagerAdapter(
                 getSupportFragmentManager()));
@@ -36,11 +45,11 @@ public class NeteaseActivity extends SherlockFragmentActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-        case android.R.id.home:
-            finish();
-            break;
-        default:
-            break;
+            case android.R.id.home:
+                finish();
+                break;
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -60,14 +69,16 @@ public class NeteaseActivity extends SherlockFragmentActivity {
         public Fragment getItem(int position) {
             Fragment fragment = new NeteaseNewsFragment();
             Bundle bundle = new Bundle();
-            bundle.putCharSequence("url", channels[position % channels.length]);
+            NetEaseChannel channel = channels.get(position % channels.size());
+            bundle.putCharSequence("url", channel.channelLink);
+            bundle.putCharSequence("channel", channel.channelName);
             fragment.setArguments(bundle);
             return fragment;
         }
 
         @Override
         public int getCount() {
-            return channels.length;
+            return channels.size();
         }
 
     }

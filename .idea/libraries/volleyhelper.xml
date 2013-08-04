@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="volleyhelper">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../VolleyHelper/bin/volleyhelper.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

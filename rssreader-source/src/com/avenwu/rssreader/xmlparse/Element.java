@@ -17,4 +17,5 @@ public class Element {
     public static final String pubDate = "pubDate";
     public static final String guid = "guid";
     public static final String item = "item";
+    public static final String channel = "channel";
 }

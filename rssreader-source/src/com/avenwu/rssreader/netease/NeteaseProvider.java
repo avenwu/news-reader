@@ -1,17 +1,30 @@
 package com.avenwu.rssreader.netease;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.util.Log;
 
+import com.avenwu.rssreader.dataprovider.DaoManager;
+import com.avenwu.rssreader.model.AuthorInfo;
+import com.avenwu.rssreader.model.HomeDetailItem;
 import com.avenwu.rssreader.model.NeteaseNewsItem;
+import com.avenwu.rssreader.xmlparse.Element;
 import com.avenwu.volleyhelper.DataProvider;
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.DeleteBuilder;
 
 public class NeteaseProvider implements DataProvider<NeteaseNewsItem> {
     private Context context;
+    private static final String TAG = "NeteaseProvider";
+    private Dao<NeteaseNewsItem, Integer> dao;
+    private String channel;
 
-    public NeteaseProvider(Context context) {
+    public NeteaseProvider(Context context, String channel) {
         this.context = context;
+        this.channel = channel;
     }
 
     @Override
@@ -22,14 +35,36 @@ public class NeteaseProvider implements DataProvider<NeteaseNewsItem> {
 
     @Override
     public boolean addAll(List<NeteaseNewsItem> dataList, boolean clearOld) {
-        // TODO Auto-generated method stub
+        if (clearOld) {
+            clearAll();
+        }
+        try {
+            dao = DaoManager.getDbHelper(context).getEaseNewsDao();
+            Log.d(TAG, "start insert");
+            long timeStart = System.currentTimeMillis();
+            for (NeteaseNewsItem item : dataList) {
+                dao.create(item);
+            }
+            Log.d(TAG, "time consumed: "
+                    + (System.currentTimeMillis() - timeStart));
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
     @Override
     public List<NeteaseNewsItem> getAll() {
-        // TODO Auto-generated method stub
-        return null;
+        List<NeteaseNewsItem> datalist = new ArrayList<NeteaseNewsItem>();
+        try {
+            dao = DaoManager.getDbHelper(context).getEaseNewsDao();
+            datalist.addAll(dao.queryForEq(Element.channel, channel));
+        } catch (SQLException e) {
+            Log.d(TAG, "failed to get cached netease news items");
+            e.printStackTrace();
+        }
+        return datalist;
     }
 
     @Override
@@ -40,7 +75,20 @@ public class NeteaseProvider implements DataProvider<NeteaseNewsItem> {
 
     @Override
     public boolean clearAll() {
-        // TODO Auto-generated method stub
+        try {
+//            DaoManager.getDbHelper(context).clearTable(NeteaseNewsItem.class);
+            dao = DaoManager.getDbHelper(context).getEaseNewsDao();
+            DeleteBuilder<NeteaseNewsItem, Integer> deleteBuilder = dao.deleteBuilder();
+            deleteBuilder.where().eq(Element.channel, channel);
+            deleteBuilder.prepare();
+            dao.deleteBuilder();
+            Log.d(TAG, "clear netease table success");
+            return true;
+        } catch (SQLException e) {
+            Log.d(TAG, "failed to clear netease table");
+            e.printStackTrace();
+
+        }
         return false;
     }
 

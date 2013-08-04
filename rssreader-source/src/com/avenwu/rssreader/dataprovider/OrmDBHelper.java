@@ -9,6 +9,7 @@ import android.util.Log;
 import com.avenwu.rssreader.model.AuthorInfo;
 import com.avenwu.rssreader.model.CsdnNewsItem;
 import com.avenwu.rssreader.model.HomeDetailItem;
+import com.avenwu.rssreader.model.NeteaseNewsItem;
 import com.avenwu.rssreader.model.PhotoFeedItem;
 import com.avenwu.rssreader.model.PickedDetailItem;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
@@ -24,6 +25,7 @@ public class OrmDBHelper extends OrmLiteSqliteOpenHelper {
     private Dao<AuthorInfo, Integer> authorDao;
     private Dao<PhotoFeedItem, Integer> photoDao;
     private Dao<CsdnNewsItem, Integer> geekNewsDao;
+    private Dao<NeteaseNewsItem, Integer> neteaseNewsDao;
 
     public OrmDBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -42,6 +44,7 @@ public class OrmDBHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(connectionSource, HomeDetailItem.class);
             TableUtils.createTable(connectionSource, PhotoFeedItem.class);
             TableUtils.createTable(connectionSource, CsdnNewsItem.class);
+            TableUtils.createTable(connectionSource, NeteaseNewsItem.class);
         } catch (SQLException e) {
             Log.e(OrmDBHelper.class.getName(), "Can't create database", e);
             throw new RuntimeException(e);
@@ -89,6 +92,17 @@ public class OrmDBHelper extends OrmLiteSqliteOpenHelper {
         return geekNewsDao;
     }
 
+    public Dao<NeteaseNewsItem, Integer> getEaseNewsDao() throws SQLException {
+        if (neteaseNewsDao == null) {
+            neteaseNewsDao = getDao(NeteaseNewsItem.class);
+        }
+        return neteaseNewsDao;
+    }
+
+    public void clearTable(Class cl) throws SQLException {
+        TableUtils.clearTable(connectionSource, cl);
+    }
+
     @Override
     public synchronized void close() {
         super.close();
@@ -97,11 +111,12 @@ public class OrmDBHelper extends OrmLiteSqliteOpenHelper {
         pickedEntryDao = null;
         authorDao = null;
         geekNewsDao = null;
+        neteaseNewsDao = null;
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource,
-            int oldVersion, int newVersion) {
+                          int oldVersion, int newVersion) {
         try {
             Log.i(OrmDBHelper.class.getName(), "onUpgrade");
             TableUtils.dropTable(connectionSource, AuthorInfo.class, true);
@@ -110,6 +125,7 @@ public class OrmDBHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.dropTable(connectionSource, HomeDetailItem.class, true);
             TableUtils.dropTable(connectionSource, PhotoFeedItem.class, true);
             TableUtils.dropTable(connectionSource, CsdnNewsItem.class, true);
+            TableUtils.dropTable(connectionSource, NeteaseNewsItem.class, true);
             createTables(connectionSource);
         } catch (SQLException e) {
             Log.e(OrmDBHelper.class.getName(), "Can't drop databases", e);

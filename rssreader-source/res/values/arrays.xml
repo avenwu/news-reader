@@ -19,7 +19,7 @@
         <item>博客园 - 候选</item>
         <item>博客园 - 新闻</item>
     </string-array>
-    <string-array name="netease_channels">
+    <string-array name="netease_channel_links">
         <item>http://news.163.com/special/00011K6L/rss_newstop.xml</item>
         <item>http://sports.163.com/special/00051K7F/rss_sportslq.xml</item>
         <item>http://ent.163.com/special/00031K7Q/rss_toutiao.xml</item>
@@ -33,5 +33,18 @@
         <item>http://game.163.com/special/003144N4/rss_gametop.xml</item>
         <item>http://book.163.com/special/0092451H/rss_online.xml</item>
     </string-array>
-
+    <string-array name="netease_channel_names">
+        <item>网易头条新闻</item>
+        <item>NBA-网易体育频道</item>
+        <item>网易娱乐频道</item>
+        <item>网易视频</item>
+        <item>网易科技头条</item>
+        <item>头条新闻-网易财经</item>
+        <item>网易汽车头条新闻</item>
+        <item>网易数码频道：数码综合资讯</item>
+        <item>网易女人时尚资讯</item>
+        <item>广州房产新闻</item>
+        <item>头条要闻_网易游戏频道</item>
+        <item>在线阅读_网易读书频道</item>
+    </string-array>
 </resources>

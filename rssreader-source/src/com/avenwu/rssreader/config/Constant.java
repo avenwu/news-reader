@@ -11,4 +11,6 @@ public class Constant {
     public static final String PHOTO_REQUEST_PREFIX = "http://image.baidu.com/channel/listjson?";
     // http://news.163.com/special/00011K6L/rss_newstop.xml
     public static final String NETEASE_REQUEST_PREFIX = "http://news.163.com/special/00011K6L/rss_newstop.xml";
+    public static final String KUGUO_APP_ID = "13bb74a44903443ba53e76526086065c";
+    public static final String WAPS_APP_ID = "d2c72e069bde92b7e86f87c0bc9431e2";
 }

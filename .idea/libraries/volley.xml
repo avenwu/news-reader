@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="volley">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../tagged-studio/3.7/ext/volley/bin/volley.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

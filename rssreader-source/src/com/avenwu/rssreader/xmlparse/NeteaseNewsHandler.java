@@ -16,6 +16,7 @@ public class NeteaseNewsHandler extends DefaultHandler {
     private StringBuffer tempContent;
     private boolean itemStart;
     private NeteaseNewsItem newsItem;
+    private String channel;
 
     /*
      * <item> 
@@ -44,11 +45,12 @@ public class NeteaseNewsHandler extends DefaultHandler {
 
     @Override
     public void startElement(String uri, String localName, String qName,
-            Attributes attributes) throws SAXException {
+                             Attributes attributes) throws SAXException {
         super.startElement(uri, localName, qName, attributes);
         if (qName.equals(Element.item)) {
             itemStart = true;
             newsItem = new NeteaseNewsItem();
+            newsItem.channel = channel;
         }
     }
 
@@ -57,20 +59,22 @@ public class NeteaseNewsHandler extends DefaultHandler {
             throws SAXException {
         super.endElement(uri, localName, qName);
         if (!itemStart) {
-            return;
-        }
-        if (qName.equals(Element.item)) {
-            itemList.add(newsItem);
-        } else if (qName.equals(Element.title)) {
-            newsItem.title = tempContent.toString();
-        } else if (qName.equals(Element.link)) {
-            newsItem.link = tempContent.toString();
-        } else if (qName.equals(Element.description)) {
-            newsItem.description = tempContent.toString();
-        } else if (qName.equals(Element.pubDate)) {
-            newsItem.pubDate = tempContent.toString();
-        } else if (qName.equals(Element.guid)) {
-            newsItem.guid = tempContent.toString();
+            if (qName.equals(Element.title))
+                channel = tempContent.toString();
+        } else {
+            if (qName.equals(Element.item)) {
+                itemList.add(newsItem);
+            } else if (qName.equals(Element.title)) {
+                newsItem.title = tempContent.toString();
+            } else if (qName.equals(Element.link)) {
+                newsItem.link = tempContent.toString();
+            } else if (qName.equals(Element.description)) {
+                newsItem.description = tempContent.toString();
+            } else if (qName.equals(Element.pubDate)) {
+                newsItem.pubDate = tempContent.toString();
+            } else if (qName.equals(Element.guid)) {
+                newsItem.guid = tempContent.toString();
+            }
         }
         tempContent.delete(0, tempContent.length());
     }
@@ -79,9 +83,6 @@ public class NeteaseNewsHandler extends DefaultHandler {
     public void characters(char[] ch, int start, int length)
             throws SAXException {
         super.characters(ch, start, length);
-        if (!itemStart) {
-            return;
-        }
         tempContent.append(ch, start, length);
     }
 
