@@ -16,7 +16,7 @@
         android:paddingTop="5dp"
         android:stretchMode="columnWidth"
         android:verticalSpacing="5dp" />
-
+    <!--android:src="@drawable/arrow_up"-->
     <ImageView
         android:id="@+id/iv_up_top"
         android:layout_width="50dp"
@@ -25,6 +25,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:onClick="up2Top"
-        android:src="@drawable/arrow_up" />
+         />
 
 </RelativeLayout>

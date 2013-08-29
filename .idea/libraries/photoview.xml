@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="photoview">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../tagged-studio/3.7/ext/PhotoView/bin/photoview.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

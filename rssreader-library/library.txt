@@ -1,5 +1,0 @@
-1.android-flip:
-https://github.com/openaphid/android-flip
-
-2.android-actionbar:
-git://github.com/johannilsson/android-actionbar.git

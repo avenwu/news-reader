@@ -15,15 +15,13 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="libs" level="project" />
     <orderEntry type="library" name="android-support-v4" level="project" />
-    <orderEntry type="library" name="ormlite-android-4.45" level="project" />
-    <orderEntry type="library" name="ormlite-core-4.45" level="project" />
-    <orderEntry type="library" name="photoview" level="project" />
-    <orderEntry type="library" name="volley" level="project" />
-    <orderEntry type="library" name="volleyhelper" level="project" />
-    <orderEntry type="module" module-name="FlipLibrary" />
+    <orderEntry type="library" name="ormlite" level="project" />
     <orderEntry type="module" module-name="UrlImageViewHelper" />
-    <orderEntry type="module" module-name="JakeWharton-ActionBarSherlock-4.2.0" />
-    <orderEntry type="module" module-name="Android-PullToRefresh" />
+    <orderEntry type="module" module-name="actionbarsherlock" />
+    <orderEntry type="module" module-name="FlipView" />
+    <orderEntry type="module" module-name="photoview" />
+    <orderEntry type="module" module-name="pulltorefresh" />
+    <orderEntry type="module" module-name="volleyhelper" />
   </component>
 </module>
 

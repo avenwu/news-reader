@@ -12,6 +12,12 @@
       <directory url="file://$PROJECT_DIR$/../../tagged-studio/3.7/ext/volley/gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/../../tagged-studio/3.7/ext/PhotoView/library/gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/../../tagged-studio/3.7/ext/PhotoView/gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/rssreader-library/FlipView/gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/rssreader-library/UrlImageViewHelper/gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/rssreader-library/photoview/gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/rssreader-library/pulltorefresh/gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/rssreader-library/actionbarsherlock/gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/rssreader-library/volleyhelper/gen" includeSubdirectories="true" />
     </excludeFromCompile>
     <resourceExtensions />
     <wildcardResourcePatterns>
