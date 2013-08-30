@@ -5,11 +5,12 @@
     android:layout_height="48dp"
     android:background="@android:color/white" >
 
-    <com.avenwu.rssreader.view.RefreshView
+    <com.avenwu.ereader.view.RefreshView
         android:id="@+id/refreshView1"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"
         android:layout_centerVertical="true"
         custom:refreshState="false" />
 
@@ -19,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/ic_navigation_left" />
+        android:src="@drawable/left_back_bg" />
 
     <TextView
         android:id="@+id/tv_title"
@@ -31,5 +32,11 @@
         android:text="@string/title_cnblogs"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@android:color/black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/darker_gray"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

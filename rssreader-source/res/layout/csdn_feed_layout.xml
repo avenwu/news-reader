@@ -5,11 +5,10 @@
     android:background="@drawable/grey_background_pattern"
     android:orientation="vertical" >
 
-    <ListView
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/lv_csdn_news"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layoutAnimation="@anim/list_layout_wave_scale" >
-    </ListView>
+        android:layoutAnimation="@anim/list_layout_wave_scale" />
 
 </LinearLayout>
