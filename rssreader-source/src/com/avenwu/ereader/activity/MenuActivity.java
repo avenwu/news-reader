@@ -8,27 +8,28 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
 import android.widget.LinearLayout;
 
+import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.avenwu.ereader.R;
+import com.avenwu.ereader.adapter.MenuAdapter;
 import com.avenwu.ereader.dataprovider.DataCenter;
-import com.avenwu.ereader.model.MenuHelper;
 import com.avenwu.ereader.model.NewsMenuItem;
 import com.avenwu.ereader.service.NetworkReceiver;
 import com.avenwu.ereader.task.TaskManager;
 import com.avenwu.ereader.utils.NetworkHelper;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 
 import cn.waps.AdView;
 import cn.waps.AppConnect;
 
-public class MenuActivity extends BaseMenuActivity implements MenuHelper {
-    private String[] menuTitles;
-    private String[] menuDescriptions;
+public class MenuActivity extends SherlockActivity {
     private NetworkReceiver networkReceiver;
     private IntentFilter intentFilter;
     private final byte CNBLOG = 0;
@@ -36,48 +37,63 @@ public class MenuActivity extends BaseMenuActivity implements MenuHelper {
     private final byte NET_EASE = 2;
     private final byte BAIDU = 3;
     private LinearLayout adContainer;
-    private final int AD_INDEXT = 1;
+    public GridView menuView;
+    public MenuAdapter menuAdapter;
+    public int tempColumn = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        menuTitles = getResources().getStringArray(R.array.menu_titles);
-        menuDescriptions = getResources().getStringArray(
-                R.array.menu_descriptions);
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.menu_layout);
+        registerNetwork();
+        init();
+        MobclickAgent.setDebugMode(true);
+    }
+
+    private void init() {
+        SharedPreferences sp = getSharedPreferences("config", 0);
+        tempColumn = sp.getInt("menu_column", 1);
+        menuView = (GridView) findViewById(R.id.gv_menu);
+        adContainer = (LinearLayout) findViewById(R.id.ll_ad);
+        menuView.setNumColumns(tempColumn);
+        menuAdapter = new MenuAdapter(this, getMenuItems());
+        menuView.setAdapter(menuAdapter);
+        menuView.setOnItemClickListener(getMenuListener());
+        new AdView(this, adContainer).DisplayAd();
+    }
+
+    private void registerNetwork() {
         NetworkHelper.updateConnectionState(this);
         intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         networkReceiver = new NetworkReceiver();
         this.registerReceiver(networkReceiver, intentFilter);
-        // AppConnect.getInstance(WAPS_APP_ID, "WAPS", this);
-        // AppConnect.getInstance(this).setAdViewClassName(
-        // "com.avenwu.ereader.activity.MyAdView");
-        // AppConnect.getInstance(this).setCrashReport(false);
-        adContainer = (LinearLayout) findViewById(R.id.ll_ad);
-        new AdView(this, adContainer).DisplayAd();
-        // AppConnect.getInstance(this).initPopAd(this);
     }
 
-    @Override
     public ArrayList<NewsMenuItem> getMenuItems() {
         ArrayList<NewsMenuItem> menuItems = new ArrayList<NewsMenuItem>();
+        String[] menuTitles = getResources().getStringArray(R.array.menu_titles);
+        String[] menuDescriptions = getResources().getStringArray(
+                R.array.menu_descriptions);
         for (int i = 0; i < menuTitles.length; i++) {
             NewsMenuItem item = new NewsMenuItem();
             item.setMenuTitle(menuTitles[i]);
             item.setMenuDescription(menuDescriptions[i]);
             menuItems.add(item);
         }
-        DataCenter.getInstance().setMenuItems(menuItems);
-        return DataCenter.getInstance().getMenuItems();
+        return menuItems;
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
     public OnItemClickListener getMenuListener() {
         return new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View view,
                                     int position, long id) {
-
                 Intent intent = new Intent();
                 switch (position) {
                     case CNBLOG:
@@ -119,21 +135,25 @@ public class MenuActivity extends BaseMenuActivity implements MenuHelper {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_list_filter:
-//                parentLayout.removeViewAt(AD_INDEXT);
-                tempColumn = menubar.getNumColumns() == 1 ? 2 : 1;
+                tempColumn = menuView.getNumColumns() == 1 ? 2 : 1;
                 item.setIcon(tempColumn == 1 ? R.drawable.ic_filter_grid_light
                         : R.drawable.ic_filter_list_light);
-                menubar.setNumColumns(tempColumn);
+                menuView.setNumColumns(tempColumn);
                 menuAdapter.setColumnNumber(tempColumn);
                 SharedPreferences sp = getSharedPreferences("config", 0);
                 sp.edit().putInt("menu_column", tempColumn).commit();
                 menuAdapter.notifyDataSetChanged();
-//                parentLayout.addView(adContainer, AD_INDEXT);
                 break;
             default:
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 
     @Override

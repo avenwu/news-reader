@@ -53,7 +53,7 @@ public class TaskManager {
     }
 
     public void cancelSingleTask(String key) {
-        if (requestMap.containsKey(key)) {
+        if (requestMap != null && requestMap.containsKey(key)) {
             Future<?> future = requestMap.get(key).get();
             if (future != null) {
                 future.cancel(true);
@@ -63,7 +63,7 @@ public class TaskManager {
     }
 
     public void removeFromRequest(String key) {
-        if (requestMap.containsKey(key)) {
+        if (requestMap != null && requestMap.containsKey(key)) {
             requestMap.remove(key);
         }
     }

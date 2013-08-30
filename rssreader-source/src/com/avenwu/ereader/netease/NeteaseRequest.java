@@ -1,5 +1,7 @@
 package com.avenwu.ereader.netease;
 
+import android.content.Context;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -15,12 +17,14 @@ import com.avenwu.ereader.utils.NetworkHelper;
 import com.avenwu.ereader.xmlparse.ParseManager;
 
 public class NeteaseRequest implements BaseRequest<NeteaseNewsItem> {
+    private Context context;
     private BaseListener<?> listener;
     private NeteaseProvider provider;
     private boolean clearOld;
 
-    public NeteaseRequest(NeteaseProvider provider, BaseListener<?> listener,
+    public NeteaseRequest(Context context, NeteaseProvider provider, BaseListener<?> listener,
             boolean clearOld) {
+        this.context = context;
         this.provider = provider;
         this.listener = listener;
         this.clearOld = clearOld;
@@ -34,7 +38,7 @@ public class NeteaseRequest implements BaseRequest<NeteaseNewsItem> {
         }
         try {
             ArrayList<NeteaseNewsItem> dataList = ParseManager
-                    .parseNeteaseNews(url);
+                    .parseNeteaseNews(context,url);
             if (dataList == null) {
                 listener.sendResult(BaseListener.FAILED, null);
             } else {

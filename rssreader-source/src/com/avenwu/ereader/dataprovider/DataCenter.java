@@ -158,17 +158,6 @@ public class DataCenter {
         this.newsData = newsData;
     }
 
-    public void setMenuItems(ArrayList<NewsMenuItem> menuItems) {
-        this.menuData = menuItems;
-    }
-
-    public ArrayList<NewsMenuItem> getMenuItems() {
-        if (menuData == null) {
-            throw new RuntimeException("menu is not initialized");
-        }
-        return (ArrayList<NewsMenuItem>) menuData;
-    }
-
     public void clear() {
         if (pickedData != null) {
             pickedData.clear();

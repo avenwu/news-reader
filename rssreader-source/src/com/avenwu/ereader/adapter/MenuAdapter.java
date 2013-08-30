@@ -1,8 +1,5 @@
 package com.avenwu.ereader.adapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +11,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.avenwu.ereader.R;
-import com.avenwu.ereader.activity.BaseMenuActivity;
+import com.avenwu.ereader.activity.MenuActivity;
 import com.avenwu.ereader.model.NewsMenuItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MenuAdapter extends BaseAdapter {
     private List<NewsMenuItem> menuDataList;
@@ -25,10 +25,6 @@ public class MenuAdapter extends BaseAdapter {
     private boolean columnChanged;
     private ScaleAnimation scaleAnimation;
 
-    public int getColumnNumber() {
-        return columnNumber;
-    }
-
     public void setColumnNumber(int columnNumber) {
         if (columnNumber != this.columnNumber) {
             columnChanged = true;
@@ -37,12 +33,12 @@ public class MenuAdapter extends BaseAdapter {
     }
 
     public MenuAdapter(Context context, ArrayList<NewsMenuItem> menuItems) {
-        columnNumber = ((BaseMenuActivity) context).tempColumn;
+        columnNumber = ((MenuActivity) context).tempColumn;
         menuDataList = menuItems;
         inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        backgroundIds = new int[] { R.drawable.blue_bg, R.drawable.purple_bg,
-                R.drawable.green_bg, R.drawable.orange_bg, R.drawable.red_bg };
+        backgroundIds = new int[]{R.drawable.blue_bg, R.drawable.purple_bg,
+                R.drawable.green_bg, R.drawable.orange_bg, R.drawable.red_bg};
         scaleAnimation = new ScaleAnimation(0, 1, 0, 1,
                 ScaleAnimation.RELATIVE_TO_SELF, .5f,
                 ScaleAnimation.RELATIVE_TO_SELF, .5f);

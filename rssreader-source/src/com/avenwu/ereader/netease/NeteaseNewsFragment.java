@@ -61,7 +61,6 @@ public class NeteaseNewsFragment extends SherlockFragment {
                 if (neteaseNewsItems == null || neteaseNewsItems.isEmpty()) {
                     task.start();
                 } else {
-                    Toast.makeText(getSherlockActivity(), "cache received", Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "cache received");
                     dataList.addAll(neteaseNewsItems);
                     adapter.notifyDataSetChanged();
@@ -103,7 +102,7 @@ public class NeteaseNewsFragment extends SherlockFragment {
                 super.onFinished();
             }
         };
-        request = new NeteaseRequest(provider, listener, true);
+        request = new NeteaseRequest(getActivity(),provider, listener, true);
         task = new BaseTask(url, request);
     }
 
