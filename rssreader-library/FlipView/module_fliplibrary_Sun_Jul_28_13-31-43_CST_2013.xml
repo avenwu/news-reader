@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_fliplibrary" default="compile.module.fliplibrary">
+  <dirname property="module.fliplibrary.basedir" file="${ant.file.module_fliplibrary}"/>
+  
+  <property name="module.jdk.home.fliplibrary" value="${jdk.home.android_4.3_platform}"/>
+  <property name="module.jdk.bin.fliplibrary" value="${jdk.bin.android_4.3_platform}"/>
+  <property name="module.jdk.classpath.fliplibrary" value="jdk.classpath.android_4.3_platform"/>
+  
+  <property name="compiler.args.fliplibrary" value="${compiler.args}"/>
+  
+  <property name="fliplibrary.output.dir" value="${module.fliplibrary.basedir}/../../../news-reader/out/production/FlipLibrary"/>
+  <property name="fliplibrary.testoutput.dir" value="${module.fliplibrary.basedir}/../../../news-reader/out/test/FlipLibrary"/>
+  
+  <path id="fliplibrary.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="fliplibrary.module.production.classpath">
+    <path refid="${module.jdk.classpath.fliplibrary}"/>
+  </path>
+  
+  <path id="fliplibrary.runtime.production.module.classpath">
+    <pathelement location="${fliplibrary.output.dir}"/>
+  </path>
+  
+  <path id="fliplibrary.module.classpath">
+    <path refid="${module.jdk.classpath.fliplibrary}"/>
+    <pathelement location="${fliplibrary.output.dir}"/>
+  </path>
+  
+  <path id="fliplibrary.runtime.module.classpath">
+    <pathelement location="${fliplibrary.testoutput.dir}"/>
+    <pathelement location="${fliplibrary.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.fliplibrary">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.fliplibrary">
+    <patternset refid="compiler.excluded"/>
+    <patternset refid="excluded.from.module.fliplibrary"/>
+  </patternset>
+  
+  <path id="fliplibrary.module.sourcepath">
+    <dirset dir="${module.fliplibrary.basedir}">
+      <include name="src"/>
+      <include name="gen"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.fliplibrary" depends="compile.module.fliplibrary.production,compile.module.fliplibrary.tests" description="Compile module FlipLibrary"/>
+  
+  <target name="compile.module.fliplibrary.production" depends="register.custom.compilers" description="Compile module FlipLibrary; production classes">
+    <mkdir dir="${fliplibrary.output.dir}"/>
+    <javac2 destdir="${fliplibrary.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.fliplibrary}/javac">
+      <compilerarg line="${compiler.args.fliplibrary}"/>
+      <bootclasspath refid="fliplibrary.module.bootclasspath"/>
+      <classpath refid="fliplibrary.module.production.classpath"/>
+      <src refid="fliplibrary.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.fliplibrary"/>
+    </javac2>
+    
+    <copy todir="${fliplibrary.output.dir}">
+      <fileset dir="${module.fliplibrary.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+        <patternset refid="excluded.from.compilation.fliplibrary"/>
+      </fileset>
+      <fileset dir="${module.fliplibrary.basedir}/gen">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+        <patternset refid="excluded.from.compilation.fliplibrary"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.fliplibrary.tests" depends="register.custom.compilers,compile.module.fliplibrary.production" description="compile module FlipLibrary; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.fliplibrary" description="cleanup module">
+    <delete dir="${fliplibrary.output.dir}"/>
+    <delete dir="${fliplibrary.testoutput.dir}"/>
+  </target>
+</project>

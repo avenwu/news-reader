@@ -1,0 +1,11 @@
+1.android-flip:
+  https://github.com/openaphid/android-flip.git
+2.actionbarssherlock
+  http://actionbarsherlock.com/
+  https://github.com/JakeWharton/ActionBarSherlock.git
+3.volley helper
+  https://github.com/avenwu/volleyhelper.git
+4.pulltorefresh
+  https://github.com/chrisbanes/Android-PullToRefresh.git
+5.photoview
+  https://github.com/chrisbanes/PhotoView.git
