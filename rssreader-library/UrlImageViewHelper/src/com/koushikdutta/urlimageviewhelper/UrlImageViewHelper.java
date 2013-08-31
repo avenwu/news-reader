@@ -615,6 +615,10 @@ public final class UrlImageViewHelper {
                     callback.onLoaded(null, loader.result, url, false);
                 int waitingCount = 0;
                 for (final ImageView iv: downloads) {
+                    if (iv == null){
+                        clog("imageview no longer existed");
+                        continue;
+                    }
                     // validate the url it is waiting for
                     final String pendingUrl = mPendingViews.get(iv);
                     if (!url.equals(pendingUrl)) {
@@ -623,7 +627,7 @@ public final class UrlImageViewHelper {
                     }
                     waitingCount++;
                     mPendingViews.remove(iv);
-                    if (usableResult != null) {
+                    if (usableResult != null && iv != null) {
 //                        System.out.println(String.format("imageView: %dx%d, %dx%d", imageView.getMeasuredWidth(), imageView.getMeasuredHeight(), imageView.getWidth(), imageView.getHeight()));
                         iv.setImageDrawable(usableResult);
 //                        System.out.println(String.format("imageView: %dx%d, %dx%d", imageView.getMeasuredWidth(), imageView.getMeasuredHeight(), imageView.getWidth(), imageView.getHeight()));

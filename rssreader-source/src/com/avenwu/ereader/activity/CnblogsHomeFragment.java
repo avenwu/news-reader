@@ -125,7 +125,7 @@ public class CnblogsHomeFragment extends SherlockFragment implements
 
                         @Override
                         public void onFailed(Object result) {
-                            if (CnblogsHomeFragment.this.isRemoving()) {
+                            if (getActivity() == null || CnblogsHomeFragment.this.isRemoving()) {
                                 return;
                             }
                             if (result instanceof Integer) {

@@ -107,6 +107,7 @@ public class CnblogsNewsFeedActivity extends SherlockFragmentActivity implements
                 return true;
             }
         });
+        
         popup.show();
     }
 

@@ -81,29 +81,12 @@
                 android:label="@string/netease"
                 android:theme="@style/Theme.Sherlock.Light.DarkActionBar">
         </activity>
-        <!-- 需要注册的自定义activity -->
-        <activity
-                android:name=".ad.MyActivity"
-                android:configChanges="orientation|keyboardHidden"
-                android:excludeFromRecents="true"
-                android:launchMode="singleTask"
-                android:screenOrientation="portrait">
-        </activity>
-        <!-- 需要注册的自定义receiver -->
-        <receiver android:name=".ad.MyMR">
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED"/>
-
-                <data android:scheme="package"/>
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-            </intent-filter>
-        </receiver>
-
-        <activity
-                android:name=".ad.MyAdView"
-                android:configChanges="keyboardHidden|orientation"/>
+        <activity android:name="cn.waps.OffersWebView"
+                  android:configChanges="keyboardHidden|orientation" />
+        <!--以下属性为应⽤用ID,从万普后台获取-->
+        <meta-data android:name="WAPS_ID" android:value="d2c72e069bde92b7e86f87c0bc9431e2"/>
+        <!--以下属性为分发渠道ID,编码表参⻅见本⽂文档末附表-->
+        <meta-data android:name="WAPS_PID" android:value="Local Test"/>
         <meta-data android:value="5220316356240b03c8001942" android:name="UMENG_APPKEY"></meta-data>
         <meta-data android:value="Local Test" android:name="UMENG_CHANNEL"/>
     </application>

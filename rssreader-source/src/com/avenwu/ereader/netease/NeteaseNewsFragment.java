@@ -1,10 +1,12 @@
 package com.avenwu.ereader.netease;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.android.volley.Response;
 import com.avenwu.ereader.R;
+import com.avenwu.ereader.activity.WebNewsActivity;
 import com.avenwu.ereader.model.NeteaseNewsItem;
 import com.avenwu.ereader.task.BaseListener;
 import com.avenwu.ereader.task.BaseTask;
@@ -39,7 +42,6 @@ public class NeteaseNewsFragment extends SherlockFragment {
         url = getArguments().getString("url");
         channel = getArguments().getString("channel");
         provider = new NeteaseProvider(getActivity(), channel);
-
     }
 
     @Override
@@ -104,6 +106,15 @@ public class NeteaseNewsFragment extends SherlockFragment {
         };
         request = new NeteaseRequest(getActivity(),provider, listener, true);
         task = new BaseTask(url, request);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), WebNewsActivity.class);
+                intent.putExtra("url", dataList.get((int)l).link);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

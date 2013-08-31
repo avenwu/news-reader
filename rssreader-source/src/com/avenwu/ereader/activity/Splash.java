@@ -1,6 +1,7 @@
 package com.avenwu.ereader.activity;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -18,15 +19,11 @@ public class Splash extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
         // MediaManager.startAd(MenuActivity.this,
         // MediaManager.LEFT_TOP, KUGUO_APP_ID, "m-appchina");
-        AppConnect.getInstance(Constant.WAPS_APP_ID, "WAPS", this);
-        AppConnect.getInstance(this).setAdViewClassName(
-                "com.avenwu.ereader.activity.MyAdView");
-        AppConnect.getInstance(this).setCrashReport(false);
+        AppConnect.getInstance(this).setCrashReport(true);
         AppConnect.getInstance(this).initPopAd(this);
         AppConnect.getInstance(this).showPopAd(this);
         timer = new CountDownTimer(MILLIS, INTERVAL) {
@@ -58,5 +55,13 @@ public class Splash extends Activity {
     public void onBackPressed() {
         timer.cancel();
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Dialog dialog = AppConnect.getInstance(this).getPopAdDialog();
+        if (dialog!=null)
+            dialog.dismiss();
+        super.onDestroy();
     }
 }

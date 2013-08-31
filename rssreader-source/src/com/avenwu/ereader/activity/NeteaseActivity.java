@@ -1,11 +1,15 @@
 package com.avenwu.ereader.activity;
 
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,17 +20,20 @@ import com.avenwu.ereader.model.NetEaseChannel;
 import com.avenwu.ereader.netease.NeteaseNewsFragment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class NeteaseActivity extends SherlockFragmentActivity {
     private static final String TAG = "NeteaseActivity";
     private ViewPager contentPager;
     private ArrayList<NetEaseChannel> channels = new ArrayList<NetEaseChannel>();
-
+    private TabTracker tabTracker;
     @Override
     protected void onCreate(Bundle arg0) {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(arg0);
         setContentView(R.layout.net_ease_layout);
+        tabTracker = new TabTracker(R.id.lr_tab_container);
         String[] links = getResources().getStringArray(R.array.netease_channel_links);
         String[] names = getResources().getStringArray(R.array.netease_channel_names);
         for (int i = 0; i < links.length; i++) {
@@ -38,7 +45,21 @@ public class NeteaseActivity extends SherlockFragmentActivity {
         contentPager = (ViewPager) findViewById(R.id.pager_contents);
         contentPager.setAdapter(new NeteasePagerAdapter(
                 getSupportFragmentManager()));
+        contentPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i2) {
+            }
 
+            @Override
+            public void onPageSelected(int i) {
+                if (tabTracker!=null)
+                    tabTracker.updateTab(i);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+            }
+        });
     }
 
     @Override
@@ -54,8 +75,8 @@ public class NeteaseActivity extends SherlockFragmentActivity {
     }
 
     public void menuClick(View view) {
-        Toast.makeText(this, "menu clicked," + ((TextView) view).getText(),
-                Toast.LENGTH_SHORT).show();
+        int index = tabTracker.updateTab(view);
+        contentPager.setCurrentItem(index);
     }
 
     public class NeteasePagerAdapter extends FragmentStatePagerAdapter {
@@ -81,4 +102,56 @@ public class NeteaseActivity extends SherlockFragmentActivity {
         }
 
     }
+
+    /**
+     * Helper class to change the status of the Tab at bottom
+     */
+    private class TabTracker{
+        private HorizontalScrollView hView;
+        private Rect rect = new Rect();
+        public ViewGroup tabContainer;
+        public View previousTab;
+        private final int DEFAULT_TAB_INDEX = 0;
+        private Map<Integer,Integer> indexMap = new HashMap<Integer, Integer>();// id -- index mapping
+        private int FOCUS_STATUS = View.FOCUS_RIGHT;
+
+        public TabTracker(int containerId){
+            this.hView = (HorizontalScrollView)findViewById(R.id.hs_menus);
+            this.tabContainer = (ViewGroup)findViewById(containerId);
+            this.previousTab = this.tabContainer.getChildAt(DEFAULT_TAB_INDEX);
+            for (int index = 0; index < tabContainer.getChildCount(); index++){
+                indexMap.put(tabContainer.getChildAt(index).getId(),index);
+            }
+        }
+
+        /**
+         * Update the tab background after clicked event
+         * @param view tab being clicked
+         * @return index of the tab being clicked
+         */
+        public int updateTab(View view) {
+            previousTab.setBackgroundResource(android.R.color.transparent);
+            view.setBackgroundResource(R.drawable.tab_light_bg);
+            FOCUS_STATUS = indexMap.get(view.getId()) > indexMap.get(previousTab.getId()) ? View.FOCUS_RIGHT : View.FOCUS_LEFT;
+            previousTab = view;
+            return indexMap.get(view.getId());
+        }
+
+        /**
+         * Update the tab background after scrolled viewpager
+         * @param index
+         */
+        public void updateTab(int index) {
+            previousTab.setBackgroundResource(android.R.color.transparent);
+            FOCUS_STATUS = index > indexMap.get(previousTab.getId()) ? View.FOCUS_RIGHT : View.FOCUS_LEFT;
+            previousTab = this.tabContainer.getChildAt(index);
+            previousTab.setBackgroundResource(R.drawable.tab_light_bg);
+            hView.getHitRect(rect);
+            //TODO scroll left needs to be checked later
+            if (!previousTab.getLocalVisibleRect(rect)) {
+                hView.pageScroll(FOCUS_STATUS);
+            }
+        }
+    }
+
 }

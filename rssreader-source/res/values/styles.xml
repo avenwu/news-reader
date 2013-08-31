@@ -25,15 +25,15 @@
     </style>
 
     <style name="NET_EASE_MENU_STYLE">
-        <item name="android:background">@color/abs__background_holo_dark</item>
         <item name="android:paddingLeft">10dp</item>
         <item name="android:textSize">16sp</item>
         <item name="android:paddingRight">10dp</item>
         <item name="android:clickable">true</item>
         <item name="android:onClick">menuClick</item>
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">60dp</item>
         <item name="android:layout_height">48dp</item>
         <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
 </resources>

@@ -50,6 +50,8 @@ public class PhotoFragment extends SherlockFragment {
                     public void onLoaded(ImageView imageView,
                             Bitmap loadedBitmap, String url,
                             boolean loadedFromCache) {
+                        if(PhotoFragment.this.isRemoving()||imageView==null||loadedBitmap==null)
+                            return;
                         float s = loadedBitmap.getHeight()
                                 / loadedBitmap.getWidth();
                         if (s >= 2 || s <= 0.5) {
@@ -65,5 +67,11 @@ public class PhotoFragment extends SherlockFragment {
                         }
                     }
                 });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        photoView = null;
     }
 }
