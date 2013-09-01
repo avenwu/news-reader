@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:paddingBottom="20dp"
     android:paddingLeft="15dp"
-    android:paddingTop="20dp" >
+ >
 
     <TextView
         android:id="@+id/tv_menu_title"
@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:gravity="center"
+        android:layout_marginTop="20dp"
         android:maxLines="2"
         android:singleLine="true"
         android:text="title"
@@ -29,5 +30,15 @@
         android:gravity="center"
         android:maxLines="3"
         android:text="description" />
-
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_sticker"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:text="@string/No.x"
+            android:background="@drawable/ic_sticker_blue"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"/>
 </RelativeLayout>

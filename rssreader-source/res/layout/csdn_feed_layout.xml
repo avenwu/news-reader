@@ -8,7 +8,7 @@
     <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/lv_csdn_news"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layoutAnimation="@anim/list_layout_wave_scale" />
 
 </LinearLayout>

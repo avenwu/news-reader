@@ -1,22 +1,9 @@
 package com.avenwu.ereader.model;
 
 public class NewsMenuItem {
-	private String menuTitle;
-	private String menuDescription;
-
-	public String getMenuTitle() {
-		return menuTitle;
-	}
-
-	public void setMenuTitle(String menuTitle) {
-		this.menuTitle = menuTitle;
-	}
-
-	public String getMenuDescription() {
-		return menuDescription;
-	}
-
-	public void setMenuDescription(String menuDescription) {
-		this.menuDescription = menuDescription;
-	}
+	public String menuTitle;
+	public String menuDescription;
+    public String stickerIndex;
+    public int stickerBackground;
+    public int layutBackground;
 }

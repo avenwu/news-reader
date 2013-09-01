@@ -60,5 +60,5 @@
     <string name="netease_blog">博客</string>
     <string name="netease_marketing">营销</string>
     <string name="web_client">浏览器</string>
-
+    <string name="No.x">No.%d</string>
 </resources>

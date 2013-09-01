@@ -7,20 +7,21 @@
             android:id="@+id/hs_menus"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/tab_dark_bg"
+            android:background="@drawable/tab_normal"
             android:scrollbars="none"
             android:layout_alignParentBottom="true">
 
         <LinearLayout
                 android:id="@+id/lr_tab_container"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
             <TextView
                     android:id="@+id/btn_new"
                     style="@style/NET_EASE_MENU_STYLE"
-                    android:background="@drawable/tab_light_bg"
+                    android:background="@drawable/tab_pressed"
+                    android:textColor="@color/light_green_669900"
                     android:text="@string/netease_news"/>
 
             <TextView
@@ -72,6 +73,7 @@
                     android:id="@+id/btn_game"
                     style="@style/NET_EASE_MENU_STYLE"
                     android:text="@string/netease_games"/>
+
             <TextView
                     android:id="@+id/btn_book"
                     style="@style/NET_EASE_MENU_STYLE"

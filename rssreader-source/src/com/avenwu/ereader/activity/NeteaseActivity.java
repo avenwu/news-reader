@@ -8,10 +8,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
@@ -110,15 +108,16 @@ public class NeteaseActivity extends SherlockFragmentActivity {
         private HorizontalScrollView hView;
         private Rect rect = new Rect();
         public ViewGroup tabContainer;
-        public View previousTab;
+        public TextView previousTab;
         private final int DEFAULT_TAB_INDEX = 0;
         private Map<Integer,Integer> indexMap = new HashMap<Integer, Integer>();// id -- index mapping
         private int FOCUS_STATUS = View.FOCUS_RIGHT;
-
+        private int tabTextPressedColor = getResources().getColor(R.color.light_green_669900);
+        private int tabTextDefaultColor = getResources().getColor(android.R.color.white);
         public TabTracker(int containerId){
             this.hView = (HorizontalScrollView)findViewById(R.id.hs_menus);
             this.tabContainer = (ViewGroup)findViewById(containerId);
-            this.previousTab = this.tabContainer.getChildAt(DEFAULT_TAB_INDEX);
+            this.previousTab = (TextView)this.tabContainer.getChildAt(DEFAULT_TAB_INDEX);
             for (int index = 0; index < tabContainer.getChildCount(); index++){
                 indexMap.put(tabContainer.getChildAt(index).getId(),index);
             }
@@ -130,10 +129,12 @@ public class NeteaseActivity extends SherlockFragmentActivity {
          * @return index of the tab being clicked
          */
         public int updateTab(View view) {
-            previousTab.setBackgroundResource(android.R.color.transparent);
-            view.setBackgroundResource(R.drawable.tab_light_bg);
+            previousTab.setBackgroundResource(R.drawable.tab_selector);
+            previousTab.setTextColor(tabTextDefaultColor);
+            view.setBackgroundResource(R.drawable.tab_pressed);
             FOCUS_STATUS = indexMap.get(view.getId()) > indexMap.get(previousTab.getId()) ? View.FOCUS_RIGHT : View.FOCUS_LEFT;
-            previousTab = view;
+            previousTab = (TextView)view;
+            previousTab.setTextColor(tabTextPressedColor);
             return indexMap.get(view.getId());
         }
 
@@ -142,10 +143,12 @@ public class NeteaseActivity extends SherlockFragmentActivity {
          * @param index
          */
         public void updateTab(int index) {
-            previousTab.setBackgroundResource(android.R.color.transparent);
+            previousTab.setBackgroundResource(R.drawable.tab_selector);
+            previousTab.setTextColor(tabTextDefaultColor);
             FOCUS_STATUS = index > indexMap.get(previousTab.getId()) ? View.FOCUS_RIGHT : View.FOCUS_LEFT;
-            previousTab = this.tabContainer.getChildAt(index);
-            previousTab.setBackgroundResource(R.drawable.tab_light_bg);
+            previousTab = (TextView)this.tabContainer.getChildAt(index);
+            previousTab.setBackgroundResource(R.drawable.tab_pressed);
+            previousTab.setTextColor(tabTextPressedColor);
             hView.getHitRect(rect);
             //TODO scroll left needs to be checked later
             if (!previousTab.getLocalVisibleRect(rect)) {

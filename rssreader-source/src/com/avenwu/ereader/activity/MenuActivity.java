@@ -74,10 +74,16 @@ public class MenuActivity extends SherlockActivity {
         String[] menuTitles = getResources().getStringArray(R.array.menu_titles);
         String[] menuDescriptions = getResources().getStringArray(
                 R.array.menu_descriptions);
+        int[] stickerBg = {R.drawable.ic_sticker_blue, R.drawable.ic_sticker_purple, R.drawable.ic_sticker_grenn, R.drawable.ic_sticker_oriange};
+        int[] backgroundIds = new int[]{R.drawable.blue_bg, R.drawable.purple_bg,
+                R.drawable.green_bg, R.drawable.orange_bg, R.drawable.red_bg};
         for (int i = 0; i < menuTitles.length; i++) {
             NewsMenuItem item = new NewsMenuItem();
-            item.setMenuTitle(menuTitles[i]);
-            item.setMenuDescription(menuDescriptions[i]);
+            item.layutBackground = backgroundIds[i];
+            item.stickerIndex = getResources().getString(R.string.No_x,i+1);
+            item.menuTitle = menuTitles[i];
+            item.menuDescription = menuDescriptions[i];
+            item.stickerBackground = stickerBg[i];
             menuItems.add(item);
         }
         return menuItems;

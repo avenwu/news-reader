@@ -20,7 +20,6 @@ import java.util.List;
 public class MenuAdapter extends BaseAdapter {
     private List<NewsMenuItem> menuDataList;
     private LayoutInflater inflater;
-    private int[] backgroundIds;
     private int columnNumber;
     private boolean columnChanged;
     private ScaleAnimation scaleAnimation;
@@ -37,8 +36,6 @@ public class MenuAdapter extends BaseAdapter {
         menuDataList = menuItems;
         inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        backgroundIds = new int[]{R.drawable.blue_bg, R.drawable.purple_bg,
-                R.drawable.green_bg, R.drawable.orange_bg, R.drawable.red_bg};
         scaleAnimation = new ScaleAnimation(0, 1, 0, 1,
                 ScaleAnimation.RELATIVE_TO_SELF, .5f,
                 ScaleAnimation.RELATIVE_TO_SELF, .5f);
@@ -75,13 +72,17 @@ public class MenuAdapter extends BaseAdapter {
                     .findViewById(R.id.tv_menu_title);
             holder.tvDescription = (TextView) convertView
                     .findViewById(R.id.tv_menu_description);
+            holder.ivSticker = (TextView)convertView.findViewById(R.id.iv_sticker);
+            holder.ivSticker.setVisibility(View.GONE);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.parentLayout.setBackgroundResource(backgroundIds[position]);
-        holder.tvTitle.setText(item.getMenuTitle());
-        holder.tvDescription.setText(item.getMenuDescription());
+        holder.tvTitle.setText(item.menuTitle);
+//        holder.ivSticker.setBackgroundResource(item.stickerBackground);
+//        holder.ivSticker.setText(item.stickerIndex);
+        holder.tvDescription.setText(item.menuDescription);
+        holder.parentLayout.setBackgroundResource(item.layutBackground);
         if (position == menuDataList.size() - 1) {
             columnChanged = false;
         }
@@ -92,7 +93,7 @@ public class MenuAdapter extends BaseAdapter {
     static class ViewHolder {
         public TextView tvTitle;
         public TextView tvDescription;
-        public ImageView ivIcon;
         public View parentLayout;
+        public TextView ivSticker;
     }
 }
