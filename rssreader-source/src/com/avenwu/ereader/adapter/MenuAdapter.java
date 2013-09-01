@@ -79,8 +79,6 @@ public class MenuAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.tvTitle.setText(item.menuTitle);
-//        holder.ivSticker.setBackgroundResource(item.stickerBackground);
-//        holder.ivSticker.setText(item.stickerIndex);
         holder.tvDescription.setText(item.menuDescription);
         holder.parentLayout.setBackgroundResource(item.layutBackground);
         if (position == menuDataList.size() - 1) {

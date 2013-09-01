@@ -25,7 +25,7 @@ public class CnblogsNewsFeedActivity extends SherlockFragmentActivity implements
     private String[] catalogStrings;
     private int curent_catalog_index = -1;
     private RefreshView refreshView;
-    private ImageView ivHomeBack;
+    private View ivHomeBack;
     private TextView tvTitle;
     private String[] titleArray;
 
@@ -57,7 +57,7 @@ public class CnblogsNewsFeedActivity extends SherlockFragmentActivity implements
     private void initViews() {
         catalogStrings = getResources().getStringArray(R.array.cnblogs_catalog);
         refreshView = (RefreshView) findViewById(R.id.refreshView1);
-        ivHomeBack = (ImageView) findViewById(R.id.iv_back);
+        ivHomeBack = findViewById(R.id.iv_back);
         tvTitle = (TextView) findViewById(R.id.tv_title);
     }
 

@@ -150,7 +150,7 @@ public class NeteaseActivity extends SherlockFragmentActivity {
             previousTab.setBackgroundResource(R.drawable.tab_pressed);
             previousTab.setTextColor(tabTextPressedColor);
             hView.getHitRect(rect);
-            //TODO scroll left needs to be checked later
+            //TODO scroll popup_left_unpressed needs to be checked later
             if (!previousTab.getLocalVisibleRect(rect)) {
                 hView.pageScroll(FOCUS_STATUS);
             }

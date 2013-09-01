@@ -1,5 +1,7 @@
 package com.avenwu.ereader.activity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -8,8 +10,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.GridView;
-import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
@@ -22,11 +25,11 @@ import com.avenwu.ereader.model.NewsMenuItem;
 import com.avenwu.ereader.service.NetworkReceiver;
 import com.avenwu.ereader.task.TaskManager;
 import com.avenwu.ereader.utils.NetworkHelper;
+import com.avenwu.ereader.view.GridviewWrapper;
 import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 
-import cn.waps.AdView;
 import cn.waps.AppConnect;
 
 public class MenuActivity extends SherlockActivity {
@@ -36,10 +39,11 @@ public class MenuActivity extends SherlockActivity {
     private final byte CSDN = 1;
     private final byte NET_EASE = 2;
     private final byte BAIDU = 3;
-    private LinearLayout adContainer;
-    public GridView menuView;
-    public MenuAdapter menuAdapter;
+    public GridviewWrapper gvWrapper;
+    public MenuAdapter adapter;
     public int tempColumn = 1;
+    private View settingBtn;
+    private Dialog popupDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +57,13 @@ public class MenuActivity extends SherlockActivity {
     private void init() {
         SharedPreferences sp = getSharedPreferences("config", 0);
         tempColumn = sp.getInt("menu_column", 1);
-        menuView = (GridView) findViewById(R.id.gv_menu);
-        adContainer = (LinearLayout) findViewById(R.id.ll_ad);
-        menuView.setNumColumns(tempColumn);
-        menuAdapter = new MenuAdapter(this, getMenuItems());
-        menuView.setAdapter(menuAdapter);
-        menuView.setOnItemClickListener(getMenuListener());
-        new AdView(this, adContainer).DisplayAd();
+        gvWrapper = new GridviewWrapper((GridView) findViewById(R.id.gv_menu));
+        settingBtn = findViewById(R.id.btn_setting);
+        gvWrapper.addFooterView(View.inflate(this, R.layout.menu_footer, null));
+        gvWrapper.setNumColumns(tempColumn);
+        adapter = new MenuAdapter(this, getMenuItems());
+        gvWrapper.setAdapter(adapter);
+        gvWrapper.setOnItemClickListener(getMenuListener());
     }
 
     private void registerNetwork() {
@@ -80,7 +84,7 @@ public class MenuActivity extends SherlockActivity {
         for (int i = 0; i < menuTitles.length; i++) {
             NewsMenuItem item = new NewsMenuItem();
             item.layutBackground = backgroundIds[i];
-            item.stickerIndex = getResources().getString(R.string.No_x,i+1);
+            item.stickerIndex = getResources().getString(R.string.No_x, i + 1);
             item.menuTitle = menuTitles[i];
             item.menuDescription = menuDescriptions[i];
             item.stickerBackground = stickerBg[i];
@@ -141,19 +145,39 @@ public class MenuActivity extends SherlockActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_list_filter:
-                tempColumn = menuView.getNumColumns() == 1 ? 2 : 1;
+                tempColumn = gvWrapper.getNumColumns() == 1 ? 2 : 1;
                 item.setIcon(tempColumn == 1 ? R.drawable.ic_filter_grid_light
                         : R.drawable.ic_filter_list_light);
-                menuView.setNumColumns(tempColumn);
-                menuAdapter.setColumnNumber(tempColumn);
+                gvWrapper.setNumColumns(tempColumn);
+                adapter.setColumnNumber(tempColumn);
                 SharedPreferences sp = getSharedPreferences("config", 0);
                 sp.edit().putInt("menu_column", tempColumn).commit();
-                menuAdapter.notifyDataSetChanged();
+                gvWrapper.notifyDataSetChanged();
                 break;
             default:
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onSettingClick(View view) {
+        Toast.makeText(this, "Setting clicked", Toast.LENGTH_SHORT).show();
+//        if (popupDialog == null) {
+//            popupDialog = new Dialog(this);
+//            popupDialog.setContentView(R.layout.popup_setting_layout);
+//
+//        }
+//        if (popupDialog.isShowing())
+//            popupDialog.dismiss();
+//        else
+//            popupDialog.show();
+        // TODO
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setView(View.inflate(this,R.layout.popup_setting_layout,null));
+//        AlertDialog dialog = builder.create();
+//        dialog.setCanceledOnTouchOutside(true);
+//        dialog.show();
+
     }
 
     @Override

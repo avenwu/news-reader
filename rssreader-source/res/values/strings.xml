@@ -10,7 +10,7 @@
     <string name="url_csdn_geek_news">http://geek.csdn.net/news/rss</string>
     <!-- news menu item -->
     <string name="cnblog_description">The world is changing by code</string>
-    <string name="app_name">壹读</string>
+    <string name="app_name">e读</string>
     <!-- cnblogs sumary fo each newsfeed -->
     <string name="published_at"> 发表于 </string>
     <string name="comment">评论(%s)</string>
@@ -61,4 +61,6 @@
     <string name="netease_marketing">营销</string>
     <string name="web_client">浏览器</string>
     <string name="No.x">No.%d</string>
+    <string name="read_more">e读，每天多读一点</string>
+    <string name="copy_right">© xxx</string>
 </resources>

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import com.avenwu.ereader.model.NeteaseNewsItem;
 import com.avenwu.ereader.task.BaseListener;
 import com.avenwu.ereader.task.BaseTask;
 import com.android.volley.volleyhelper.QueryDbTask;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import java.util.ArrayList;
@@ -102,6 +104,8 @@ public class NeteaseNewsFragment extends SherlockFragment {
             @Override
             public void onFinished() {
                 super.onFinished();
+                if(listView!=null)
+                    listView.onRefreshComplete();
             }
         };
         request = new NeteaseRequest(getActivity(),provider, listener, true);
@@ -113,6 +117,20 @@ public class NeteaseNewsFragment extends SherlockFragment {
                 intent.setClass(getActivity(), WebNewsActivity.class);
                 intent.putExtra("url", dataList.get((int)l).link);
                 startActivity(intent);
+            }
+        });
+        listView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+            @Override
+            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+                if (task!=null){
+                    task.cancel();
+                    task.start();
+                }
+            }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+
             }
         });
     }

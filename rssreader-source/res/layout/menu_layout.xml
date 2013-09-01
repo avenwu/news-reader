@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/parent_rl"
@@ -13,20 +13,31 @@
         android:layout_height="wrap_content"
         android:horizontalSpacing="5dp"
         android:layoutAnimation="@anim/layout_grid_inverse_fade"
-        android:listSelector="@null"
         android:numColumns="1"
+        android:cacheColorHint="@null"
+        android:listSelector="@android:color/transparent"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="5dp" >
+        android:divider="@null"
+        android:verticalSpacing="5dp">
     </GridView>
-    <!--android:layout_below="@id/gv_menu"-->
 
-    <LinearLayout
-        android:id="@+id/ll_ad"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_horizontal"
-        android:orientation="vertical" />
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:id="@+id/imageView"
+            android:background="@drawable/icon_bottom_bar"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
 
-</LinearLayout>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_setting"
+            android:background="@drawable/setting_bg"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dp"
+            android:onClick="onSettingClick"
+            android:layout_centerHorizontal="true"/>
+
+
+</RelativeLayout>
