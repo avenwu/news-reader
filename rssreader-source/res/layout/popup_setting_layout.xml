@@ -9,18 +9,18 @@
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="A"
+            android:background="@drawable/popup_left_bg"
             android:id="@+id/btn_clear_cache"/>
 
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="B"
+            android:background="@drawable/popup_middle_bg"
             android:id="@+id/btn_feedback"/>
 
     <Button
             android:layout_width="wrap_content"
-            android:text="C"
+            android:background="@drawable/popup_right_bg"
             android:layout_height="wrap_content"
             android:id="@+id/btn_about_us"/>
 </LinearLayout>
