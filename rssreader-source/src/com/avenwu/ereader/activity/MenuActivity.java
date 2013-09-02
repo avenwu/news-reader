@@ -7,7 +7,11 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.Animation;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -51,7 +55,6 @@ public class MenuActivity extends SherlockActivity {
         setContentView(R.layout.menu_layout);
         registerNetwork();
         init();
-        MobclickAgent.setDebugMode(true);
     }
 
     private void init() {
@@ -64,6 +67,12 @@ public class MenuActivity extends SherlockActivity {
         adapter = new MenuAdapter(this, getMenuItems());
         gvWrapper.setAdapter(adapter);
         gvWrapper.setOnItemClickListener(getMenuListener());
+        // MediaManager.startAd(MenuActivity.this,
+        // MediaManager.LEFT_TOP, KUGUO_APP_ID, "m-appchina");
+        AppConnect.getInstance(this).setCrashReport(true);
+        AppConnect.getInstance(this).initPopAd(this);
+        // AppConnect.getInstance(this).showPopAd(this);
+        MobclickAgent.setDebugMode(true);
     }
 
     private void registerNetwork() {
@@ -161,22 +170,43 @@ public class MenuActivity extends SherlockActivity {
     }
 
     public void onSettingClick(View view) {
-        Toast.makeText(this, "Setting clicked", Toast.LENGTH_SHORT).show();
-//        if (popupDialog == null) {
-//            popupDialog = new Dialog(this);
-//            popupDialog.setContentView(R.layout.popup_setting_layout);
-//
-//        }
-//        if (popupDialog.isShowing())
-//            popupDialog.dismiss();
-//        else
-//            popupDialog.show();
-        // TODO
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setView(View.inflate(this,R.layout.popup_setting_layout,null));
-//        AlertDialog dialog = builder.create();
-//        dialog.setCanceledOnTouchOutside(true);
-//        dialog.show();
+        if (popupDialog == null) {
+            popupDialog = new Dialog(this);
+            popupDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            View popupView = View.inflate(this, R.layout.popup_setting_layout, null);
+            popupDialog.setContentView(popupView);
+            WindowManager.LayoutParams layoutParams = popupDialog.getWindow().getAttributes();
+            layoutParams.windowAnimations = Animation.INFINITE;//TODO
+            layoutParams.dimAmount = 0f;
+            layoutParams.height = (int) getResources().getDimension(R.dimen.popup_height);
+            layoutParams.y = ((int) settingBtn.getY() >> 1) - layoutParams.height;
+            popupView.findViewById(R.id.btn_clear_cache).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(MenuActivity.this, "Clear cache", Toast.LENGTH_SHORT).show();
+                }
+            });
+            popupView.findViewById(R.id.btn_feedback).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(MenuActivity.this, "Feedback", Toast.LENGTH_SHORT).show();
+                }
+            });
+            popupView.findViewById(R.id.btn_about_us).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(MenuActivity.this, "Aboout us", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+        if (popupDialog.isShowing())
+            popupDialog.dismiss();
+        else
+            popupDialog.show();
+    }
+
+    public void onBottomTabClicked(View view) {
+        //do nothing here
 
     }
 
