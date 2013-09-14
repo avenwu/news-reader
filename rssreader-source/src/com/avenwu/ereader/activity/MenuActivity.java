@@ -9,12 +9,15 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -31,6 +34,7 @@ import com.avenwu.ereader.task.TaskManager;
 import com.avenwu.ereader.utils.NetworkHelper;
 import com.avenwu.ereader.view.GridviewWrapper;
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.fb.FeedbackAgent;
 
 import java.util.ArrayList;
 
@@ -48,6 +52,7 @@ public class MenuActivity extends SherlockActivity {
     public int tempColumn = 1;
     private View settingBtn;
     private Dialog popupDialog;
+    private FeedbackAgent agent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +78,9 @@ public class MenuActivity extends SherlockActivity {
         AppConnect.getInstance(this).initPopAd(this);
         // AppConnect.getInstance(this).showPopAd(this);
         MobclickAgent.setDebugMode(true);
+        agent = new FeedbackAgent(MenuActivity.this);
+        agent.sync();
+
     }
 
     private void registerNetwork() {
@@ -170,41 +178,73 @@ public class MenuActivity extends SherlockActivity {
     }
 
     public void onSettingClick(View view) {
-        if (popupDialog == null) {
-            popupDialog = new Dialog(this);
-            popupDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            View popupView = View.inflate(this, R.layout.popup_setting_layout, null);
-            popupDialog.setContentView(popupView);
-            WindowManager.LayoutParams layoutParams = popupDialog.getWindow().getAttributes();
-            layoutParams.windowAnimations = Animation.INFINITE;//TODO
-            layoutParams.dimAmount = 0f;
-            layoutParams.height = (int) getResources().getDimension(R.dimen.popup_height);
-            layoutParams.y = ((int) settingBtn.getY() >> 1) - layoutParams.height;
-            popupView.findViewById(R.id.btn_clear_cache).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(MenuActivity.this, "Clear cache", Toast.LENGTH_SHORT).show();
-                }
-            });
-            popupView.findViewById(R.id.btn_feedback).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(MenuActivity.this, "Feedback", Toast.LENGTH_SHORT).show();
-                }
-            });
-            popupView.findViewById(R.id.btn_about_us).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(MenuActivity.this, "Aboout us", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-        if (popupDialog.isShowing())
-            popupDialog.dismiss();
-        else
-            popupDialog.show();
+//        if (popupDialog == null) {
+//            popupDialog = new Dialog(this);
+//            popupDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//            View popupView = View.inflate(this, R.layout.popup_setting_layout, null);
+//            popupDialog.setContentView(popupView);
+//            ExpandableListView lv = (ExpandableListView)popupView.findViewById(R.id.expandableListView);
+//            SettingAdapter settingAdapter = new SettingAdapter();
+//            lv.setAdapter(settingAdapter);
+//        }
+//        if (popupDialog.isShowing())
+//            popupDialog.dismiss();
+//        else
+//            popupDialog.show();
+        agent.startFeedbackActivity();
     }
+    private class SettingAdapter extends BaseExpandableListAdapter{
+        private String[] settingGroup = getResources().getStringArray(R.array.setting_group);
+        @Override
+        public int getGroupCount() {
+            return settingGroup.length;
+        }
 
+        @Override
+        public int getChildrenCount(int groupPosition) {
+            return 1;
+        }
+
+        @Override
+        public Object getGroup(int groupPosition) {
+            return settingGroup[groupPosition];
+        }
+
+        @Override
+        public Object getChild(int groupPosition, int childPosition) {
+            return null;
+        }
+
+        @Override
+        public long getGroupId(int groupPosition) {
+            return groupPosition;
+        }
+
+        @Override
+        public long getChildId(int groupPosition, int childPosition) {
+            return childPosition;
+        }
+
+        @Override
+        public boolean hasStableIds() {
+            return false;
+        }
+
+        @Override
+        public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+            return null;
+        }
+
+        @Override
+        public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+            return null;
+        }
+
+        @Override
+        public boolean isChildSelectable(int groupPosition, int childPosition) {
+            return false;
+        }
+    }
     public void onBottomTabClicked(View view) {
         //do nothing here
 

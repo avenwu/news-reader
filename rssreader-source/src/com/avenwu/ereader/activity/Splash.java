@@ -25,6 +25,7 @@ public class Splash extends Activity {
         setContentView(R.layout.splash);
         backgroundView = findViewById(R.id.iv_background);
         Animation scaleAnimation = AnimationUtils.loadAnimation(this, R.anim.scale_up);
+        scaleAnimation.setFillAfter(true);
         backgroundView.startAnimation(scaleAnimation);
         timer = new CountDownTimer(MILLIS, INTERVAL) {
             @Override

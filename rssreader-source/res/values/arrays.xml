@@ -47,4 +47,10 @@
         <item>头条要闻_网易游戏频道</item>
         <item>在线阅读_网易读书频道</item>
     </string-array>
+    <string-array name="setting_group">
+        <item>关于我们</item>
+        <item>意见反馈</item>
+        <item>清理缓存</item>
+    </string-array>
+
 </resources>
