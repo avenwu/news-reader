@@ -62,5 +62,12 @@
     <string name="web_client">浏览器</string>
     <string name="No.x">No.%d</string>
     <string name="read_more">e读，每天多读一点</string>
-    <string name="copy_right">© xxx</string>
+    <string name="copy_right">© 2013 多乐工作室</string>
+    <string name="click_to_report">简信: 我有话要说...</string>
+    <string name="clear_cache">单击清除</string>
+    <string name="clear_succes">缓存清理完毕.</string>
+    <string name="email">Email:\ndolerstudio@gmail.com</string>
+    <string name="qq">QQ: 1611964388</string>
+    <string name="cache_info">清除新闻和图片缓存数据...</string>
+    <string name="copyed">已复制到粘贴板</string>
 </resources>

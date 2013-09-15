@@ -103,6 +103,18 @@ public class OrmDBHelper extends OrmLiteSqliteOpenHelper {
         TableUtils.clearTable(connectionSource, cl);
     }
 
+    public void clearCache() throws SQLException {
+        Log.i(OrmDBHelper.class.getName(), "onUpgrade");
+        TableUtils.dropTable(getConnectionSource(), AuthorInfo.class, true);
+        TableUtils
+                .dropTable(getConnectionSource(), PickedDetailItem.class, true);
+        TableUtils.dropTable(getConnectionSource(), HomeDetailItem.class, true);
+        TableUtils.dropTable(getConnectionSource(), PhotoFeedItem.class, true);
+        TableUtils.dropTable(getConnectionSource(), CsdnNewsItem.class, true);
+        TableUtils.dropTable(getConnectionSource(), NeteaseNewsItem.class, true);
+        createTables(getConnectionSource());
+    }
+
     @Override
     public synchronized void close() {
         super.close();

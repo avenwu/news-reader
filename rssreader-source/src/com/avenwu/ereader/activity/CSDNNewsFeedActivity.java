@@ -66,25 +66,14 @@ public class CSDNNewsFeedActivity extends SherlockActivity {
         newsListView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
-                    final int position, long id) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Message msgMessage = urlHandler.obtainMessage();
-                            msgMessage.obj = ParseManager.jsoupParse(DataCenter
-                                    .getInstance().getCsdnNewsData()
-                                    .get(position).link);
-                            msgMessage.sendToTarget();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }).start();
+                                    final int position, long id) {
+                CsdnNewsItem dataItem = (CsdnNewsItem) parent.getAdapter().getItem(position);
+                Message msgMessage = urlHandler.obtainMessage();
+                msgMessage.obj = dataItem.link;
+                msgMessage.sendToTarget();
             }
         });
         newsListView.setOnRefreshListener(new OnRefreshListener<ListView>() {
-
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
                 startTask();
@@ -98,7 +87,6 @@ public class CSDNNewsFeedActivity extends SherlockActivity {
         case android.R.id.home:
             finish();
             break;
-
         default:
             break;
         }
@@ -109,13 +97,13 @@ public class CSDNNewsFeedActivity extends SherlockActivity {
         daoManager = DaoManager.getInstance(this);
         newsListView = (PullToRefreshListView) findViewById(R.id.lv_csdn_news);
         footerView = View.inflate(this, R.layout.ll_ad_layout, null);
-        newsListView.getRefreshableView().addHeaderView(footerView);
-        new AdView(this, (LinearLayout) footerView).DisplayAd();
+        newsListView.getRefreshableView().addFooterView(footerView);
         urlHandler = new UrlHandler(this);
         listener = new BaseListener<ArrayList<CsdnNewsItem>>() {
             @Override
             public void onSuccess(ArrayList<CsdnNewsItem> result) {
-                DataCenter.getInstance().replaceCsdnNewsItems(result);
+                if (result.size() > 0)
+                    DataCenter.getInstance().replaceCsdnNewsItems(result);
                 if (CSDNNewsFeedActivity.this.isFinishing()) {
                     return;
                 }
@@ -125,6 +113,7 @@ public class CSDNNewsFeedActivity extends SherlockActivity {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+                new AdView(CSDNNewsFeedActivity.this, (LinearLayout) footerView).DisplayAd();
             }
 
             @Override
@@ -182,7 +171,7 @@ public class CSDNNewsFeedActivity extends SherlockActivity {
         task.start();
     }
 
-    public static class UrlHandler extends Handler {
+    public class UrlHandler extends Handler {
         private WeakReference<CSDNNewsFeedActivity> activity;
 
         public UrlHandler(CSDNNewsFeedActivity activity) {
@@ -193,12 +182,6 @@ public class CSDNNewsFeedActivity extends SherlockActivity {
         public void handleMessage(Message msg) {
             if (activity.get() != null) {
                 Intent intent = new Intent();
-                // intent.setAction("android.intent.action.VIEW");
-                // Uri content_url = Uri.parse((String) msg.obj);
-                // intent.setData(content_url);
-                // intent.setClassName("com.android.browser",
-                // "com.android.browser.BrowserActivity");
-                // activity.get().startActivity(intent);
                 intent.setClass(activity.get(), WebNewsActivity.class);
                 intent.putExtra("url", (String) msg.obj);
                 activity.get().startActivity(intent);

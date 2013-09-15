@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.android.volley.Response;
 import com.avenwu.ereader.R;
 import com.avenwu.ereader.activity.WebNewsActivity;
+import com.avenwu.ereader.model.CsdnNewsItem;
 import com.avenwu.ereader.model.NeteaseNewsItem;
 import com.avenwu.ereader.task.BaseListener;
 import com.avenwu.ereader.task.BaseTask;
@@ -24,6 +26,8 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import java.util.ArrayList;
+
+import cn.waps.AdView;
 
 public class NeteaseNewsFragment extends SherlockFragment {
     private String TAG = "NeteaseNewsFragment";
@@ -37,6 +41,7 @@ public class NeteaseNewsFragment extends SherlockFragment {
     private NeteaseProvider provider;
     private String channel;
     private QueryDbTask<NeteaseNewsItem> cacheTask;
+    private LinearLayout footerView;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,9 +55,10 @@ public class NeteaseNewsFragment extends SherlockFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.netease_feed_layout, null);
-        listView = (PullToRefreshListView) view
-                .findViewById(R.id.lv_netease_news);
+        listView = (PullToRefreshListView) view.findViewById(R.id.lv_netease_news);
         listView.setAdapter(adapter);
+        footerView = (LinearLayout) View.inflate(getActivity(), R.layout.ll_ad_layout, null);
+        listView.getRefreshableView().addFooterView(footerView);
         return view;
     }
 
@@ -68,6 +74,7 @@ public class NeteaseNewsFragment extends SherlockFragment {
                     Log.d(TAG, "cache received");
                     dataList.addAll(neteaseNewsItems);
                     adapter.notifyDataSetChanged();
+                    new AdView(getActivity(), footerView).DisplayAd();
                 }
             }
         });
@@ -76,8 +83,11 @@ public class NeteaseNewsFragment extends SherlockFragment {
             @Override
             public void onSuccess(ArrayList<NeteaseNewsItem> result) {
                 Log.d(TAG, result.toString());
+                if (result.size() > 0)
+                    dataList.clear();
                 dataList.addAll(result);
                 adapter.notifyDataSetChanged();
+                new AdView(getActivity(), footerView).DisplayAd();
             }
 
             @Override
@@ -104,25 +114,25 @@ public class NeteaseNewsFragment extends SherlockFragment {
             @Override
             public void onFinished() {
                 super.onFinished();
-                if(listView!=null)
+                if (listView != null)
                     listView.onRefreshComplete();
             }
         };
-        request = new NeteaseRequest(getActivity(),provider, listener, true);
+        request = new NeteaseRequest(getActivity(), provider, listener, true);
         task = new BaseTask(url, request);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), WebNewsActivity.class);
-                intent.putExtra("url", dataList.get((int)l).link);
+                intent.putExtra("url", dataList.get((int) l).link);
                 startActivity(intent);
             }
         });
         listView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-                if (task!=null){
+                if (task != null) {
                     task.cancel();
                     task.start();
                 }
@@ -130,7 +140,6 @@ public class NeteaseNewsFragment extends SherlockFragment {
 
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-
             }
         });
     }

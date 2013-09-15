@@ -1,24 +1,30 @@
 package com.avenwu.ereader.activity;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
@@ -27,15 +33,20 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.avenwu.ereader.R;
 import com.avenwu.ereader.adapter.MenuAdapter;
+import com.avenwu.ereader.dataprovider.DaoManager;
 import com.avenwu.ereader.dataprovider.DataCenter;
 import com.avenwu.ereader.model.NewsMenuItem;
 import com.avenwu.ereader.service.NetworkReceiver;
 import com.avenwu.ereader.task.TaskManager;
 import com.avenwu.ereader.utils.NetworkHelper;
 import com.avenwu.ereader.view.GridviewWrapper;
+import com.handmark.pulltorefresh.library.internal.FlipLoadingLayout;
+import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
+import com.pakg.m.MediaManager;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import cn.waps.AppConnect;
@@ -53,6 +64,7 @@ public class MenuActivity extends SherlockActivity {
     private View settingBtn;
     private Dialog popupDialog;
     private FeedbackAgent agent;
+    private ExpandableListView settingLv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,12 +84,11 @@ public class MenuActivity extends SherlockActivity {
         adapter = new MenuAdapter(this, getMenuItems());
         gvWrapper.setAdapter(adapter);
         gvWrapper.setOnItemClickListener(getMenuListener());
-        // MediaManager.startAd(MenuActivity.this,
-        // MediaManager.LEFT_TOP, KUGUO_APP_ID, "m-appchina");
+//        MediaManager.startAd(MenuActivity.this,
+//                MediaManager.LEFT_TOP, KUGUO_APP_ID, "m-appchina");
         AppConnect.getInstance(this).setCrashReport(true);
         AppConnect.getInstance(this).initPopAd(this);
-        // AppConnect.getInstance(this).showPopAd(this);
-        MobclickAgent.setDebugMode(true);
+        MobclickAgent.setDebugMode(false);
         agent = new FeedbackAgent(MenuActivity.this);
         agent.sync();
 
@@ -114,6 +125,7 @@ public class MenuActivity extends SherlockActivity {
     protected void onResume() {
         super.onResume();
         MobclickAgent.onResume(this);
+        settingBtn.startAnimation(AnimationUtils.loadAnimation(this, R.anim.setting_rotate));
     }
 
     public OnItemClickListener getMenuListener() {
@@ -178,23 +190,39 @@ public class MenuActivity extends SherlockActivity {
     }
 
     public void onSettingClick(View view) {
-//        if (popupDialog == null) {
-//            popupDialog = new Dialog(this);
-//            popupDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//            View popupView = View.inflate(this, R.layout.popup_setting_layout, null);
-//            popupDialog.setContentView(popupView);
-//            ExpandableListView lv = (ExpandableListView)popupView.findViewById(R.id.expandableListView);
-//            SettingAdapter settingAdapter = new SettingAdapter();
-//            lv.setAdapter(settingAdapter);
-//        }
-//        if (popupDialog.isShowing())
-//            popupDialog.dismiss();
-//        else
-//            popupDialog.show();
-        agent.startFeedbackActivity();
+        if (popupDialog == null) {
+            popupDialog = new Dialog(this);
+            popupDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            View popupView = View.inflate(this, R.layout.popup_setting_layout, null);
+            popupDialog.setContentView(popupView);
+            settingLv = (ExpandableListView) popupView.findViewById(R.id.expandableListView);
+            SettingAdapter settingAdapter = new SettingAdapter();
+            settingLv.setAdapter(settingAdapter);
+            settingLv.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+                @Override
+                public void onGroupExpand(int groupPosition) {
+                    for (int i = 0; i < settingLv.getChildCount(); i++) {
+                        if (i != groupPosition)
+                            settingLv.collapseGroup(i);
+
+                    }
+                }
+            });
+
+        }
+        if (popupDialog.isShowing())
+            popupDialog.dismiss();
+        else
+            popupDialog.show();
+        settingLv.expandGroup(0);
     }
-    private class SettingAdapter extends BaseExpandableListAdapter{
+
+    private class SettingAdapter extends BaseExpandableListAdapter {
         private String[] settingGroup = getResources().getStringArray(R.array.setting_group);
+        private final int ABOUT_US = 0;
+        private final int FEEDBACK = 1;
+        private final int CLEAR_CACHE = 2;
+
         @Override
         public int getGroupCount() {
             return settingGroup.length;
@@ -232,12 +260,55 @@ public class MenuActivity extends SherlockActivity {
 
         @Override
         public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-            return null;
+            if (convertView == null) {
+                convertView = View.inflate(MenuActivity.this, R.layout.seting_title, null);
+            }
+            ((TextView) convertView.findViewById(R.id.setting_menu_title)).setText(settingGroup[groupPosition]);
+            return convertView;
         }
 
         @Override
         public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-            return null;
+            switch (groupPosition) {
+                case ABOUT_US:
+                    convertView = View.inflate(MenuActivity.this, R.layout.about_us, null);
+                    break;
+                case FEEDBACK:
+                    convertView = View.inflate(MenuActivity.this, R.layout.feed_back, null);
+                    convertView.findViewById(R.id.tv_message).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            agent.startFeedbackActivity();
+                        }
+                    });
+                    convertView.findViewById(R.id.tv_qq).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ClipboardManager manager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                            ClipData clipData = ClipData.newPlainText(null, ((TextView) v).getText().subSequence(4, ((TextView) v).getText().length()));
+                            manager.setPrimaryClip(clipData);
+                            Toast.makeText(MenuActivity.this,R.string.copyed,Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+                    break;
+                case CLEAR_CACHE:
+                    convertView = View.inflate(MenuActivity.this, R.layout.clear_cache, null);
+                    convertView.findViewById(R.id.btn_clear).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            try {
+                                DaoManager.getDbHelper(MenuActivity.this).clearCache();
+                                UrlImageViewHelper.cleanup(MenuActivity.this, UrlImageViewHelper.CACHE_DURATION_INFINITE);
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+                            Toast.makeText(MenuActivity.this, R.string.clear_succes, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    break;
+            }
+            return convertView;
         }
 
         @Override
@@ -245,6 +316,7 @@ public class MenuActivity extends SherlockActivity {
             return false;
         }
     }
+
     public void onBottomTabClicked(View view) {
         //do nothing here
 
@@ -254,6 +326,7 @@ public class MenuActivity extends SherlockActivity {
     protected void onPause() {
         super.onPause();
         MobclickAgent.onPause(this);
+        settingBtn.clearAnimation();
     }
 
     @Override

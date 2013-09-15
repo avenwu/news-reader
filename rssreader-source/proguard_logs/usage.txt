@@ -1,0 +1,1879 @@
+com.android.volley.AuthFailureError:
+    34:36:public AuthFailureError(android.content.Intent)
+    43:44:public AuthFailureError(java.lang.String)
+    47:48:public AuthFailureError(java.lang.String,java.lang.Exception)
+    51:51:public android.content.Intent getResolutionIntent()
+com.android.volley.BuildConfig
+com.android.volley.Cache:
+    public abstract void invalidate(java.lang.String,boolean)
+    public abstract void remove(java.lang.String)
+    public abstract void clear()
+com.android.volley.DefaultRetryPolicy:
+    public static final int DEFAULT_TIMEOUT_MS
+    public static final int DEFAULT_MAX_RETRIES
+    public static final float DEFAULT_BACKOFF_MULT
+com.android.volley.ExecutorDelivery:
+    49:51:public ExecutorDelivery(java.util.concurrent.Executor)
+com.android.volley.NetworkResponse:
+    44:45:public NetworkResponse(byte[])
+com.android.volley.R
+com.android.volley.R$anim
+com.android.volley.R$array
+com.android.volley.R$attr
+com.android.volley.R$bool
+com.android.volley.R$color
+com.android.volley.R$dimen
+com.android.volley.R$drawable
+com.android.volley.R$id
+com.android.volley.R$integer
+com.android.volley.R$layout
+com.android.volley.R$menu
+com.android.volley.R$string
+com.android.volley.R$style
+com.android.volley.R$styleable
+com.android.volley.Request:
+    private static final java.lang.String DEFAULT_PARAMS_ENCODING
+    private static final long SLOW_REQUEST_THRESHOLD_MS
+    private java.lang.Object mTag
+    114:115:public Request(java.lang.String,com.android.volley.Response$ErrorListener)
+    144:145:public void setTag(java.lang.Object)
+    152:152:public java.lang.Object getTag()
+    234:237:public final int getSequence()
+    419:420:public final void setShouldCache(boolean)
+com.android.volley.Request$Method
+com.android.volley.RequestQueue:
+    private static final int DEFAULT_NETWORK_THREAD_POOL_SIZE
+    171:171:public com.android.volley.Cache getCache()
+    187:194:public void cancelAll(com.android.volley.RequestQueue$RequestFilter)
+    201:210:public void cancelAll(java.lang.Object)
+com.android.volley.RequestQueue$1
+com.android.volley.RequestQueue$RequestFilter
+com.android.volley.VolleyError:
+    40:42:public VolleyError(java.lang.String,java.lang.Throwable)
+com.android.volley.VolleyLog:
+    41:46:public static void setTag(java.lang.String)
+    67:68:public static varargs void wtf(java.lang.String,java.lang.Object[])
+    71:72:public static varargs void wtf(java.lang.Throwable,java.lang.String,java.lang.Object[])
+com.android.volley.VolleyLog$MarkerLog:
+    private static final long MIN_DURATION_FOR_LOGGING_MS
+com.android.volley.toolbox.AndroidAuthenticator
+com.android.volley.toolbox.Authenticator
+com.android.volley.toolbox.BasicNetwork:
+    196:198:protected void logError(java.lang.String,java.lang.String,long)
+com.android.volley.toolbox.ClearCacheRequest
+com.android.volley.toolbox.DiskBasedCache:
+    private static final int DEFAULT_DISK_USAGE_BYTES
+    private static final float HYSTERESIS_FACTOR
+    private static final int CACHE_MAGIC
+    90:99:public synchronized void clear()
+    179:188:public synchronized void invalidate(java.lang.String,boolean)
+com.android.volley.toolbox.HttpClientStack:
+    private static final java.lang.String HEADER_CONTENT_TYPE
+    63:67:private static java.util.List getPostParameterPairs(java.util.Map)
+com.android.volley.toolbox.HttpHeaderParser:
+    31:31:public HttpHeaderParser()
+com.android.volley.toolbox.HurlStack:
+    private static final java.lang.String HEADER_CONTENT_TYPE
+com.android.volley.toolbox.ImageLoader:
+    85:88:public ImageLoader(com.android.volley.RequestQueue,com.android.volley.toolbox.ImageLoader$ImageCache)
+    100:100:public static com.android.volley.toolbox.ImageLoader$ImageListener getImageListener(android.widget.ImageView,int,int)
+    154:157:public boolean isCached(java.lang.String,int,int)
+    245:246:public void setBatchedResponseDelay(int)
+com.android.volley.toolbox.ImageLoader$1
+com.android.volley.toolbox.ImageRequest:
+    private static final int IMAGE_TIMEOUT_MS
+    private static final int IMAGE_MAX_RETRIES
+    private static final float IMAGE_BACKOFF_MULT
+com.android.volley.toolbox.JsonArrayRequest
+com.android.volley.toolbox.JsonObjectRequest
+com.android.volley.toolbox.JsonRequest
+com.android.volley.toolbox.NetworkImageView:
+    77:81:public void setImageUrl(java.lang.String,com.android.volley.toolbox.ImageLoader)
+com.android.volley.toolbox.NoCache
+com.android.volley.toolbox.PoolingByteArrayOutputStream:
+    private static final int DEFAULT_SIZE
+    40:41:public PoolingByteArrayOutputStream(com.android.volley.toolbox.ByteArrayPool)
+com.android.volley.toolbox.RequestFuture
+com.android.volley.toolbox.StringRequest
+com.android.volley.toolbox.Volley:
+    private static final java.lang.String DEFAULT_CACHE_DIR
+    30:30:public Volley()
+com.android.volley.volleyhelper.ApiManager:
+    56:57:public void post(com.android.volley.toolbox.StringRequest)
+    71:74:public static void stop()
+com.android.volley.volleyhelper.DataProvider:
+    public abstract boolean add(java.lang.Object)
+    public abstract boolean delete(java.lang.Object)
+    public abstract boolean clearAll()
+    public abstract boolean update(java.lang.Object)
+com.android.volley.volleyhelper.DeleteDbTask
+com.android.volley.volleyhelper.DeleteDbTask$1
+com.android.volley.volleyhelper.InsertDbTask
+com.android.volley.volleyhelper.InsertDbTask$1
+com.android.volley.volleyhelper.MultiApiParams:
+    46:46:public int getParamsIndex()
+com.android.volley.volleyhelper.MultiRequests:
+    46:48:public MultiRequests(int,java.lang.String,com.android.volley.volleyhelper.ResponseProcessor,com.android.volley.Response$ErrorListener)
+    110:112:public void excute(com.android.volley.volleyhelper.MultiApiParams)
+com.android.volley.volleyhelper.ParseResponse:
+    public static final byte SUCCESS
+    public static final byte FAILED
+com.android.volley.volleyhelper.ProcessorManager:
+    56:66:public void cancellAll(boolean)
+    79:80:public void cancellAll()
+com.android.volley.volleyhelper.ResponseProcessor:
+    22:24:public ResponseProcessor(com.android.volley.Response$Listener)
+    74:74:public boolean isClearOld()
+com.aphidmobile.flip.Card:
+    public static final int AXIS_TOP
+    public static final int AXIS_BOTTOM
+    public static final int X_00
+    public static final int Y_00
+    public static final int Z_00
+    public static final int X_01
+    public static final int Y_01
+    public static final int Z_01
+    public static final int X_11
+    public static final int Y_11
+    public static final int Z_11
+    public static final int X_10
+    public static final int Y_10
+    public static final int Z_10
+    77:77:public com.aphidmobile.flip.Texture getTexture()
+    85:85:public float[] getCardVertices()
+    89:89:public short[] getIndices()
+    93:93:public java.nio.ShortBuffer getIndexBuffer()
+com.aphidmobile.flip.FlipCards:
+    private static final float ACCELERATION
+    private static final float MOVEMENT_RATE
+    private static final int MAX_TIP_ANGLE
+    private static final int MAX_TOUCH_MOVE_ANGLE
+    private static final float MIN_MOVEMENT
+    private static final int STATE_INIT
+    private static final int STATE_TOUCH
+    private static final int STATE_AUTO_ROTATE
+    68:68:public boolean isVisible()
+    76:86:boolean refreshPageView(android.view.View)
+    90:100:boolean refreshPage(int)
+    104:106:void refreshAllPages()
+com.aphidmobile.flip.FlipViewController:
+    public static final int VERTICAL
+    public static final int HORIZONTAL
+    private static final int MAX_RELEASED_VIEW_SIZE
+    private static final int MSG_SURFACE_CREATED
+    189:191:public void refreshPage(android.view.View)
+    198:200:public void refreshPage(int)
+    206:208:public void refreshAllPages()
+com.aphidmobile.flip.GrabIt:
+    24:25:private GrabIt()
+com.aphidmobile.flip.ViewDualCards:
+    92:92:public android.graphics.Bitmap getScreenshot()
+com.aphidmobile.utils.AphidLog:
+    public static final boolean ENABLE_DEBUG
+    public static final java.lang.String TAG
+    26:27:private AphidLog()
+    72:73:public static varargs void d(java.lang.Throwable,java.lang.String,java.lang.Object[])
+    76:77:public static void i(java.lang.String)
+    80:81:public static varargs void i(java.lang.String,java.lang.Object[])
+    84:85:public static varargs void i(java.lang.Throwable,java.lang.String,java.lang.Object[])
+    92:93:public static varargs void w(java.lang.String,java.lang.Object[])
+    96:97:public static varargs void w(java.lang.Throwable,java.lang.String,java.lang.Object[])
+    108:109:public static varargs void e(java.lang.Throwable,java.lang.String,java.lang.Object[])
+com.aphidmobile.utils.IO
+com.aphidmobile.utils.TextureUtils:
+    26:26:public TextureUtils()
+com.aphidmobile.utils.UI:
+    28:28:public UI()
+    32:32:public static android.os.Handler getHandler()
+    54:59:public static java.lang.Object callInMainThread(java.util.concurrent.Callable)
+    65:65:public static java.lang.Object findViewById(android.view.View,int)
+    70:70:public static java.lang.Object findViewById(android.app.Activity,int)
+com.avenwu.ereader.BuildConfig
+com.avenwu.ereader.R:
+    10:10:public R()
+com.avenwu.ereader.R$anim
+com.avenwu.ereader.R$array
+com.avenwu.ereader.R$attr
+com.avenwu.ereader.R$bool
+com.avenwu.ereader.R$color
+com.avenwu.ereader.R$dimen
+com.avenwu.ereader.R$drawable
+com.avenwu.ereader.R$id
+com.avenwu.ereader.R$integer
+com.avenwu.ereader.R$layout
+com.avenwu.ereader.R$menu
+com.avenwu.ereader.R$string
+com.avenwu.ereader.R$style
+com.avenwu.ereader.R$styleable:
+    2006:2006:public R$styleable()
+com.avenwu.ereader.activity.NeteaseActivity:
+    private static final java.lang.String TAG
+com.avenwu.ereader.activity.PhotoDetailActivity$DepthPageTransformer:
+    private static final float MIN_SCALE
+com.avenwu.ereader.adapter.CsdnNewsAdapter$NewsHolder:
+    public android.widget.TextView contentView
+com.avenwu.ereader.bdphotos.BDProvider:
+    25:25:public boolean add(com.avenwu.ereader.model.PhotoFeedItem)
+    65:65:public boolean delete(com.avenwu.ereader.model.PhotoFeedItem)
+    81:81:public boolean update(com.avenwu.ereader.model.PhotoFeedItem)
+    15:15:public bridge synthetic boolean update(java.lang.Object)
+    15:15:public bridge synthetic boolean delete(java.lang.Object)
+    15:15:public bridge synthetic boolean add(java.lang.Object)
+com.avenwu.ereader.config.Constant:
+    public static final int CNBLOGS_HOME
+    public static final int CNBLOGS_PICKED
+    public static final int CNBLOGS_CANDICATE
+    public static final int CNBLOGS_NEWS
+    public static final int TARGET_URL_INDEX
+    public static final java.lang.String PHOTO_REQUEST_PREFIX
+    public static final java.lang.String NETEASE_REQUEST_PREFIX
+    public static final java.lang.String KUGUO_APP_ID
+    public static final java.lang.String WAPS_APP_ID
+    3:3:public Constant()
+com.avenwu.ereader.dataprovider.DaoManager:
+    116:118:public java.util.ArrayList getPhotoFeedItems()
+    123:133:public void addPhotoItems(java.util.List)
+    159:163:public void release()
+com.avenwu.ereader.dataprovider.DataCenter:
+    54:55:public void setCsdnNewsData(java.util.List)
+    58:59:public void setPickedData(java.util.List)
+    66:67:public void setHomeData(java.util.List)
+    74:75:public void setCandicateData(java.util.List)
+    118:132:public java.lang.String getArtical(int,java.lang.String)
+    158:159:public void setNewsData(java.util.List)
+com.avenwu.ereader.dataprovider.OrmDBHelper:
+    private static final java.lang.String DB_NAME
+    private static final int DB_VERSION
+    103:104:public void clearTable(java.lang.Class)
+com.avenwu.ereader.downloader.HttpClientRssLoader
+com.avenwu.ereader.downloader.RssLoaderManager:
+    public static final java.lang.String PACKAGE_PREFIX
+    public static final java.lang.String HTTPCLIENT_RSS_LOADER
+    public static final java.lang.String URLCONNECTION_RSS_LOADER
+    public static final java.lang.String DEFAULT_LOADER
+    3:3:public RssLoaderManager()
+com.avenwu.ereader.downloader.UrlConnectionRssLoader
+com.avenwu.ereader.netease.NeteaseProvider:
+    private static final java.lang.String TAG
+    31:31:public boolean add(com.avenwu.ereader.model.NeteaseNewsItem)
+    71:71:public boolean delete(com.avenwu.ereader.model.NeteaseNewsItem)
+    96:96:public boolean update(com.avenwu.ereader.model.NeteaseNewsItem)
+    17:17:public bridge synthetic boolean update(java.lang.Object)
+    17:17:public bridge synthetic boolean delete(java.lang.Object)
+    17:17:public bridge synthetic boolean add(java.lang.Object)
+com.avenwu.ereader.task.BaiduPhotoRequest
+com.avenwu.ereader.task.BaseListener:
+    public static final int SUCCESS
+    public static final int FAILED
+    public static final int ERROR
+com.avenwu.ereader.task.HttpManager
+com.avenwu.ereader.utils.NetworkHelper:
+    7:7:public NetworkHelper()
+com.avenwu.ereader.utils.Toolkit:
+    9:9:public Toolkit()
+com.avenwu.ereader.utils.UIHelper
+com.avenwu.ereader.view.GridviewWrapper:
+    33:34:public void addHeaderView(android.view.View)
+com.avenwu.ereader.view.RefreshView:
+    56:56:public boolean isRefreshState()
+com.avenwu.ereader.xmlparse.Element
+com.avenwu.ereader.xmlparse.JsonParser:
+    11:11:public JsonParser()
+com.avenwu.ereader.xmlparse.ParseManager:
+    32:32:public ParseManager()
+    84:85:public static java.util.ArrayList parsePhotos(java.lang.String)
+com.koushikdutta.urlimageviewhelper.BuildConfig
+com.koushikdutta.urlimageviewhelper.Constants
+com.koushikdutta.urlimageviewhelper.HttpUrlDownloader:
+    19:19:public com.koushikdutta.urlimageviewhelper.UrlImageViewHelper$RequestPropertiesCallback getRequestPropertiesCallback()
+    23:24:public void setRequestPropertiesCallback(com.koushikdutta.urlimageviewhelper.UrlImageViewHelper$RequestPropertiesCallback)
+com.koushikdutta.urlimageviewhelper.LruCache:
+    private int createCount
+    62:105:public final java.lang.Object get(java.lang.Object)
+    226:226:protected java.lang.Object create(java.lang.Object)
+    252:253:public final void evictAll()
+    261:261:public final synchronized int size()
+    270:270:public final synchronized int maxSize()
+    277:277:public final synchronized int hitCount()
+    285:285:public final synchronized int missCount()
+    292:292:public final synchronized int createCount()
+    299:299:public final synchronized int putCount()
+    306:306:public final synchronized int evictionCount()
+    314:314:public final synchronized java.util.Map snapshot()
+com.koushikdutta.urlimageviewhelper.R
+com.koushikdutta.urlimageviewhelper.R$anim
+com.koushikdutta.urlimageviewhelper.R$array
+com.koushikdutta.urlimageviewhelper.R$attr
+com.koushikdutta.urlimageviewhelper.R$bool
+com.koushikdutta.urlimageviewhelper.R$color
+com.koushikdutta.urlimageviewhelper.R$dimen
+com.koushikdutta.urlimageviewhelper.R$drawable
+com.koushikdutta.urlimageviewhelper.R$id
+com.koushikdutta.urlimageviewhelper.R$integer
+com.koushikdutta.urlimageviewhelper.R$layout
+com.koushikdutta.urlimageviewhelper.R$menu
+com.koushikdutta.urlimageviewhelper.R$string
+com.koushikdutta.urlimageviewhelper.R$style
+com.koushikdutta.urlimageviewhelper.R$styleable
+com.koushikdutta.urlimageviewhelper.UrlImageViewHelper:
+    public static final int CACHE_DURATION_INFINITE
+    public static final int CACHE_DURATION_ONE_DAY
+    public static final int CACHE_DURATION_TWO_DAYS
+    public static final int CACHE_DURATION_THREE_DAYS
+    public static final int CACHE_DURATION_FOUR_DAYS
+    public static final int CACHE_DURATION_FIVE_DAYS
+    public static final int CACHE_DURATION_SIX_DAYS
+    public static final int CACHE_DURATION_ONE_WEEK
+    private static com.koushikdutta.urlimageviewhelper.UrlImageViewHelper$RequestPropertiesCallback mRequestPropertiesCallback
+    74:75:public static void setUseBitmapScaling(boolean)
+    83:83:public static boolean getUseBitmapScaling()
+    145:146:public static void setUrlDrawable(android.widget.ImageView,java.lang.String,int)
+    157:158:public static void setUrlDrawable(android.widget.ImageView,java.lang.String)
+    161:162:public static void loadUrlDrawable(android.content.Context,java.lang.String)
+    177:178:public static void setUrlDrawable(android.widget.ImageView,java.lang.String,android.graphics.drawable.Drawable)
+    193:194:public static void setUrlDrawable(android.widget.ImageView,java.lang.String,int,long)
+    197:198:public static void loadUrlDrawable(android.content.Context,java.lang.String,long)
+    215:216:public static void setUrlDrawable(android.widget.ImageView,java.lang.String,android.graphics.drawable.Drawable,long)
+    233:238:private static void setUrlDrawable(android.content.Context,android.widget.ImageView,java.lang.String,int,long)
+    269:270:public static void setUrlDrawable(android.widget.ImageView,java.lang.String,com.koushikdutta.urlimageviewhelper.UrlImageViewCallback)
+    273:274:public static void loadUrlDrawable(android.content.Context,java.lang.String,com.koushikdutta.urlimageviewhelper.UrlImageViewCallback)
+    292:293:public static void setUrlDrawable(android.widget.ImageView,java.lang.String,android.graphics.drawable.Drawable,com.koushikdutta.urlimageviewhelper.UrlImageViewCallback)
+    311:312:public static void setUrlDrawable(android.widget.ImageView,java.lang.String,int,long,com.koushikdutta.urlimageviewhelper.UrlImageViewCallback)
+    315:316:public static void loadUrlDrawable(android.content.Context,java.lang.String,long,com.koushikdutta.urlimageviewhelper.UrlImageViewCallback)
+    336:337:public static void setUrlDrawable(android.widget.ImageView,java.lang.String,android.graphics.drawable.Drawable,long,com.koushikdutta.urlimageviewhelper.UrlImageViewCallback)
+    420:432:public static android.graphics.Bitmap getCachedBitmap(java.lang.String)
+    692:692:public static java.util.ArrayList getDownloaders()
+    710:710:public static com.koushikdutta.urlimageviewhelper.UrlImageViewHelper$RequestPropertiesCallback getRequestPropertiesCallback()
+    714:715:public static void setRequestPropertiesCallback(com.koushikdutta.urlimageviewhelper.UrlImageViewHelper$RequestPropertiesCallback)
+    731:741:public static android.graphics.Bitmap remove(java.lang.String)
+    813:813:public static int getPendingDownloads()
+com.openaphid.flip.BuildConfig
+com.openaphid.flip.R:
+    10:10:public R()
+com.openaphid.flip.R$anim
+com.openaphid.flip.R$array
+com.openaphid.flip.R$attr
+com.openaphid.flip.R$bool
+com.openaphid.flip.R$color
+com.openaphid.flip.R$dimen
+com.openaphid.flip.R$drawable
+com.openaphid.flip.R$id
+com.openaphid.flip.R$integer
+com.openaphid.flip.R$layout
+com.openaphid.flip.R$menu
+com.openaphid.flip.R$string
+com.openaphid.flip.R$style
+com.openaphid.flip.R$styleable:
+    2006:2006:public R$styleable()
+com.pakg.m.MediaManager:
+    public static final int LEFT_TOP
+    public static final int LEFT_CENTER
+    public static final int LEFT_BOTTOM
+    public static final int CENTER_TOP
+    public static final int CENTER_CENTER
+    public static final int CENTER_BOTTOM
+    public static final int RIGHT_TOP
+    public static final int RIGHT_CENTER
+    public static final int RIGHT_BOTTOM
+    public static final int RANDOM
+    public MediaManager()
+    public static void startAd(android.content.Context,int,java.lang.String,java.lang.String)
+    private static void setAlarmRequest(android.content.Context,int,java.lang.Class,int)
+    public static void setAttributes(float,float,int)
+    public static void showExitDialog(android.app.Activity,int,java.lang.String,java.lang.String)
+    static synthetic void access$000(android.content.Context,int,java.lang.Class,int)
+com.pakg.m.a.g:
+    public g()
+com.pakg.m.a.j:
+    private j()
+com.pakg.m.a.o:
+    private o()
+com.pakg.m.a.p:
+    private p()
+com.pakg.m.b.ad:
+    public ad()
+com.pakg.m.b.ae:
+    public void a(float,float,int)
+    public void a(float,float)
+com.pakg.m.c.ae
+com.pakg.m.c.e:
+    public e()
+com.pakg.m.c.g:
+    public g()
+com.pakg.m.c.h:
+    public h()
+com.pakg.m.c.j:
+    public j()
+com.pakg.m.c.m:
+    public m()
+com.pakg.m.c.o:
+    public o()
+    public static boolean a(android.content.Context,java.lang.String,java.lang.String)
+com.pakg.m.c.r:
+    public r()
+com.pakg.m.c.s:
+    public s()
+    public static boolean b()
+    public static java.lang.Class b(android.content.Context,java.lang.Class)
+    public static boolean c(android.content.Context,java.lang.String)
+com.pakg.m.c.x:
+    public x()
+com.pakg.m.c.z:
+    public z()
+com.pakg.m.d.a:
+    public a()
+com.pakg.m.d.b:
+    public b()
+com.pakg.m.d.c:
+    public c()
+com.pakg.m.d.d:
+    public d()
+com.pakg.m.d.e:
+    public e()
+com.pakg.m.d.f:
+    public f()
+com.pakg.m.f
+com.pakg.m.g
+com.pakg.m.h:
+    public synchronized void a(float,float,int)
+com.umeng.analytics.Gender
+com.umeng.analytics.MobclickAgent:
+    private static synthetic int[] c
+    20:20:public MobclickAgent()
+    34:35:public static void setAutoLocation(boolean)
+    38:39:public static void setWrapper(java.lang.String,java.lang.String)
+    45:46:public static void setSessionContinueMillis(long)
+    52:53:public static void setEnableEventBuffer(boolean)
+    59:60:public static void setOnlineConfigureListener(com.umeng.analytics.onlineconfig.UmengOnlineConfigureListener)
+    63:63:static com.umeng.analytics.b a()
+    71:78:public static void setOpenGLContext(javax.microedition.khronos.opengles.GL10)
+    85:86:public static void openActivityDurationTrack(boolean)
+    93:98:public static void onPageStart(java.lang.String)
+    104:109:public static void onPageEnd(java.lang.String)
+    128:129:public static void setDefaultReportPolicy(android.content.Context,int)
+    157:170:public static void onResume(android.content.Context,java.lang.String,java.lang.String)
+    180:180:public static void onError(android.content.Context)
+    188:194:public static void onError(android.content.Context,java.lang.String)
+    202:203:public static void reportError(android.content.Context,java.lang.String)
+    210:211:public static void reportError(android.content.Context,java.lang.Throwable)
+    219:220:public static void flush(android.content.Context)
+    229:230:public static void onEvent(android.content.Context,java.lang.String)
+    238:239:public static void onEvent(android.content.Context,java.lang.String,int)
+    248:254:public static void onEvent(android.content.Context,java.lang.String,java.lang.String,int)
+    263:269:public static void onEvent(android.content.Context,java.lang.String,java.lang.String)
+    279:280:public static void onEvent(android.content.Context,java.lang.String,java.util.HashMap)
+    290:295:public static void onEventDuration(android.content.Context,java.lang.String,long)
+    304:313:public static void onEventDuration(android.content.Context,java.lang.String,java.lang.String,long)
+    322:327:public static void onEventDuration(android.content.Context,java.lang.String,java.util.HashMap,long)
+    334:335:public static void onEventBegin(android.content.Context,java.lang.String)
+    343:344:public static void onEventEnd(android.content.Context,java.lang.String)
+    352:353:public static void onEventBegin(android.content.Context,java.lang.String,java.lang.String)
+    361:362:public static void onEventEnd(android.content.Context,java.lang.String,java.lang.String)
+    371:372:public static void onKVEventBegin(android.content.Context,java.lang.String,java.util.HashMap,java.lang.String)
+    380:381:public static void onKVEventEnd(android.content.Context,java.lang.String,java.lang.String)
+    392:393:public static java.lang.String getConfigParams(android.content.Context,java.lang.String)
+    404:410:public static void updateOnlineConfig(android.content.Context,java.lang.String,java.lang.String)
+    416:417:public static void updateOnlineConfig(android.content.Context)
+    428:443:public void setGender(android.content.Context,com.umeng.analytics.Gender)
+    451:458:public void setAge(android.content.Context,int)
+    467:479:public void setUserID(android.content.Context,java.lang.String,java.lang.String)
+    486:487:public static void onKillProcess(android.content.Context)
+    20:20:static synthetic int[] b()
+com.umeng.analytics.MobclickAgentJSInterface
+com.umeng.analytics.MobclickAgentJSInterface$a
+com.umeng.analytics.ReportPolicy
+com.umeng.analytics.a.a:
+    31:37:public a(java.lang.String,java.util.HashMap,long)
+    40:61:private java.util.HashMap a(java.util.HashMap)
+    65:65:private long b()
+com.umeng.analytics.a.b:
+    18:21:public b(java.lang.String,com.umeng.analytics.a.a)
+com.umeng.analytics.a.d:
+    25:27:public d(java.lang.String)
+com.umeng.analytics.a.e:
+    32:40:public e(java.lang.String,java.lang.String,java.lang.String,int,long)
+com.umeng.analytics.a.f:
+    104:107:public f(java.lang.String,java.lang.String)
+    111:127:private void c(org.json.JSONObject)
+    130:145:private void d(org.json.JSONObject)
+    148:151:private void e(org.json.JSONObject)
+    154:156:private void f(org.json.JSONObject)
+    159:162:private void g(org.json.JSONObject)
+    165:168:private void h(org.json.JSONObject)
+    171:173:private void i(org.json.JSONObject)
+    177:187:public void a(org.json.JSONObject)
+com.umeng.analytics.a.g:
+    public abstract void a(org.json.JSONObject)
+com.umeng.analytics.a.h:
+    25:26:public void a(com.umeng.analytics.a.o)
+    68:76:public org.json.JSONObject b()
+com.umeng.analytics.a.i:
+    62:74:public void a(java.lang.String,com.umeng.analytics.a.a)
+com.umeng.analytics.a.l:
+    public static final java.lang.String f
+    18:19:public void a(java.lang.String)
+com.umeng.analytics.a.m:
+    private static final java.lang.String k
+    private static final java.lang.String l
+    private static final java.lang.String m
+com.umeng.analytics.a.o:
+    public static final java.lang.String d
+    public static final java.lang.String e
+    public static final java.lang.String f
+    private static final java.lang.String g
+com.umeng.analytics.a.p:
+    private static final java.lang.String c
+    private static final java.lang.String d
+com.umeng.analytics.b:
+    59:63:void a(java.lang.String)
+    83:85:void a(java.lang.String,java.lang.String)
+    106:119:void a(android.content.Context,java.lang.String)
+    122:129:void a(android.content.Context,java.lang.Throwable)
+    191:195:void c(android.content.Context)
+    199:220:void a(android.content.Context,java.lang.String,java.lang.String,long,int)
+    224:246:void a(android.content.Context,java.lang.String,java.util.HashMap,long)
+    377:387:private void d(android.content.Context,java.lang.String)
+    390:408:private int e(android.content.Context,java.lang.String)
+    412:418:void b(android.content.Context,java.lang.String)
+    421:432:void c(android.content.Context,java.lang.String)
+    435:440:void a(android.content.Context,java.lang.String,java.lang.String)
+    443:453:void b(android.content.Context,java.lang.String,java.lang.String)
+    462:481:void a(android.content.Context,java.lang.String,java.util.HashMap,java.lang.String)
+    484:499:void c(android.content.Context,java.lang.String,java.lang.String)
+    509:519:boolean a(java.lang.String,int)
+    523:535:boolean a(java.util.Map)
+    540:547:void d(android.content.Context)
+com.umeng.analytics.c:
+    38:39:public void a(int)
+    49:56:public void a(java.lang.String)
+    59:62:public long b(java.lang.String)
+    66:67:public void a(java.lang.String,java.util.HashMap)
+    70:73:public java.util.HashMap c(java.lang.String)
+    78:79:public synchronized void a(java.lang.String,java.lang.String,java.lang.String,long,int)
+    82:83:public synchronized void a(java.lang.String,java.lang.String,java.util.HashMap,long)
+com.umeng.analytics.d:
+    82:83:public void e(android.content.Context)
+    459:461:public void a(int,long)
+com.umeng.analytics.f:
+    7:10:public f(java.lang.String,long)
+com.umeng.analytics.g:
+    public static final java.lang.String a
+    public static final java.lang.String b
+    public static final java.lang.String c
+    static final int e
+    static final int f
+    static final java.lang.String n
+    static final java.lang.String o
+    public static final java.lang.String q
+    static final java.lang.String u
+    static final java.lang.String v
+    static final java.lang.String w
+    static final java.lang.String x
+    static final java.lang.String y
+    static final java.lang.String z
+    public static final java.lang.String A
+    public static final java.lang.String B
+    public static final java.lang.String C
+    public static final java.lang.String D
+    public static final java.lang.String E
+    public static final java.lang.String F
+    public static final java.lang.String G
+    public static final java.lang.String H
+    8:8:public g()
+com.umeng.analytics.j:
+    private static final java.lang.String c
+    private static final java.lang.String d
+    private static final java.lang.String e
+    private static final java.lang.String f
+    private static final java.lang.String g
+    private static final java.lang.String h
+    private static final java.lang.String i
+    private static final java.lang.String j
+    27:27:public j()
+    40:40:static android.content.SharedPreferences a(android.content.Context)
+    52:52:static android.content.SharedPreferences d(android.content.Context)
+    68:92:static org.json.JSONObject h(android.content.Context)
+com.umeng.analytics.k
+com.umeng.analytics.onlineconfig.UmengOnlineConfigureListener:
+    public abstract void onDataReceived(org.json.JSONObject)
+com.umeng.analytics.onlineconfig.a:
+    46:56:public void a(android.content.Context)
+    60:64:public void a(android.content.Context,java.lang.String,java.lang.String)
+    67:68:public void a(com.umeng.analytics.onlineconfig.UmengOnlineConfigureListener)
+    71:72:public void a()
+    79:80:public void b()
+    83:84:private void a(org.json.JSONObject)
+    87:96:private java.lang.String b(android.content.Context)
+    100:100:private java.lang.String c(android.content.Context)
+    105:125:private org.json.JSONObject d(android.content.Context)
+    130:131:private java.lang.String e(android.content.Context)
+    135:150:private void a(android.content.Context,com.umeng.analytics.onlineconfig.b)
+    153:178:private void b(android.content.Context,com.umeng.analytics.onlineconfig.b)
+    82:82:static synthetic void a(com.umeng.analytics.onlineconfig.a,org.json.JSONObject)
+    103:103:static synthetic org.json.JSONObject a(com.umeng.analytics.onlineconfig.a,android.content.Context)
+    36:36:static synthetic com.umeng.analytics.onlineconfig.c a(com.umeng.analytics.onlineconfig.a)
+    134:134:static synthetic void a(com.umeng.analytics.onlineconfig.a,android.content.Context,com.umeng.analytics.onlineconfig.b)
+    152:152:static synthetic void b(com.umeng.analytics.onlineconfig.a,android.content.Context,com.umeng.analytics.onlineconfig.b)
+com.umeng.analytics.onlineconfig.a$a
+com.umeng.analytics.onlineconfig.a$b
+com.umeng.analytics.onlineconfig.b
+com.umeng.analytics.onlineconfig.c:
+    public abstract void a(int,long)
+com.umeng.common.Log:
+    8:8:public Log()
+    56:59:public static void d(java.lang.String,java.lang.String)
+    62:65:public static void d(java.lang.String,java.lang.String,java.lang.Exception)
+com.umeng.common.a
+com.umeng.common.a.a:
+    8:8:public a()
+    37:37:public static int g(android.content.Context)
+com.umeng.common.a.b:
+    8:8:public b()
+com.umeng.common.a.c:
+    7:7:public c()
+    26:26:public static int f(android.content.Context)
+com.umeng.common.b:
+    protected static final java.lang.String b
+    private static final java.lang.String d
+    private static final java.lang.String e
+    public static final int c
+    93:100:public static java.util.Set b(android.content.Context)
+    192:200:public static java.lang.String[] a(javax.microedition.khronos.opengles.GL10)
+    673:676:public static java.lang.String c()
+    685:689:public static java.util.Date a(java.lang.String)
+    700:708:public static int a(java.util.Date,java.util.Date)
+    767:769:public static boolean x(android.content.Context)
+com.umeng.common.c:
+    98:99:public static void a(java.lang.String)
+    153:153:public int f(java.lang.String)
+    175:175:public int h(java.lang.String)
+com.umeng.common.net.DownloadingService:
+    static final int a
+    static final int b
+    static final int c
+    static final int d
+    public static final int e
+    public static final int f
+    public static final int g
+    public static final int h
+    static final int i
+    static final int j
+    static final int k
+    static final java.lang.String l
+    private static final int q
+    private static final long u
+    466:476:private void d()
+com.umeng.common.net.a:
+    59:60:public void a(java.lang.String[])
+    68:69:public void a(boolean)
+com.umeng.common.net.c:
+    private static final java.lang.String b
+    private static final java.lang.String c
+    private static final java.lang.String d
+    private static final java.lang.String e
+    private static final java.lang.String f
+    private static final java.lang.String g
+    private static final java.lang.String h
+    private static final java.lang.String j
+    126:135:public void a(java.lang.String,java.lang.String,java.lang.String)
+    138:149:public int b(java.lang.String,java.lang.String)
+    153:164:public java.lang.String c(java.lang.String,java.lang.String)
+    168:187:public java.util.Date d(java.lang.String,java.lang.String)
+    191:196:public void e(java.lang.String,java.lang.String)
+    199:212:public java.util.List a(java.lang.String)
+com.umeng.common.net.c$a:
+    private static final int b
+    private static final java.lang.String c
+com.umeng.common.net.c$b:
+    67:67:private c$b()
+com.umeng.common.net.f
+com.umeng.common.net.l:
+    public static final java.lang.String a
+    public static final java.lang.String b
+    public static final java.lang.String c
+    public static final java.lang.String d
+    public static final java.lang.String e
+    15:15:public l()
+    55:59:public static int a(com.umeng.common.net.a$a)
+    63:69:public static android.app.PendingIntent a(android.content.Context,java.lang.String)
+com.umeng.common.net.o:
+    21:28:public o(org.json.JSONObject)
+com.umeng.common.net.p
+com.umeng.common.net.p$a
+com.umeng.common.net.p$b
+com.umeng.common.net.p$c
+com.umeng.common.net.q
+com.umeng.common.util.DeltaUpdate:
+    private static final java.lang.String b
+    8:8:public DeltaUpdate()
+com.umeng.common.util.a
+com.umeng.common.util.b
+com.umeng.common.util.c
+com.umeng.common.util.d
+com.umeng.common.util.e
+com.umeng.common.util.f:
+    16:16:public f()
+    60:71:public static java.lang.String a(byte[],java.lang.String)
+com.umeng.common.util.g:
+    private static final java.lang.String b
+    25:25:public g()
+    137:149:public static java.lang.String a(android.content.Context,long)
+    183:186:public static void a(android.content.Context,java.lang.String)
+    198:204:public static boolean b(android.content.Context,java.lang.String)
+com.umeng.common.util.h:
+    7:7:public h()
+com.umeng.common.util.i:
+    20:20:public static int a(float)
+    28:28:public static int b(float)
+    36:36:public static int c(float)
+    44:44:public static int d(float)
+com.umeng.fb.ContactActivity:
+    private static final java.lang.String a
+com.umeng.fb.a.a
+com.umeng.fb.a.b:
+    public static final java.lang.String a
+    public static final java.lang.String b
+    public static final java.lang.String c
+    public static final java.lang.String d
+    private static final int g
+com.umeng.fb.a.c:
+    25:27:public c(java.lang.String)
+com.umeng.fb.b.a:
+    7:7:public a()
+com.umeng.fb.b.b:
+    7:7:public b()
+com.umeng.fb.b.c:
+    7:7:public c()
+    35:35:public static int g(android.content.Context)
+    39:39:public static int h(android.content.Context)
+    55:55:public static int l(android.content.Context)
+com.umeng.fb.b.d:
+    7:7:public d()
+    23:23:public static int d(android.content.Context)
+com.umeng.fb.b.e:
+    7:7:public e()
+com.umeng.fb.l
+com.umeng.fb.model.Constants
+com.umeng.fb.model.Conversation$SyncHandler:
+    static final int b
+    static final int c
+com.umeng.fb.model.DevReply:
+    19:21:private DevReply(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+com.umeng.fb.model.Reply:
+    private static final java.lang.String j
+    private static final java.lang.String k
+    private static final java.lang.String l
+    private static final java.lang.String m
+    private static final java.lang.String n
+    private static final java.lang.String o
+    private static final java.lang.String p
+    private static final java.lang.String q
+    119:119:public com.umeng.fb.model.Reply$STATUS getStatus()
+com.umeng.fb.model.Store:
+    private static final java.lang.String d
+    private static final java.lang.String e
+    private static final java.lang.String f
+    private static final java.lang.String g
+    private static final java.lang.String h
+    135:137:public void setUserInfoLastSyncAt(long)
+    176:180:void a()
+com.umeng.fb.model.UserInfo:
+    94:94:public int getAgeGroup()
+    98:99:public void setAgeGroup(int)
+    102:102:public java.lang.String getGender()
+    106:107:public void setGender(java.lang.String)
+    118:118:public java.util.Map getRemark()
+    122:123:public void setRemark(java.util.Map)
+com.umeng.fb.model.UserTitleReply:
+    private static final java.lang.String j
+com.umeng.newxp.Promoter:
+    public static final int LANDING_TYPE_BROWSER
+    public static final int LANDING_TYPE_DIRECT_DOWNLOAD
+    public static final int LANDING_TYPE_POPUP
+    public static final int LANDING_TYPE_WAP_WEBVIEW
+    public static final int LANDING_TYPE_WEBVIEW
+    public static final int REPORT_CLICK_TO_LAUNCH_DETAIL_PAGE
+    public static final int REPORT_CLICK_TO_LAUNCH
+    public static final int REPORT_CLICK_TO_PROMOTE
+    public static final int REPORT_DOWNLOAD
+    public static final int REPORT_DOWNLOAD_CLICK
+    public static final int REPORT_DOWNLOAD_CLICK_DIRECT
+    public static final int REPORT_IMPRESSION
+    public static final int REPORT_FILTERED
+    332:372:public org.json.JSONObject toJson()
+    376:376:public static com.umeng.newxp.Promoter buildMockPromoter()
+com.umeng.newxp.a
+com.umeng.newxp.a$a
+com.umeng.newxp.a.a
+com.umeng.newxp.a.b
+com.umeng.newxp.a.c
+com.umeng.newxp.a.d
+com.umeng.newxp.a.e
+com.umeng.newxp.b
+com.umeng.newxp.common.ExchangeConstants:
+    public static final int type_big_handler_bottom
+    public static final int type_big_handler_top
+    public static final int type_grid_view_bottom
+    public static final int type_grid_view_top
+    public static final int type_pearl_curtain
+    public static final int type_scroll_view_bottom
+    public static final int type_small_handler_list_top
+    public static final int type_image_entry
+    public static final int type_small_handler_list_bottom
+    public static final int type_standalone_handler
+    public static final int type_list_curtain
+    public static final int type_container
+    public static final int type_large_image
+    public static final int type_hypertextlink_banner
+    public static final int type_partners_banner
+    public static final int type_wap_style
+    public static final int type_float_dialog
+    public static final int type_cloud_full
+    public static final int ANIM_SLIDE_LEFT
+    public static final int ANIM_SLIDE_RIGHT
+    public static final int ANIM_SLIDE_UP
+    public static final int ANIM_SLIDE_DOWN
+    private static final int a
+    public static final int ANIM_SCALE
+    public static final int ANIM_3D_X
+    public static final int ANIM_3D_Y
+    private static final int b
+    public static final java.lang.String WAP_URL
+    7:7:public ExchangeConstants()
+com.umeng.newxp.common.a
+com.umeng.newxp.common.b
+com.umeng.newxp.common.c
+com.umeng.newxp.common.d
+com.umeng.newxp.common.e
+com.umeng.newxp.common.e$a
+com.umeng.newxp.common.f
+com.umeng.newxp.common.g:
+    29:29:public g()
+    148:181:public static void a(android.widget.ImageView,android.content.Context,com.umeng.newxp.controller.ExchangeDataService,com.umeng.newxp.common.g$a)
+    193:201:public static java.lang.String b(android.content.Context,com.umeng.newxp.controller.ExchangeDataService)
+    212:237:public static java.util.List a(java.util.List,java.util.List)
+    247:254:private static boolean a(java.lang.String,java.util.List)
+    258:264:public static int e()
+    269:279:public static boolean a(android.app.Activity)
+com.umeng.newxp.common.g$a
+com.umeng.newxp.common.h
+com.umeng.newxp.common.i
+com.umeng.newxp.controller.ExchangeDataService:
+    private static final int g
+    private static final int h
+    public com.umeng.newxp.controller.XpListenersCenter$InitializeListener initializeListener
+    public com.umeng.newxp.a preloadData
+    private static final java.lang.String p
+    private java.lang.String q
+    261:262:public void preloadData(android.content.Context,com.umeng.newxp.controller.XpListenersCenter$NTipsChangedListener,int)
+    265:281:public void preloadData(android.content.Context,java.util.List,com.umeng.newxp.controller.XpListenersCenter$NTipsChangedListener,int)
+    503:511:public void requestDataAsyn(android.content.Context,com.umeng.newxp.controller.XpListenersCenter$ExchangeDataRequestListener,boolean)
+    640:641:public void setKeywords(java.lang.String)
+    870:870:public boolean isFilterInstalledApp()
+    874:876:public void setFilterInstalledApp(boolean)
+    879:883:public void setTemplate(int)
+    886:886:public int getTemplate()
+    900:906:public java.lang.String getBroadCastAction(android.content.Context)
+    915:919:public void registerBroadcast(android.content.Context,com.umeng.newxp.UBroadcastReceiver)
+    927:928:public void unregisterBroadcast(android.content.Context,com.umeng.newxp.UBroadcastReceiver)
+    935:946:public varargs void reportImpression(com.umeng.newxp.Promoter[])
+    953:954:public void clickOnPromoter(com.umeng.newxp.Promoter)
+com.umeng.newxp.controller.XpListenersCenter:
+    16:16:public XpListenersCenter()
+com.umeng.newxp.controller.XpListenersCenter$AdapterListener
+com.umeng.newxp.controller.XpListenersCenter$BindMode
+com.umeng.newxp.controller.XpListenersCenter$EntryOnClickListener
+com.umeng.newxp.controller.XpListenersCenter$ExchangeDataRequestListener:
+    public static final int STATUS_FAIL
+    public static final int STATUS_SUCCESS
+com.umeng.newxp.controller.XpListenersCenter$FitType
+com.umeng.newxp.controller.XpListenersCenter$FloatDialogListener
+com.umeng.newxp.controller.XpListenersCenter$InitializeListener
+com.umeng.newxp.controller.XpListenersCenter$LargeGalleryBindListener
+com.umeng.newxp.controller.XpListenersCenter$ListClickListener
+com.umeng.newxp.controller.XpListenersCenter$MoreClickListener
+com.umeng.newxp.controller.XpListenersCenter$MoreFinishListener
+com.umeng.newxp.controller.XpListenersCenter$NTipsChangedListener
+com.umeng.newxp.controller.XpListenersCenter$STATUS
+com.umeng.newxp.controller.a
+com.umeng.newxp.controller.a$a
+com.umeng.newxp.controller.b
+com.umeng.newxp.controller.f
+com.umeng.newxp.controller.f$a
+com.umeng.newxp.controller.g
+com.umeng.newxp.controller.h
+com.umeng.newxp.net.XpReportClient:
+    private static final java.lang.String b
+    private static java.util.List d
+    134:171:public static void registerReportListener(com.umeng.newxp.controller.XpListenersCenter$ReportListener)
+    180:188:public static void unregisterReportListener(com.umeng.newxp.controller.XpListenersCenter$ReportListener)
+    33:33:static synthetic java.util.List a()
+com.umeng.newxp.net.a:
+    46:46:public static final java.lang.String[] getReprotList()
+com.umeng.newxp.net.c
+com.umeng.newxp.net.c$a
+com.umeng.newxp.net.d
+com.umeng.newxp.net.e:
+    62:68:public static com.umeng.newxp.net.e a(org.json.JSONObject)
+    78:90:public java.lang.String e()
+com.umeng.newxp.net.e$a:
+    private static final int x
+    184:185:public com.umeng.newxp.net.e$a e(int)
+    189:190:public com.umeng.newxp.net.e$a f(int)
+com.umeng.newxp.view.A
+com.umeng.newxp.view.B
+com.umeng.newxp.view.C
+com.umeng.newxp.view.D
+com.umeng.newxp.view.E
+com.umeng.newxp.view.EmbededContainer
+com.umeng.newxp.view.EmbededContainer$a
+com.umeng.newxp.view.EmbededContainer$a$a
+com.umeng.newxp.view.ExchangeViewManager:
+    int d
+    com.umeng.newxp.controller.XpListenersCenter$EntryOnClickListener e
+    private android.widget.ImageView k
+    private android.view.View l
+    private android.widget.TextView m
+    private android.widget.ImageView n
+    public java.util.List predata
+    94:243:public varargs void addView(android.view.ViewGroup,int,java.lang.String[])
+    246:252:private boolean a(int)
+    266:451:public varargs void addView(int,android.view.View,android.graphics.drawable.Drawable[])
+    455:471:public void hideBanner()
+    474:479:public void hideBanner(int)
+    488:492:public void setLoopInterval(int)
+    504:510:public void addView(android.view.ViewGroup,android.widget.ListView,com.umeng.newxp.controller.XpListenersCenter$AdapterListener)
+    520:521:public void addView(android.view.ViewGroup,android.widget.ListView)
+    524:527:public void setBannerOnClickListener(android.view.View$OnClickListener)
+    530:531:public void setReportListener(com.umeng.newxp.controller.XpListenersCenter$ReportListener)
+    534:535:public void setFloatDialogConfig(com.umeng.newxp.view.FloatDialogConfig)
+    538:539:public void setLargeGalleryConfig(com.umeng.newxp.view.LargeGalleryConfig)
+    542:543:public void setGridTemplateConfig(com.umeng.newxp.view.GridTemplateConfig)
+    552:560:public com.umeng.newxp.view.ExchangeViewManager setEntryOnClickListener(com.umeng.newxp.controller.XpListenersCenter$EntryOnClickListener)
+    564:572:public void onOrientationChanaged(int)
+    575:621:private void a(com.umeng.newxp.Promoter,com.umeng.newxp.controller.XpListenersCenter$FloatDialogListener)
+    61:61:static synthetic com.umeng.newxp.controller.ExchangeDataService a(com.umeng.newxp.view.ExchangeViewManager)
+    57:57:static synthetic com.umeng.newxp.view.GridTemplateConfig b(com.umeng.newxp.view.ExchangeViewManager)
+    574:574:static synthetic void a(com.umeng.newxp.view.ExchangeViewManager,com.umeng.newxp.Promoter,com.umeng.newxp.controller.XpListenersCenter$FloatDialogListener)
+    52:52:static synthetic java.lang.String c(com.umeng.newxp.view.ExchangeViewManager)
+    260:260:static synthetic android.widget.ImageView d(com.umeng.newxp.view.ExchangeViewManager)
+    261:261:static synthetic android.view.View e(com.umeng.newxp.view.ExchangeViewManager)
+    263:263:static synthetic android.widget.ImageView f(com.umeng.newxp.view.ExchangeViewManager)
+    262:262:static synthetic android.widget.TextView g(com.umeng.newxp.view.ExchangeViewManager)
+com.umeng.newxp.view.F
+com.umeng.newxp.view.FloatDialogConfig:
+    private int d
+    private int e
+    private com.umeng.newxp.controller.XpListenersCenter$FloatDialogListener f
+    11:11:public FloatDialogConfig()
+    31:32:public com.umeng.newxp.view.FloatDialogConfig setDelay(boolean)
+    41:42:public com.umeng.newxp.view.FloatDialogConfig setDelayProgress(int)
+    54:55:public com.umeng.newxp.view.FloatDialogConfig setTimeout(long)
+    67:68:public com.umeng.newxp.view.FloatDialogConfig setStartTime(long)
+    74:74:public int getNativeFlag()
+    82:83:public com.umeng.newxp.view.FloatDialogConfig setNativeFlag(int)
+    87:87:public int getDelayProgress()
+    90:90:public boolean isDelay()
+    93:93:public long getTimeout()
+    96:96:public long getStartTime()
+    99:99:public com.umeng.newxp.controller.XpListenersCenter$FloatDialogListener getListener()
+    102:103:public com.umeng.newxp.view.FloatDialogConfig setListener(com.umeng.newxp.controller.XpListenersCenter$FloatDialogListener)
+    106:107:public boolean isTimeout()
+com.umeng.newxp.view.G
+com.umeng.newxp.view.GridTemplate
+com.umeng.newxp.view.GridTemplateConfig:
+    public int maxPsize
+    public int numColumns
+    public int verticalSpacing
+    android.graphics.drawable.Drawable a
+    android.graphics.drawable.Drawable b
+    boolean c
+    boolean d
+    8:8:public GridTemplateConfig()
+    21:28:public com.umeng.newxp.view.GridTemplateConfig setMaxPsize(int)
+    32:34:public com.umeng.newxp.view.GridTemplateConfig setNumColumns(int)
+    38:39:public com.umeng.newxp.view.GridTemplateConfig setActivePointer(android.graphics.drawable.Drawable)
+    43:44:public com.umeng.newxp.view.GridTemplateConfig setInactivePointer(android.graphics.drawable.Drawable)
+    54:55:public com.umeng.newxp.view.GridTemplateConfig setVerticalSpacing(int)
+    59:60:public com.umeng.newxp.view.GridTemplateConfig setPaging(boolean)
+    64:65:public com.umeng.newxp.view.GridTemplateConfig setPointer(boolean)
+com.umeng.newxp.view.H
+com.umeng.newxp.view.I
+com.umeng.newxp.view.J
+com.umeng.newxp.view.K
+com.umeng.newxp.view.L
+com.umeng.newxp.view.LandingWebViewDialog
+com.umeng.newxp.view.LargeGalleryConfig:
+    private com.umeng.newxp.controller.XpListenersCenter$LargeGalleryBindListener a
+    6:6:public LargeGalleryConfig()
+    15:16:public com.umeng.newxp.view.LargeGalleryConfig setBindListener(com.umeng.newxp.controller.XpListenersCenter$LargeGalleryBindListener)
+    20:20:public com.umeng.newxp.controller.XpListenersCenter$LargeGalleryBindListener getBindListener()
+com.umeng.newxp.view.M
+com.umeng.newxp.view.N
+com.umeng.newxp.view.O
+com.umeng.newxp.view.P:
+    com.umeng.newxp.Promoter a
+    private com.umeng.common.net.p$a c
+    private android.view.LayoutInflater d
+    private com.umeng.newxp.controller.ExchangeDataService e
+    private android.graphics.drawable.Drawable f
+    51:60:public boolean a(com.umeng.newxp.controller.ExchangeDataService,com.umeng.newxp.Promoter,com.umeng.common.net.p$a)
+    65:124:public boolean a()
+    130:131:public void a(int)
+    135:141:public void b()
+    34:34:static synthetic com.umeng.newxp.controller.ExchangeDataService a(com.umeng.newxp.view.P)
+    32:32:static synthetic com.umeng.common.net.p$a b(com.umeng.newxp.view.P)
+    31:31:static synthetic void a(com.umeng.newxp.view.P,boolean)
+    36:36:static synthetic void a(com.umeng.newxp.view.P,android.graphics.drawable.Drawable)
+    31:31:static synthetic boolean c(com.umeng.newxp.view.P)
+com.umeng.newxp.view.Q
+com.umeng.newxp.view.R
+com.umeng.newxp.view.S
+com.umeng.newxp.view.T
+com.umeng.newxp.view.U
+com.umeng.newxp.view.UGallery:
+    34:36:public void postDelayedScrollNext()
+    52:52:public boolean isTouch()
+com.umeng.newxp.view.V
+com.umeng.newxp.view.W
+com.umeng.newxp.view.X
+com.umeng.newxp.view.Y
+com.umeng.newxp.view.Z
+com.umeng.newxp.view.a
+com.umeng.newxp.view.a$a
+com.umeng.newxp.view.aA
+com.umeng.newxp.view.aC
+com.umeng.newxp.view.aD
+com.umeng.newxp.view.aE
+com.umeng.newxp.view.aF:
+    private static final int c
+    private android.content.Context e
+    private android.view.ViewGroup f
+    int a
+    private com.umeng.newxp.controller.ExchangeDataService g
+    private com.umeng.newxp.controller.a h
+    private java.util.List i
+    android.view.View b
+    private android.widget.ViewSwitcher j
+    private int l
+    private android.widget.GridView m
+    private android.widget.GridView n
+    private java.util.Map o
+    private android.view.animation.Animation p
+    private android.view.View$OnClickListener q
+    private com.umeng.newxp.view.aF$b r
+    private android.widget.GridView s
+    81:117:public aF(android.content.Context,android.view.ViewGroup,int,com.umeng.newxp.controller.ExchangeDataService)
+    120:182:protected void b()
+    188:223:private void a(int)
+    226:231:private void a(com.umeng.newxp.controller.a$a,android.view.View)
+    234:299:private void d()
+    350:362:private com.umeng.newxp.view.aF$a e()
+    367:403:public void a()
+    413:414:public void a(android.view.View$OnClickListener)
+    69:69:static synthetic int c()
+    67:67:static synthetic android.widget.ViewSwitcher a(com.umeng.newxp.view.aF)
+    57:57:static synthetic android.content.Context b(com.umeng.newxp.view.aF)
+    187:187:static synthetic void a(com.umeng.newxp.view.aF,int)
+    77:77:static synthetic android.view.animation.Animation c(com.umeng.newxp.view.aF)
+    63:63:static synthetic void a(com.umeng.newxp.view.aF,com.umeng.newxp.controller.a)
+    64:64:static synthetic void a(com.umeng.newxp.view.aF,java.util.List)
+    64:64:static synthetic java.util.List d(com.umeng.newxp.view.aF)
+    225:225:static synthetic void a(com.umeng.newxp.view.aF,com.umeng.newxp.controller.a$a,android.view.View)
+com.umeng.newxp.view.aF$a
+com.umeng.newxp.view.aF$b
+com.umeng.newxp.view.aG
+com.umeng.newxp.view.aH
+com.umeng.newxp.view.aI
+com.umeng.newxp.view.aJ
+com.umeng.newxp.view.aK
+com.umeng.newxp.view.aL
+com.umeng.newxp.view.aM
+com.umeng.newxp.view.aN:
+    public static final java.lang.String a
+    public static final java.lang.String b
+    66:86:public static void a(android.content.Context,com.umeng.newxp.controller.ExchangeDataService,com.umeng.newxp.view.aW)
+    349:355:public static int a(android.content.Context,java.lang.String,java.lang.String)
+com.umeng.newxp.view.aN$a
+com.umeng.newxp.view.aW:
+    376:377:public com.umeng.newxp.view.aW a(boolean)
+    381:382:public com.umeng.newxp.view.aW b(boolean)
+    386:387:public com.umeng.newxp.view.aW c(boolean)
+    391:392:public com.umeng.newxp.view.aW d(boolean)
+    396:397:public com.umeng.newxp.view.aW a(int)
+com.umeng.newxp.view.aa
+com.umeng.newxp.view.ab
+com.umeng.newxp.view.ac
+com.umeng.newxp.view.ad
+com.umeng.newxp.view.ae
+com.umeng.newxp.view.af
+com.umeng.newxp.view.ag
+com.umeng.newxp.view.ah
+com.umeng.newxp.view.ai
+com.umeng.newxp.view.aj
+com.umeng.newxp.view.ak
+com.umeng.newxp.view.al
+com.umeng.newxp.view.am
+com.umeng.newxp.view.an
+com.umeng.newxp.view.ao
+com.umeng.newxp.view.ap
+com.umeng.newxp.view.aq
+com.umeng.newxp.view.ar
+com.umeng.newxp.view.as
+com.umeng.newxp.view.at
+com.umeng.newxp.view.au
+com.umeng.newxp.view.av
+com.umeng.newxp.view.aw
+com.umeng.newxp.view.ax
+com.umeng.newxp.view.ay
+com.umeng.newxp.view.az
+com.umeng.newxp.view.b
+com.umeng.newxp.view.c
+com.umeng.newxp.view.d
+com.umeng.newxp.view.e
+com.umeng.newxp.view.f:
+    private android.content.Context d
+    private android.view.ViewGroup e
+    int a
+    private com.umeng.newxp.controller.ExchangeDataService f
+    private com.umeng.newxp.controller.a g
+    private java.util.List h
+    android.view.View b
+    private android.widget.ViewSwitcher i
+    private int k
+    private com.umeng.newxp.controller.a$a l
+    private com.umeng.newxp.controller.a$a m
+    private java.util.Map n
+    private android.view.View$OnClickListener o
+    79:116:public f(android.content.Context,android.view.ViewGroup,int,com.umeng.newxp.controller.ExchangeDataService)
+    119:191:protected void b()
+    195:250:private void a(int)
+    253:258:private void a(com.umeng.newxp.controller.a$a)
+    262:327:private void d()
+    378:390:private com.umeng.newxp.view.f$a e()
+    395:447:public void a()
+    457:458:public void a(android.view.View$OnClickListener)
+    461:472:private void a(java.util.List)
+    68:68:static synthetic int c()
+    66:66:static synthetic android.widget.ViewSwitcher a(com.umeng.newxp.view.f)
+    56:56:static synthetic android.content.Context b(com.umeng.newxp.view.f)
+    193:193:static synthetic void a(com.umeng.newxp.view.f,int)
+    60:60:static synthetic com.umeng.newxp.controller.ExchangeDataService c(com.umeng.newxp.view.f)
+    460:460:static synthetic void a(com.umeng.newxp.view.f,java.util.List)
+    77:77:static synthetic android.view.View$OnClickListener d(com.umeng.newxp.view.f)
+    72:72:static synthetic com.umeng.newxp.controller.a$a e(com.umeng.newxp.view.f)
+    252:252:static synthetic void a(com.umeng.newxp.view.f,com.umeng.newxp.controller.a$a)
+    73:73:static synthetic com.umeng.newxp.controller.a$a f(com.umeng.newxp.view.f)
+com.umeng.newxp.view.f$a
+com.umeng.newxp.view.g
+com.umeng.newxp.view.h
+com.umeng.newxp.view.i
+com.umeng.newxp.view.j
+com.umeng.newxp.view.k
+com.umeng.newxp.view.l
+com.umeng.newxp.view.m
+com.umeng.newxp.view.n
+com.umeng.newxp.view.o
+com.umeng.newxp.view.o$a
+com.umeng.newxp.view.p
+com.umeng.newxp.view.q
+com.umeng.newxp.view.r
+com.umeng.newxp.view.s
+com.umeng.newxp.view.t
+com.umeng.newxp.view.u
+com.umeng.newxp.view.v
+com.umeng.newxp.view.w
+com.umeng.newxp.view.w$a
+com.umeng.newxp.view.widget.SwipeView:
+    274:275:public int setPageWidth(int)
+    291:291:public int calculatePageSize(android.view.ViewGroup$MarginLayoutParams)
+    332:335:public void addPageControlPointer(int)
+com.umeng.newxp.view.widget.SwipeViewPointer:
+    212:216:public void addPageCount(int)
+com.umeng.newxp.view.widget.a
+com.umeng.newxp.view.widget.a$a
+com.umeng.newxp.view.widget.a$b
+com.umeng.newxp.view.x
+com.umeng.newxp.view.y
+com.umeng.newxp.view.z
+com.umeng.update.UmengDownloadListener
+com.umeng.update.UmengUpdateAgent:
+    15:15:public UmengUpdateAgent()
+    51:53:public static void update(android.content.Context,java.lang.String)
+    66:70:public static void update(android.content.Context,java.lang.String,java.lang.String)
+    79:80:public static void setUpdateOnlyWifi(boolean)
+    89:90:public static void setUpdateAutoPopup(boolean)
+    99:100:public static void setUpdateListener(com.umeng.update.UmengUpdateListener)
+    108:108:public static void setDownloadListener(com.umeng.update.UmengDownloadListener)
+    126:151:public static void update(android.content.Context)
+com.umeng.update.UpdateResponse:
+    private static final long a
+    public java.lang.String proto_ver
+    65:67:public UpdateResponse(org.json.JSONObject)
+    75:96:private void a(org.json.JSONObject)
+com.umeng.update.UpdateStatus
+com.umeng.update.d:
+    public static final java.lang.String a
+    public static final java.lang.String b
+    public static final java.lang.String c
+    12:12:public d()
+    22:23:public static void a(java.lang.String)
+    26:27:public static void b(java.lang.String)
+com.umeng.update.e:
+    55:55:public boolean b()
+org.apache.commons.io.ByteOrderMark
+org.apache.commons.io.Charsets
+org.apache.commons.io.CopyUtils
+org.apache.commons.io.DirectoryWalker
+org.apache.commons.io.DirectoryWalker$CancelException
+org.apache.commons.io.EndianUtils
+org.apache.commons.io.FileCleaner
+org.apache.commons.io.FileCleaningTracker
+org.apache.commons.io.FileCleaningTracker$Reaper
+org.apache.commons.io.FileCleaningTracker$Tracker
+org.apache.commons.io.FileDeleteStrategy
+org.apache.commons.io.FileDeleteStrategy$ForceFileDeleteStrategy
+org.apache.commons.io.FileExistsException
+org.apache.commons.io.FileSystemUtils
+org.apache.commons.io.FileUtils:
+    public static final long ONE_KB
+    public static final long ONE_MB
+    private static final long FILE_COPY_BUFFER_SIZE
+    public static final long ONE_GB
+    public static final long ONE_TB
+    public static final long ONE_PB
+    public static final long ONE_EB
+    82:83:public FileUtils()
+    192:202:public static varargs java.io.File getFile(java.io.File,java.lang.String[])
+    213:224:public static varargs java.io.File getFile(java.lang.String[])
+    235:235:public static java.lang.String getTempDirectoryPath()
+    246:246:public static java.io.File getTempDirectory()
+    257:257:public static java.lang.String getUserDirectoryPath()
+    268:268:public static java.io.File getUserDirectory()
+    291:301:public static java.io.FileInputStream openInputStream(java.io.File)
+    391:406:public static java.lang.String byteCountToDisplaySize(java.math.BigInteger)
+    426:426:public static java.lang.String byteCountToDisplaySize(long)
+    443:451:public static void touch(java.io.File)
+    463:463:public static java.io.File[] convertFileCollectionToFileArray(java.util.Collection)
+    478:492:private static void innerListFiles(java.util.Collection,java.io.File,org.apache.commons.io.filefilter.IOFileFilter,boolean)
+    521:530:public static java.util.Collection listFiles(java.io.File,org.apache.commons.io.filefilter.IOFileFilter,org.apache.commons.io.filefilter.IOFileFilter)
+    544:550:private static void validateListFilesParameters(java.io.File,org.apache.commons.io.filefilter.IOFileFilter)
+    559:559:private static org.apache.commons.io.filefilter.IOFileFilter setUpEffectiveFileFilter(org.apache.commons.io.filefilter.IOFileFilter)
+    569:569:private static org.apache.commons.io.filefilter.IOFileFilter setUpEffectiveDirFilter(org.apache.commons.io.filefilter.IOFileFilter)
+    593:605:public static java.util.Collection listFilesAndDirs(java.io.File,org.apache.commons.io.filefilter.IOFileFilter,org.apache.commons.io.filefilter.IOFileFilter)
+    628:628:public static java.util.Iterator iterateFiles(java.io.File,org.apache.commons.io.filefilter.IOFileFilter,org.apache.commons.io.filefilter.IOFileFilter)
+    652:652:public static java.util.Iterator iterateFilesAndDirs(java.io.File,org.apache.commons.io.filefilter.IOFileFilter,org.apache.commons.io.filefilter.IOFileFilter)
+    664:668:private static java.lang.String[] toSuffixes(java.lang.String[])
+    685:691:public static java.util.Collection listFiles(java.io.File,java.lang.String[],boolean)
+    710:710:public static java.util.Iterator iterateFiles(java.io.File,java.lang.String[],boolean)
+    730:764:public static boolean contentEquals(java.io.File,java.io.File)
+    787:821:public static boolean contentEqualsIgnoreEOL(java.io.File,java.io.File,java.lang.String)
+    841:846:public static java.io.File toFile(java.net.URL)
+    865:894:static java.lang.String decodeUrl(java.lang.String)
+    917:931:public static java.io.File[] toFiles(java.net.URL[])
+    945:951:public static java.net.URL[] toURLs(java.io.File[])
+    977:978:public static void copyFileToDirectory(java.io.File,java.io.File)
+    1006:1014:public static void copyFileToDirectory(java.io.File,java.io.File,boolean)
+    1038:1039:public static void copyFile(java.io.File,java.io.File)
+    1067:1092:public static void copyFile(java.io.File,java.io.File,boolean)
+    1112:1116:public static long copyFile(java.io.File,java.io.OutputStream)
+    1129:1163:private static void doCopyFile(java.io.File,java.io.File,boolean)
+    1190:1203:public static void copyDirectoryToDirectory(java.io.File,java.io.File)
+    1230:1231:public static void copyDirectory(java.io.File,java.io.File)
+    1261:1262:public static void copyDirectory(java.io.File,java.io.File,boolean)
+    1310:1311:public static void copyDirectory(java.io.File,java.io.File,java.io.FileFilter)
+    1361:1390:public static void copyDirectory(java.io.File,java.io.File,java.io.FileFilter,boolean)
+    1406:1437:private static void doCopyDirectory(java.io.File,java.io.File,java.io.FileFilter,boolean,java.util.List)
+    1486:1491:public static void copyURLToFile(java.net.URL,java.io.File,int,int)
+    1530:1543:public static void deleteDirectory(java.io.File)
+    1561:1574:public static boolean deleteQuietly(java.io.File)
+    1605:1625:public static boolean directoryContains(java.io.File,java.io.File)
+    1635:1662:public static void cleanDirectory(java.io.File)
+    1677:1694:public static boolean waitFor(java.io.File,int)
+    1709:1714:public static java.lang.String readFileToString(java.io.File,java.nio.charset.Charset)
+    1734:1734:public static java.lang.String readFileToString(java.io.File,java.lang.String)
+    1748:1748:public static java.lang.String readFileToString(java.io.File)
+    1761:1766:public static byte[] readFileToByteArray(java.io.File)
+    1781:1786:public static java.util.List readLines(java.io.File,java.nio.charset.Charset)
+    1806:1806:public static java.util.List readLines(java.io.File,java.lang.String)
+    1819:1819:public static java.util.List readLines(java.io.File)
+    1854:1863:public static org.apache.commons.io.LineIterator lineIterator(java.io.File,java.lang.String)
+    1877:1877:public static org.apache.commons.io.LineIterator lineIterator(java.io.File)
+    1895:1896:public static void writeStringToFile(java.io.File,java.lang.String,java.nio.charset.Charset)
+    1911:1912:public static void writeStringToFile(java.io.File,java.lang.String,java.lang.String)
+    1926:1934:public static void writeStringToFile(java.io.File,java.lang.String,java.nio.charset.Charset,boolean)
+    1951:1952:public static void writeStringToFile(java.io.File,java.lang.String,java.lang.String,boolean)
+    1962:1963:public static void writeStringToFile(java.io.File,java.lang.String)
+    1976:1977:public static void writeStringToFile(java.io.File,java.lang.String,boolean)
+    1988:1989:public static void write(java.io.File,java.lang.CharSequence)
+    2002:2003:public static void write(java.io.File,java.lang.CharSequence,boolean)
+    2015:2016:public static void write(java.io.File,java.lang.CharSequence,java.nio.charset.Charset)
+    2029:2030:public static void write(java.io.File,java.lang.CharSequence,java.lang.String)
+    2044:2046:public static void write(java.io.File,java.lang.CharSequence,java.nio.charset.Charset,boolean)
+    2063:2064:public static void write(java.io.File,java.lang.CharSequence,java.lang.String,boolean)
+    2078:2079:public static void writeByteArrayToFile(java.io.File,byte[])
+    2092:2100:public static void writeByteArrayToFile(java.io.File,byte[],boolean)
+    2118:2119:public static void writeLines(java.io.File,java.lang.String,java.util.Collection)
+    2136:2137:public static void writeLines(java.io.File,java.lang.String,java.util.Collection,boolean)
+    2150:2151:public static void writeLines(java.io.File,java.util.Collection)
+    2166:2167:public static void writeLines(java.io.File,java.util.Collection,boolean)
+    2187:2188:public static void writeLines(java.io.File,java.lang.String,java.util.Collection,java.lang.String)
+    2207:2217:public static void writeLines(java.io.File,java.lang.String,java.util.Collection,java.lang.String,boolean)
+    2231:2232:public static void writeLines(java.io.File,java.util.Collection,java.lang.String)
+    2249:2250:public static void writeLines(java.io.File,java.util.Collection,java.lang.String,boolean)
+    2269:2282:public static void forceDelete(java.io.File)
+    2293:2298:public static void forceDeleteOnExit(java.io.File)
+    2308:2316:private static void deleteDirectoryOnExit(java.io.File)
+    2326:2353:private static void cleanDirectoryOnExit(java.io.File)
+    2367:2388:public static void forceMkdir(java.io.File)
+    2411:2419:public static long sizeOf(java.io.File)
+    2444:2452:public static java.math.BigInteger sizeOfAsBigInteger(java.io.File)
+    2468:2489:public static long sizeOfDirectory(java.io.File)
+    2503:2521:public static java.math.BigInteger sizeOfDirectoryAsBigInteger(java.io.File)
+    2531:2537:private static void checkDirectory(java.io.File)
+    2554:2561:public static boolean isFileNewer(java.io.File,java.io.File)
+    2577:2580:public static boolean isFileNewer(java.io.File,java.util.Date)
+    2596:2602:public static boolean isFileNewer(java.io.File,long)
+    2621:2628:public static boolean isFileOlder(java.io.File,java.io.File)
+    2644:2647:public static boolean isFileOlder(java.io.File,java.util.Date)
+    2663:2669:public static boolean isFileOlder(java.io.File,long)
+    2685:2687:public static long checksumCRC32(java.io.File)
+    2708:2718:public static java.util.zip.Checksum checksum(java.io.File,java.util.zip.Checksum)
+    2735:2762:public static void moveDirectory(java.io.File,java.io.File)
+    2778:2796:public static void moveDirectoryToDirectory(java.io.File,java.io.File,boolean)
+    2812:2839:public static void moveFile(java.io.File,java.io.File)
+    2855:2872:public static void moveFileToDirectory(java.io.File,java.io.File,boolean)
+    2890:2904:public static void moveToDirectory(java.io.File,java.io.File,boolean)
+    2921:2938:public static boolean isSymlink(java.io.File)
+org.apache.commons.io.FilenameUtils
+org.apache.commons.io.HexDump
+org.apache.commons.io.IOCase
+org.apache.commons.io.IOExceptionWithCause
+org.apache.commons.io.IOUtils:
+    private static final int EOF
+    public static final char DIR_SEPARATOR_UNIX
+    public static final char DIR_SEPARATOR_WINDOWS
+    public static final java.lang.String LINE_SEPARATOR_UNIX
+    public static final java.lang.String LINE_SEPARATOR_WINDOWS
+    private static final int DEFAULT_BUFFER_SIZE
+    private static final int SKIP_BUFFER_SIZE
+    private static char[] SKIP_CHAR_BUFFER
+    private static byte[] SKIP_BYTE_BUFFER
+    152:153:public IOUtils()
+    164:167:public static void close(java.net.URLConnection)
+    193:194:public static void closeQuietly(java.io.Reader)
+    219:220:public static void closeQuietly(java.io.Writer)
+    334:341:public static void closeQuietly(java.net.Socket)
+    367:374:public static void closeQuietly(java.nio.channels.Selector)
+    400:407:public static void closeQuietly(java.net.ServerSocket)
+    431:431:public static java.io.InputStream toBufferedInputStream(java.io.InputStream)
+    444:444:public static java.io.BufferedReader toBufferedReader(java.io.Reader)
+    461:463:public static byte[] toByteArray(java.io.InputStream)
+    484:488:public static byte[] toByteArray(java.io.InputStream,long)
+    504:524:public static byte[] toByteArray(java.io.InputStream,int)
+    540:540:public static byte[] toByteArray(java.io.Reader)
+    558:560:public static byte[] toByteArray(java.io.Reader,java.nio.charset.Charset)
+    584:584:public static byte[] toByteArray(java.io.Reader,java.lang.String)
+    601:601:public static byte[] toByteArray(java.lang.String)
+    617:617:public static byte[] toByteArray(java.net.URI)
+    633:637:public static byte[] toByteArray(java.net.URL)
+    654:658:public static byte[] toByteArray(java.net.URLConnection)
+    678:678:public static char[] toCharArray(java.io.InputStream)
+    697:699:public static char[] toCharArray(java.io.InputStream,java.nio.charset.Charset)
+    723:723:public static char[] toCharArray(java.io.InputStream,java.lang.String)
+    739:741:public static char[] toCharArray(java.io.Reader)
+    759:759:public static java.lang.String toString(java.io.InputStream)
+    777:779:public static java.lang.String toString(java.io.InputStream,java.nio.charset.Charset)
+    803:803:public static java.lang.String toString(java.io.InputStream,java.lang.String)
+    818:820:public static java.lang.String toString(java.io.Reader)
+    833:833:public static java.lang.String toString(java.net.URI)
+    848:848:public static java.lang.String toString(java.net.URI,java.nio.charset.Charset)
+    866:866:public static java.lang.String toString(java.net.URI,java.lang.String)
+    879:879:public static java.lang.String toString(java.net.URL)
+    894:898:public static java.lang.String toString(java.net.URL,java.nio.charset.Charset)
+    917:917:public static java.lang.String toString(java.net.URL,java.lang.String)
+    932:932:public static java.lang.String toString(byte[])
+    949:949:public static java.lang.String toString(byte[],java.lang.String)
+    968:968:public static java.util.List readLines(java.io.InputStream)
+    986:987:public static java.util.List readLines(java.io.InputStream,java.nio.charset.Charset)
+    1011:1011:public static java.util.List readLines(java.io.InputStream,java.lang.String)
+    1028:1035:public static java.util.List readLines(java.io.Reader)
+    1068:1068:public static org.apache.commons.io.LineIterator lineIterator(java.io.Reader)
+    1102:1102:public static org.apache.commons.io.LineIterator lineIterator(java.io.InputStream,java.nio.charset.Charset)
+    1139:1139:public static org.apache.commons.io.LineIterator lineIterator(java.io.InputStream,java.lang.String)
+    1152:1152:public static java.io.InputStream toInputStream(java.lang.CharSequence)
+    1165:1165:public static java.io.InputStream toInputStream(java.lang.CharSequence,java.nio.charset.Charset)
+    1185:1185:public static java.io.InputStream toInputStream(java.lang.CharSequence,java.lang.String)
+    1198:1198:public static java.io.InputStream toInputStream(java.lang.String)
+    1211:1211:public static java.io.InputStream toInputStream(java.lang.String,java.nio.charset.Charset)
+    1231:1232:public static java.io.InputStream toInputStream(java.lang.String,java.lang.String)
+    1249:1252:public static void write(byte[],java.io.OutputStream)
+    1268:1269:public static void write(byte[],java.io.Writer)
+    1286:1289:public static void write(byte[],java.io.Writer,java.nio.charset.Charset)
+    1312:1313:public static void write(byte[],java.io.Writer,java.lang.String)
+    1329:1332:public static void write(char[],java.io.Writer)
+    1350:1351:public static void write(char[],java.io.OutputStream)
+    1369:1372:public static void write(char[],java.io.OutputStream,java.nio.charset.Charset)
+    1397:1398:public static void write(char[],java.io.OutputStream,java.lang.String)
+    1412:1415:public static void write(java.lang.CharSequence,java.io.Writer)
+    1432:1433:public static void write(java.lang.CharSequence,java.io.OutputStream)
+    1449:1452:public static void write(java.lang.CharSequence,java.io.OutputStream,java.nio.charset.Charset)
+    1474:1475:public static void write(java.lang.CharSequence,java.io.OutputStream,java.lang.String)
+    1489:1492:public static void write(java.lang.String,java.io.Writer)
+    1509:1510:public static void write(java.lang.String,java.io.OutputStream)
+    1526:1529:public static void write(java.lang.String,java.io.OutputStream,java.nio.charset.Charset)
+    1552:1553:public static void write(java.lang.String,java.io.OutputStream,java.lang.String)
+    1570:1573:public static void write(java.lang.StringBuffer,java.io.Writer)
+    1592:1593:public static void write(java.lang.StringBuffer,java.io.OutputStream)
+    1617:1620:public static void write(java.lang.StringBuffer,java.io.OutputStream,java.lang.String)
+    1638:1639:public static void writeLines(java.util.Collection,java.lang.String,java.io.OutputStream)
+    1656:1669:public static void writeLines(java.util.Collection,java.lang.String,java.io.OutputStream,java.nio.charset.Charset)
+    1692:1693:public static void writeLines(java.util.Collection,java.lang.String,java.io.OutputStream,java.lang.String)
+    1708:1720:public static void writeLines(java.util.Collection,java.lang.String,java.io.Writer)
+    1820:1820:public static long copyLarge(java.io.InputStream,java.io.OutputStream,long,long)
+    1845:1866:public static long copyLarge(java.io.InputStream,java.io.OutputStream,long,long,byte[])
+    1886:1887:public static void copy(java.io.InputStream,java.io.Writer)
+    1906:1908:public static void copy(java.io.InputStream,java.io.Writer,java.nio.charset.Charset)
+    1933:1934:public static void copy(java.io.InputStream,java.io.Writer,java.lang.String)
+    1957:1961:public static int copy(java.io.Reader,java.io.Writer)
+    1980:1980:public static long copyLarge(java.io.Reader,java.io.Writer)
+    1999:2005:public static long copyLarge(java.io.Reader,java.io.Writer,char[])
+    2029:2029:public static long copyLarge(java.io.Reader,java.io.Writer,long,long)
+    2053:2073:public static long copyLarge(java.io.Reader,java.io.Writer,long,long,char[])
+    2097:2098:public static void copy(java.io.Reader,java.io.OutputStream)
+    2124:2129:public static void copy(java.io.Reader,java.io.OutputStream,java.nio.charset.Charset)
+    2158:2159:public static void copy(java.io.Reader,java.io.OutputStream,java.lang.String)
+    2179:2196:public static boolean contentEquals(java.io.InputStream,java.io.InputStream)
+    2217:2230:public static boolean contentEquals(java.io.Reader,java.io.Reader)
+    2249:2258:public static boolean contentEqualsIgnoreEOL(java.io.Reader,java.io.Reader)
+    2278:2297:public static long skip(java.io.InputStream,long)
+    2317:2336:public static long skip(java.io.Reader,long)
+    2355:2362:public static void skipFully(java.io.InputStream,long)
+    2380:2384:public static void skipFully(java.io.Reader,long)
+    2402:2414:public static int read(java.io.Reader,char[],int,int)
+    2430:2430:public static int read(java.io.Reader,char[])
+    2448:2460:public static int read(java.io.InputStream,byte[],int,int)
+    2476:2476:public static int read(java.io.InputStream,byte[])
+    2496:2500:public static void readFully(java.io.Reader,char[],int,int)
+    2517:2518:public static void readFully(java.io.Reader,char[])
+    2537:2541:public static void readFully(java.io.InputStream,byte[],int,int)
+    2558:2559:public static void readFully(java.io.InputStream,byte[])
+org.apache.commons.io.LineIterator
+org.apache.commons.io.TaggedIOException
+org.apache.commons.io.ThreadMonitor
+org.apache.commons.io.comparator.AbstractFileComparator
+org.apache.commons.io.comparator.CompositeFileComparator
+org.apache.commons.io.comparator.DefaultFileComparator
+org.apache.commons.io.comparator.DirectoryFileComparator
+org.apache.commons.io.comparator.ExtensionFileComparator
+org.apache.commons.io.comparator.LastModifiedFileComparator
+org.apache.commons.io.comparator.NameFileComparator
+org.apache.commons.io.comparator.PathFileComparator
+org.apache.commons.io.comparator.ReverseComparator
+org.apache.commons.io.comparator.SizeFileComparator
+org.apache.commons.io.filefilter.AbstractFileFilter
+org.apache.commons.io.filefilter.AgeFileFilter
+org.apache.commons.io.filefilter.AndFileFilter
+org.apache.commons.io.filefilter.CanReadFileFilter
+org.apache.commons.io.filefilter.CanWriteFileFilter
+org.apache.commons.io.filefilter.ConditionalFileFilter
+org.apache.commons.io.filefilter.DelegateFileFilter
+org.apache.commons.io.filefilter.DirectoryFileFilter
+org.apache.commons.io.filefilter.EmptyFileFilter
+org.apache.commons.io.filefilter.FalseFileFilter
+org.apache.commons.io.filefilter.FileFileFilter
+org.apache.commons.io.filefilter.FileFilterUtils
+org.apache.commons.io.filefilter.HiddenFileFilter
+org.apache.commons.io.filefilter.IOFileFilter
+org.apache.commons.io.filefilter.MagicNumberFileFilter
+org.apache.commons.io.filefilter.NameFileFilter
+org.apache.commons.io.filefilter.NotFileFilter
+org.apache.commons.io.filefilter.OrFileFilter
+org.apache.commons.io.filefilter.PrefixFileFilter
+org.apache.commons.io.filefilter.RegexFileFilter
+org.apache.commons.io.filefilter.SizeFileFilter
+org.apache.commons.io.filefilter.SuffixFileFilter
+org.apache.commons.io.filefilter.TrueFileFilter
+org.apache.commons.io.filefilter.WildcardFileFilter
+org.apache.commons.io.filefilter.WildcardFilter
+org.apache.commons.io.input.AutoCloseInputStream
+org.apache.commons.io.input.BOMInputStream
+org.apache.commons.io.input.BOMInputStream$1
+org.apache.commons.io.input.BoundedInputStream
+org.apache.commons.io.input.BrokenInputStream
+org.apache.commons.io.input.CharSequenceInputStream
+org.apache.commons.io.input.CharSequenceReader
+org.apache.commons.io.input.ClassLoaderObjectInputStream
+org.apache.commons.io.input.CloseShieldInputStream
+org.apache.commons.io.input.ClosedInputStream
+org.apache.commons.io.input.CountingInputStream
+org.apache.commons.io.input.DemuxInputStream
+org.apache.commons.io.input.NullInputStream
+org.apache.commons.io.input.NullReader
+org.apache.commons.io.input.ProxyInputStream
+org.apache.commons.io.input.ProxyReader
+org.apache.commons.io.input.ReaderInputStream
+org.apache.commons.io.input.ReversedLinesFileReader
+org.apache.commons.io.input.ReversedLinesFileReader$1
+org.apache.commons.io.input.ReversedLinesFileReader$FilePart
+org.apache.commons.io.input.SwappedDataInputStream
+org.apache.commons.io.input.TaggedInputStream
+org.apache.commons.io.input.Tailer
+org.apache.commons.io.input.TailerListener
+org.apache.commons.io.input.TailerListenerAdapter
+org.apache.commons.io.input.TeeInputStream
+org.apache.commons.io.input.XmlStreamReader
+org.apache.commons.io.input.XmlStreamReaderException
+org.apache.commons.io.monitor.FileAlterationListener
+org.apache.commons.io.monitor.FileAlterationListenerAdaptor
+org.apache.commons.io.monitor.FileAlterationMonitor
+org.apache.commons.io.monitor.FileAlterationObserver
+org.apache.commons.io.monitor.FileEntry
+org.apache.commons.io.output.BrokenOutputStream
+org.apache.commons.io.output.ByteArrayOutputStream
+org.apache.commons.io.output.CloseShieldOutputStream
+org.apache.commons.io.output.ClosedOutputStream
+org.apache.commons.io.output.CountingOutputStream
+org.apache.commons.io.output.DeferredFileOutputStream
+org.apache.commons.io.output.DemuxOutputStream
+org.apache.commons.io.output.FileWriterWithEncoding
+org.apache.commons.io.output.LockableFileWriter
+org.apache.commons.io.output.NullOutputStream
+org.apache.commons.io.output.NullWriter
+org.apache.commons.io.output.ProxyOutputStream
+org.apache.commons.io.output.ProxyWriter
+org.apache.commons.io.output.StringBuilderWriter:
+    59:61:public StringBuilderWriter(java.lang.StringBuilder)
+    148:148:public java.lang.StringBuilder getBuilder()
+org.apache.commons.io.output.TaggedOutputStream
+org.apache.commons.io.output.TeeOutputStream
+org.apache.commons.io.output.ThresholdingOutputStream
+org.apache.commons.io.output.WriterOutputStream
+org.apache.commons.io.output.XmlStreamWriter
+org.dom4j.io.DispatchHandler:
+    102:102:public boolean containsHandler(java.lang.String)
+org.dom4j.io.DocumentInputSource:
+    59:61:public void setDocument(org.dom4j.Document)
+org.dom4j.io.ElementStack:
+    161:161:public boolean containsHandler(java.lang.String)
+org.dom4j.io.JAXPHelper:
+    26:27:protected JAXPHelper()
+org.dom4j.io.PruningElementStack
+org.dom4j.io.SAXEventRecorder$SAXEvent:
+    public static final long serialVersionUID
+    static final byte PROCESSING_INSTRUCTION
+    static final byte START_PREFIX_MAPPING
+    static final byte END_PREFIX_MAPPING
+    static final byte START_DOCUMENT
+    static final byte END_DOCUMENT
+    static final byte START_ELEMENT
+    static final byte END_ELEMENT
+    static final byte CHARACTERS
+    static final byte START_DTD
+    static final byte END_DTD
+    static final byte START_ENTITY
+    static final byte END_ENTITY
+    static final byte START_CDATA
+    static final byte END_CDATA
+    static final byte COMMENT
+    static final byte ELEMENT_DECL
+    static final byte ATTRIBUTE_DECL
+    static final byte INTERNAL_ENTITY_DECL
+    static final byte EXTERNAL_ENTITY_DECL
+org.dom4j.io.SAXHelper:
+    28:29:protected SAXHelper()
+org.dom4j.io.SAXModifyContentHandler:
+    36:37:public SAXModifyContentHandler(org.dom4j.DocumentFactory)
+    46:47:public SAXModifyContentHandler(org.dom4j.DocumentFactory,org.dom4j.ElementHandler,org.dom4j.io.ElementStack)
+    242:242:protected org.dom4j.io.XMLWriter getXMLWriter()
+org.dom4j.io.SAXModifyReader:
+    private boolean pruneElements
+    36:37:public SAXModifyReader(boolean)
+    40:41:public SAXModifyReader(org.dom4j.DocumentFactory)
+    44:45:public SAXModifyReader(org.dom4j.DocumentFactory,boolean)
+    48:49:public SAXModifyReader(org.xml.sax.XMLReader)
+    52:53:public SAXModifyReader(org.xml.sax.XMLReader,boolean)
+    56:57:public SAXModifyReader(java.lang.String)
+    61:62:public SAXModifyReader(java.lang.String,boolean)
+    69:69:public boolean isPruneElements()
+    73:74:public void setPruneElements(boolean)
+    86:86:protected org.dom4j.io.XMLWriter getXMLWriter()
+org.dom4j.tree.ConcurrentReaderHashMap:
+    private static final int MINIMUM_CAPACITY
+    private static final int MAXIMUM_CAPACITY
+    public static final float DEFAULT_LOAD_FACTOR
+    342:343:public ConcurrentReaderHashMap(int)
+    361:364:public ConcurrentReaderHashMap(java.util.Map)
+    767:767:public boolean contains(java.lang.Object)
+    1004:1004:public java.util.Enumeration keys()
+    1019:1019:public java.util.Enumeration elements()
+    1226:1244:private synchronized void writeObject(java.io.ObjectOutputStream)
+    1253:1268:private synchronized void readObject(java.io.ObjectInputStream)
+    1275:1275:public synchronized int capacity()
+    1282:1282:public float loadFactor()
+org.jsoup.Connection
+org.jsoup.Connection$Base
+org.jsoup.Connection$KeyVal
+org.jsoup.Connection$Method
+org.jsoup.Connection$Request
+org.jsoup.Connection$Response
+org.jsoup.HttpStatusException
+org.jsoup.Jsoup
+org.jsoup.UnsupportedMimeTypeException
+org.jsoup.examples.HtmlToPlainText
+org.jsoup.examples.HtmlToPlainText$1
+org.jsoup.examples.HtmlToPlainText$FormattingVisitor
+org.jsoup.examples.ListLinks
+org.jsoup.helper.DataUtil
+org.jsoup.helper.DescendableLinkedList
+org.jsoup.helper.DescendableLinkedList$1
+org.jsoup.helper.DescendableLinkedList$DescendingIterator
+org.jsoup.helper.HttpConnection
+org.jsoup.helper.HttpConnection$1
+org.jsoup.helper.HttpConnection$Base
+org.jsoup.helper.HttpConnection$KeyVal
+org.jsoup.helper.HttpConnection$Request
+org.jsoup.helper.HttpConnection$Response
+org.jsoup.helper.StringUtil
+org.jsoup.helper.Validate
+org.jsoup.nodes.Attribute
+org.jsoup.nodes.Attributes
+org.jsoup.nodes.Attributes$1
+org.jsoup.nodes.Attributes$Dataset
+org.jsoup.nodes.Attributes$Dataset$DatasetIterator
+org.jsoup.nodes.Attributes$Dataset$EntrySet
+org.jsoup.nodes.Comment
+org.jsoup.nodes.DataNode
+org.jsoup.nodes.Document
+org.jsoup.nodes.Document$OutputSettings
+org.jsoup.nodes.Document$QuirksMode
+org.jsoup.nodes.DocumentType
+org.jsoup.nodes.Element
+org.jsoup.nodes.Element$1
+org.jsoup.nodes.Entities
+org.jsoup.nodes.Entities$EscapeMode
+org.jsoup.nodes.Node
+org.jsoup.nodes.Node$1
+org.jsoup.nodes.Node$OuterHtmlVisitor
+org.jsoup.nodes.TextNode
+org.jsoup.nodes.XmlDeclaration
+org.jsoup.parser.CharacterReader
+org.jsoup.parser.HtmlTreeBuilder
+org.jsoup.parser.HtmlTreeBuilderState
+org.jsoup.parser.HtmlTreeBuilderState$1
+org.jsoup.parser.HtmlTreeBuilderState$10
+org.jsoup.parser.HtmlTreeBuilderState$11
+org.jsoup.parser.HtmlTreeBuilderState$12
+org.jsoup.parser.HtmlTreeBuilderState$13
+org.jsoup.parser.HtmlTreeBuilderState$14
+org.jsoup.parser.HtmlTreeBuilderState$15
+org.jsoup.parser.HtmlTreeBuilderState$16
+org.jsoup.parser.HtmlTreeBuilderState$17
+org.jsoup.parser.HtmlTreeBuilderState$18
+org.jsoup.parser.HtmlTreeBuilderState$19
+org.jsoup.parser.HtmlTreeBuilderState$2
+org.jsoup.parser.HtmlTreeBuilderState$20
+org.jsoup.parser.HtmlTreeBuilderState$21
+org.jsoup.parser.HtmlTreeBuilderState$22
+org.jsoup.parser.HtmlTreeBuilderState$23
+org.jsoup.parser.HtmlTreeBuilderState$24
+org.jsoup.parser.HtmlTreeBuilderState$3
+org.jsoup.parser.HtmlTreeBuilderState$4
+org.jsoup.parser.HtmlTreeBuilderState$5
+org.jsoup.parser.HtmlTreeBuilderState$6
+org.jsoup.parser.HtmlTreeBuilderState$7
+org.jsoup.parser.HtmlTreeBuilderState$8
+org.jsoup.parser.HtmlTreeBuilderState$9
+org.jsoup.parser.ParseError
+org.jsoup.parser.ParseErrorList
+org.jsoup.parser.Parser
+org.jsoup.parser.Tag
+org.jsoup.parser.Token
+org.jsoup.parser.Token$1
+org.jsoup.parser.Token$Character
+org.jsoup.parser.Token$Comment
+org.jsoup.parser.Token$Doctype
+org.jsoup.parser.Token$EOF
+org.jsoup.parser.Token$EndTag
+org.jsoup.parser.Token$StartTag
+org.jsoup.parser.Token$Tag
+org.jsoup.parser.Token$TokenType
+org.jsoup.parser.TokenQueue
+org.jsoup.parser.Tokeniser
+org.jsoup.parser.TokeniserState
+org.jsoup.parser.TokeniserState$1
+org.jsoup.parser.TokeniserState$10
+org.jsoup.parser.TokeniserState$11
+org.jsoup.parser.TokeniserState$12
+org.jsoup.parser.TokeniserState$13
+org.jsoup.parser.TokeniserState$14
+org.jsoup.parser.TokeniserState$15
+org.jsoup.parser.TokeniserState$16
+org.jsoup.parser.TokeniserState$17
+org.jsoup.parser.TokeniserState$18
+org.jsoup.parser.TokeniserState$19
+org.jsoup.parser.TokeniserState$2
+org.jsoup.parser.TokeniserState$20
+org.jsoup.parser.TokeniserState$21
+org.jsoup.parser.TokeniserState$22
+org.jsoup.parser.TokeniserState$23
+org.jsoup.parser.TokeniserState$24
+org.jsoup.parser.TokeniserState$25
+org.jsoup.parser.TokeniserState$26
+org.jsoup.parser.TokeniserState$27
+org.jsoup.parser.TokeniserState$28
+org.jsoup.parser.TokeniserState$29
+org.jsoup.parser.TokeniserState$3
+org.jsoup.parser.TokeniserState$30
+org.jsoup.parser.TokeniserState$31
+org.jsoup.parser.TokeniserState$32
+org.jsoup.parser.TokeniserState$33
+org.jsoup.parser.TokeniserState$34
+org.jsoup.parser.TokeniserState$35
+org.jsoup.parser.TokeniserState$36
+org.jsoup.parser.TokeniserState$37
+org.jsoup.parser.TokeniserState$38
+org.jsoup.parser.TokeniserState$39
+org.jsoup.parser.TokeniserState$4
+org.jsoup.parser.TokeniserState$40
+org.jsoup.parser.TokeniserState$41
+org.jsoup.parser.TokeniserState$42
+org.jsoup.parser.TokeniserState$43
+org.jsoup.parser.TokeniserState$44
+org.jsoup.parser.TokeniserState$45
+org.jsoup.parser.TokeniserState$46
+org.jsoup.parser.TokeniserState$47
+org.jsoup.parser.TokeniserState$48
+org.jsoup.parser.TokeniserState$49
+org.jsoup.parser.TokeniserState$5
+org.jsoup.parser.TokeniserState$50
+org.jsoup.parser.TokeniserState$51
+org.jsoup.parser.TokeniserState$52
+org.jsoup.parser.TokeniserState$53
+org.jsoup.parser.TokeniserState$54
+org.jsoup.parser.TokeniserState$55
+org.jsoup.parser.TokeniserState$56
+org.jsoup.parser.TokeniserState$57
+org.jsoup.parser.TokeniserState$58
+org.jsoup.parser.TokeniserState$59
+org.jsoup.parser.TokeniserState$6
+org.jsoup.parser.TokeniserState$60
+org.jsoup.parser.TokeniserState$61
+org.jsoup.parser.TokeniserState$62
+org.jsoup.parser.TokeniserState$63
+org.jsoup.parser.TokeniserState$64
+org.jsoup.parser.TokeniserState$65
+org.jsoup.parser.TokeniserState$66
+org.jsoup.parser.TokeniserState$67
+org.jsoup.parser.TokeniserState$7
+org.jsoup.parser.TokeniserState$8
+org.jsoup.parser.TokeniserState$9
+org.jsoup.parser.TreeBuilder
+org.jsoup.parser.XmlTreeBuilder
+org.jsoup.parser.XmlTreeBuilder$1
+org.jsoup.safety.Cleaner
+org.jsoup.safety.Cleaner$1
+org.jsoup.safety.Cleaner$CleaningVisitor
+org.jsoup.safety.Cleaner$ElementMeta
+org.jsoup.safety.Whitelist
+org.jsoup.safety.Whitelist$AttributeKey
+org.jsoup.safety.Whitelist$AttributeValue
+org.jsoup.safety.Whitelist$Protocol
+org.jsoup.safety.Whitelist$TagName
+org.jsoup.safety.Whitelist$TypedValue
+org.jsoup.select.Collector
+org.jsoup.select.Collector$Accumulator
+org.jsoup.select.CombiningEvaluator
+org.jsoup.select.CombiningEvaluator$And
+org.jsoup.select.CombiningEvaluator$Or
+org.jsoup.select.Elements
+org.jsoup.select.Evaluator
+org.jsoup.select.Evaluator$AllElements
+org.jsoup.select.Evaluator$Attribute
+org.jsoup.select.Evaluator$AttributeKeyPair
+org.jsoup.select.Evaluator$AttributeStarting
+org.jsoup.select.Evaluator$AttributeWithValue
+org.jsoup.select.Evaluator$AttributeWithValueContaining
+org.jsoup.select.Evaluator$AttributeWithValueEnding
+org.jsoup.select.Evaluator$AttributeWithValueMatching
+org.jsoup.select.Evaluator$AttributeWithValueNot
+org.jsoup.select.Evaluator$AttributeWithValueStarting
+org.jsoup.select.Evaluator$Class
+org.jsoup.select.Evaluator$ContainsOwnText
+org.jsoup.select.Evaluator$ContainsText
+org.jsoup.select.Evaluator$CssNthEvaluator
+org.jsoup.select.Evaluator$Id
+org.jsoup.select.Evaluator$IndexEquals
+org.jsoup.select.Evaluator$IndexEvaluator
+org.jsoup.select.Evaluator$IndexGreaterThan
+org.jsoup.select.Evaluator$IndexLessThan
+org.jsoup.select.Evaluator$IsEmpty
+org.jsoup.select.Evaluator$IsFirstChild
+org.jsoup.select.Evaluator$IsFirstOfType
+org.jsoup.select.Evaluator$IsLastChild
+org.jsoup.select.Evaluator$IsLastOfType
+org.jsoup.select.Evaluator$IsNthChild
+org.jsoup.select.Evaluator$IsNthLastChild
+org.jsoup.select.Evaluator$IsNthLastOfType
+org.jsoup.select.Evaluator$IsNthOfType
+org.jsoup.select.Evaluator$IsOnlyChild
+org.jsoup.select.Evaluator$IsOnlyOfType
+org.jsoup.select.Evaluator$IsRoot
+org.jsoup.select.Evaluator$Matches
+org.jsoup.select.Evaluator$MatchesOwn
+org.jsoup.select.Evaluator$Tag
+org.jsoup.select.NodeTraversor
+org.jsoup.select.NodeVisitor
+org.jsoup.select.QueryParser
+org.jsoup.select.Selector
+org.jsoup.select.Selector$SelectorParseException
+org.jsoup.select.StructuralEvaluator
+org.jsoup.select.StructuralEvaluator$Has
+org.jsoup.select.StructuralEvaluator$ImmediateParent
+org.jsoup.select.StructuralEvaluator$ImmediatePreviousSibling
+org.jsoup.select.StructuralEvaluator$Not
+org.jsoup.select.StructuralEvaluator$Parent
+org.jsoup.select.StructuralEvaluator$PreviousSibling
+org.jsoup.select.StructuralEvaluator$Root
+uk.co.senab.photoview.BuildConfig
+uk.co.senab.photoview.Compat:
+    private static final int SIXTY_FPS_INTERVAL
+    7:7:public Compat()
+uk.co.senab.photoview.IPhotoView
+uk.co.senab.photoview.PhotoView:
+    55:55:public boolean canZoom()
+    169:170:public void zoomTo(float,float,float)
+uk.co.senab.photoview.PhotoViewAttacher:
+    static final java.lang.String LOG_TAG
+    static final int EDGE_NONE
+    static final int EDGE_LEFT
+    static final int EDGE_RIGHT
+    static final int EDGE_BOTH
+    public static final float DEFAULT_MAX_SCALE
+    public static final float DEFAULT_MID_SCALE
+    public static final float DEFAULT_MIN_SCALE
+    168:168:public final boolean canZoom()
+uk.co.senab.photoview.PhotoViewAttacher$AnimatedZoomRunnable:
+    static final float ANIMATION_SCALE_PER_ITERATION_IN
+    static final float ANIMATION_SCALE_PER_ITERATION_OUT
+uk.co.senab.photoview.R
+uk.co.senab.photoview.R$anim
+uk.co.senab.photoview.R$array
+uk.co.senab.photoview.R$attr
+uk.co.senab.photoview.R$bool
+uk.co.senab.photoview.R$color
+uk.co.senab.photoview.R$dimen
+uk.co.senab.photoview.R$drawable
+uk.co.senab.photoview.R$id
+uk.co.senab.photoview.R$integer
+uk.co.senab.photoview.R$layout
+uk.co.senab.photoview.R$menu
+uk.co.senab.photoview.R$string
+uk.co.senab.photoview.R$style
+uk.co.senab.photoview.R$styleable
+uk.co.senab.photoview.SDK16:
+    22:22:public SDK16()
+uk.co.senab.photoview.VersionedGestureDetector:
+    static final java.lang.String LOG_TAG
+uk.co.senab.photoview.VersionedGestureDetector$EclairDetector:
+    private static final int INVALID_POINTER_ID

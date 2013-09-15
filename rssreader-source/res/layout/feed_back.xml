@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/email"
+            android:autoLink="email"
+            android:gravity="center_vertical"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/icon_gmail"
+            android:layout_gravity="left|center_vertical"/>
+
+    <TextView
+            android:id="@+id/tv_qq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/qq"
+            android:drawableLeft="@drawable/icon_qq"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:selectAllOnFocus="true"
+            android:background="@android:color/transparent"
+            android:layout_gravity="left|center_vertical"/>
+
+    <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/click_to_report"
+            android:drawableLeft="@drawable/icon_message"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:layout_gravity="left|center_vertical"/>
+
+</LinearLayout>
