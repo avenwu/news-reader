@@ -15,6 +15,15 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/version"
+            android:textSize="10sp"
+            android:layout_marginTop="5dp"
+            android:id="@+id/tv_version"
+            android:layout_gravity="center"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/read_more"
             android:layout_marginTop="10dp"

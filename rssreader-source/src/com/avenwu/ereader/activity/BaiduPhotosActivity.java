@@ -86,7 +86,7 @@ public class BaiduPhotosActivity extends SherlockActivity {
                 .getPhotoFeedsItems());
         photoFeedListView.setAdapter(photoFeedAdapter);
 
-        params = new BDPhotoParams();
+        params = new BDPhotoParams(BDPhotoParams.MEI_NV, BDPhotoParams.XING_GAN);
         processor = new BDProcessor(this,
                 new Listener<ArrayList<PhotoFeedItem>>() {
                     @Override

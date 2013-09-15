@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.Editable;
@@ -79,6 +81,7 @@ public class MenuActivity extends SherlockActivity {
         tempColumn = sp.getInt("menu_column", 1);
         gvWrapper = new GridviewWrapper((GridView) findViewById(R.id.gv_menu));
         settingBtn = findViewById(R.id.btn_setting);
+        setVersion((TextView)findViewById(R.id.tv_version));
         gvWrapper.addFooterView(View.inflate(this, R.layout.menu_footer, null));
         gvWrapper.setNumColumns(tempColumn);
         adapter = new MenuAdapter(this, getMenuItems());
@@ -272,6 +275,7 @@ public class MenuActivity extends SherlockActivity {
             switch (groupPosition) {
                 case ABOUT_US:
                     convertView = View.inflate(MenuActivity.this, R.layout.about_us, null);
+                    setVersion(((TextView) convertView.findViewById(R.id.tv_version)));
                     break;
                 case FEEDBACK:
                     convertView = View.inflate(MenuActivity.this, R.layout.feed_back, null);
@@ -287,7 +291,7 @@ public class MenuActivity extends SherlockActivity {
                             ClipboardManager manager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                             ClipData clipData = ClipData.newPlainText(null, ((TextView) v).getText().subSequence(4, ((TextView) v).getText().length()));
                             manager.setPrimaryClip(clipData);
-                            Toast.makeText(MenuActivity.this,R.string.copyed,Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MenuActivity.this, R.string.copyed, Toast.LENGTH_SHORT).show();
 
                         }
                     });
@@ -314,6 +318,15 @@ public class MenuActivity extends SherlockActivity {
         @Override
         public boolean isChildSelectable(int groupPosition, int childPosition) {
             return false;
+        }
+    }
+
+    private void setVersion(TextView view) {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);
+            view.setText(getResources().getString(R.string.version, info.versionName));
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
         }
     }
 

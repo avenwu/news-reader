@@ -42,6 +42,7 @@ public class NeteaseNewsFragment extends SherlockFragment {
     private String channel;
     private QueryDbTask<NeteaseNewsItem> cacheTask;
     private LinearLayout footerView;
+    private View emptyView;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +60,8 @@ public class NeteaseNewsFragment extends SherlockFragment {
         listView.setAdapter(adapter);
         footerView = (LinearLayout) View.inflate(getActivity(), R.layout.ll_ad_layout, null);
         listView.getRefreshableView().addFooterView(footerView);
+        emptyView = View.inflate(getActivity(), R.layout.loading_empty, null);
+        listView.setEmptyView(emptyView);
         return view;
     }
 
@@ -82,6 +85,8 @@ public class NeteaseNewsFragment extends SherlockFragment {
         listener = new BaseListener<ArrayList<NeteaseNewsItem>>() {
             @Override
             public void onSuccess(ArrayList<NeteaseNewsItem> result) {
+                if (isRemoving())
+                    return;
                 Log.d(TAG, result.toString());
                 if (result.size() > 0)
                     dataList.clear();
@@ -92,12 +97,24 @@ public class NeteaseNewsFragment extends SherlockFragment {
 
             @Override
             public void onError(Exception e) {
+                if (isRemoving())
+                    return;
                 Toast.makeText(getActivity(), R.string.failed_to_get_content,
                         Toast.LENGTH_SHORT).show();
+                if (emptyView != null) {
+                    emptyView.findViewById(R.id.progressBar).setVisibility(View.GONE);
+                    emptyView.findViewById(R.id.tv_error_message).setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
             public void onFailed(Object result) {
+                if (isRemoving())
+                    return;
+                if (emptyView != null) {
+                    emptyView.findViewById(R.id.progressBar).setVisibility(View.GONE);
+                    emptyView.findViewById(R.id.tv_error_message).setVisibility(View.VISIBLE);
+                }
                 if (result instanceof Integer) {
                     Toast.makeText(getActivity(), (Integer) result,
                             Toast.LENGTH_SHORT).show();
@@ -113,6 +130,8 @@ public class NeteaseNewsFragment extends SherlockFragment {
 
             @Override
             public void onFinished() {
+                if (isRemoving())
+                    return;
                 super.onFinished();
                 if (listView != null)
                     listView.onRefreshComplete();
