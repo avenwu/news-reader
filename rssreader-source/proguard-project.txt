@@ -22,6 +22,8 @@
 -libraryjars libs/dom4j-1.6.1.jar
 -libraryjars libs/jsoup-1.7.2.jar
 -libraryjars libs/commons-io-2.4.jar
+-libraryjars libs/umeng_sdk.jar
+
 -optimizationpasses 5
 -ignorewarnings
 
@@ -38,14 +40,28 @@
 -keep public interface cn.waps.** {*;}
 -keep public class org.dom4j.** {*;}
 -keep public interface org.dom4j.** {*;}
-
+-keep class com.umeng.** {*;}
+-keep interface com.umeng.** {*;}
+-keep public class * extends com.umeng.**
+-keep public class * extends com.umeng.analytics.**
+-keep public class * extends com.umeng.common.**
+-keep public class * extends com.umeng.newxp.**
 -keep class com.actionbarsherlock.** { *; }
 -keep interface com.actionbarsherlock.** { *; }
 -keep class com.handmark.pulltorefresh.library.** { *; }
 -keep interface com.handmark.pulltorefresh.library.** { *; }
 -keep class com.j256.ormlite.** { *; }
 -keep interface com.j256.ormlite.** { *; }
+-keep class com.aphidmobile.** { *; }
+-keep interface com.aphidmobile.** { *; }
 -keep class com.avenwu.ereader.model.** { *; }
+-keep interface com.avenwu.ereader.** { *; }
+-keep public class * {
+    public <init>(android.content.Context);
+    public <init>(android.content.Context, android.util.AttributeSet);
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+    public void set*(...);
+}
 
 -keepclasseswithmembers class * {
     public <init>(android.content.Context);
@@ -62,3 +78,15 @@
 -dontwarn com.actionbarsherlock.**
 -dontwarn com.handmark.pulltorefresh.library.**
 -dontwarn com.j256.ormlite.**
+
+-keepclassmembers class * {
+public <init>(org.json.JSONObject);
+}
+-keep public class com.avenwu.ereader.R$*{
+public static final int *;
+}
+-keep public class com.umeng.fb.ui.ThreadView {
+}
+-keepclassmembers class **.R$* {
+    public static <fields>;
+}

@@ -1,8 +1,5 @@
 package com.avenwu.ereader.activity;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-
 import android.content.Intent;
 import android.graphics.Bitmap.Config;
 import android.os.Bundle;
@@ -22,11 +19,14 @@ import com.avenwu.ereader.dataprovider.DaoManager;
 import com.avenwu.ereader.dataprovider.DataCenter;
 import com.avenwu.ereader.model.HomeDetailItem;
 import com.avenwu.ereader.model.QueryListener;
+import com.avenwu.ereader.model.RefreshListener;
 import com.avenwu.ereader.task.BaseListener;
 import com.avenwu.ereader.task.BaseRequest;
 import com.avenwu.ereader.task.BaseTask;
 import com.avenwu.ereader.task.RssCnblogHomeRequest;
-import com.avenwu.ereader.view.RefreshView.RefreshListener;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class CnblogsHomeFragment extends SherlockFragment implements
         QueryListener {
@@ -54,7 +54,7 @@ public class CnblogsHomeFragment extends SherlockFragment implements
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        refreshListener = (CnblogsNewsFeedActivity) getActivity();
+        refreshListener = (RefreshListener) getActivity();
     }
 
     @Override

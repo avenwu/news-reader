@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
@@ -16,8 +15,8 @@ import com.avenwu.ereader.R;
 import com.avenwu.ereader.config.Constant;
 import com.avenwu.ereader.config.RssConfig;
 import com.avenwu.ereader.model.QueryListener;
+import com.avenwu.ereader.model.RefreshListener;
 import com.avenwu.ereader.view.RefreshView;
-import com.avenwu.ereader.view.RefreshView.RefreshListener;
 
 public class CnblogsNewsFeedActivity extends SherlockFragmentActivity implements
         RefreshListener {

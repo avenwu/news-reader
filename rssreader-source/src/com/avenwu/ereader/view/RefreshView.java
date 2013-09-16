@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.avenwu.ereader.R;
+import com.avenwu.ereader.model.RefreshListener;
 
 public class RefreshView extends FrameLayout {
     private boolean refreshState = false;// false stands for need refreshing
@@ -74,12 +75,6 @@ public class RefreshView extends FrameLayout {
     public void completeRefresh() {
         refreshView.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
-    }
-
-    public static interface RefreshListener {
-        public void onStartRefresh();
-
-        public void onStopRefresh();
     }
 
 }

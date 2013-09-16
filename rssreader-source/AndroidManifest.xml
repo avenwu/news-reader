@@ -93,12 +93,12 @@
         <!--以下属性为分发渠道ID,编码表参⻅见本⽂文档末附表-->
         <meta-data
                 android:name="WAPS_PID"
-                android:value="Local Test"/>
+                android:value="appchina"/>
         <meta-data
                 android:value="5220316356240b03c8001942"
                 android:name="UMENG_APPKEY"></meta-data>
         <meta-data
-                android:value="Local Test"
+                android:value="appchina"
                 android:name="UMENG_CHANNEL"/>
 
         <activity

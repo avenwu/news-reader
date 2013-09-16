@@ -19,11 +19,11 @@ import com.avenwu.ereader.dataprovider.DaoManager;
 import com.avenwu.ereader.dataprovider.DataCenter;
 import com.avenwu.ereader.model.PickedDetailItem;
 import com.avenwu.ereader.model.QueryListener;
+import com.avenwu.ereader.model.RefreshListener;
 import com.avenwu.ereader.task.BaseListener;
 import com.avenwu.ereader.task.BaseRequest;
 import com.avenwu.ereader.task.BaseTask;
 import com.avenwu.ereader.task.RssCnblogPickedRequest;
-import com.avenwu.ereader.view.RefreshView.RefreshListener;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
