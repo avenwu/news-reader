@@ -97,6 +97,7 @@ public class CSDNNewsFeedActivity extends SherlockActivity {
         daoManager = DaoManager.getInstance(this);
         newsListView = (PullToRefreshListView) findViewById(R.id.lv_csdn_news);
         footerView = View.inflate(this, R.layout.ll_ad_layout, null);
+        new AdView(CSDNNewsFeedActivity.this, (LinearLayout) footerView).DisplayAd();
         newsListView.getRefreshableView().addFooterView(footerView);
         urlHandler = new UrlHandler(this);
         listener = new BaseListener<ArrayList<CsdnNewsItem>>() {
@@ -113,7 +114,6 @@ public class CSDNNewsFeedActivity extends SherlockActivity {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                new AdView(CSDNNewsFeedActivity.this, (LinearLayout) footerView).DisplayAd();
             }
 
             @Override

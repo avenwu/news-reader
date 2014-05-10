@@ -13149,7 +13149,6 @@ com.avenwu.ereader.activity.WebNewsActivity: WebNewsActivity()
 com.avenwu.ereader.ad.LoadActivity
 com.avenwu.ereader.ad.LoadActivity: LoadActivity()
 com.avenwu.ereader.ad.LoadingPopAd
-com.avenwu.ereader.ad.MyActivity
 com.avenwu.ereader.adapter.CnblogHomeAdapter
 com.avenwu.ereader.adapter.CnblogHomeAdapter$ArticalListener
 com.avenwu.ereader.adapter.CnblogPickedAdapter
@@ -18220,108 +18219,6 @@ com.openaphid.flip.R$styleable
 com.openaphid.flip.R$styleable: int[] FlipViewController
 com.openaphid.flip.R$styleable: int FlipViewController_animationBitmapFormat
 com.openaphid.flip.R$styleable: int FlipViewController_orientation
-com.pakg.m.MDActivity
-com.pakg.m.MR
-com.pakg.m.MediaManager
-com.pakg.m.MediaManager: void setAttributes(float,float,int)
-com.pakg.m.a.b
-com.pakg.m.a.d
-com.pakg.m.a.f
-com.pakg.m.a.g
-com.pakg.m.a.j
-com.pakg.m.a.k
-com.pakg.m.a.l
-com.pakg.m.a.m
-com.pakg.m.a.n
-com.pakg.m.a.o
-com.pakg.m.a.p
-com.pakg.m.a.s
-com.pakg.m.b.ab
-com.pakg.m.b.ad
-com.pakg.m.b.ae
-com.pakg.m.b.ae: void setGravity(int)
-com.pakg.m.b.aj
-com.pakg.m.b.am
-com.pakg.m.b.ao
-com.pakg.m.b.ao: ao(android.content.Context)
-com.pakg.m.b.g
-com.pakg.m.b.h
-com.pakg.m.b.j
-com.pakg.m.b.k
-com.pakg.m.b.n
-com.pakg.m.b.s
-com.pakg.m.b.v
-com.pakg.m.b.y
-com.pakg.m.b.z
-com.pakg.m.c.aa
-com.pakg.m.c.ac
-com.pakg.m.c.ad
-com.pakg.m.c.ae
-com.pakg.m.c.af
-com.pakg.m.c.ag
-com.pakg.m.c.ah
-com.pakg.m.c.ai
-com.pakg.m.c.aj
-com.pakg.m.c.b
-com.pakg.m.c.c
-com.pakg.m.c.e
-com.pakg.m.c.g
-com.pakg.m.c.h
-com.pakg.m.c.i
-com.pakg.m.c.j
-com.pakg.m.c.k
-com.pakg.m.c.l
-com.pakg.m.c.m
-com.pakg.m.c.n
-com.pakg.m.c.o
-com.pakg.m.c.p
-com.pakg.m.c.r
-com.pakg.m.c.s
-com.pakg.m.c.u
-com.pakg.m.c.u: u(android.content.Context)
-com.pakg.m.c.w
-com.pakg.m.c.w: w(android.content.Context)
-com.pakg.m.c.x
-com.pakg.m.c.z
-com.pakg.m.d.a
-com.pakg.m.d.b
-com.pakg.m.d.c
-com.pakg.m.d.d
-com.pakg.m.d.e
-com.pakg.m.d.f
-com.pakg.m.e.a
-com.pakg.m.e.b
-com.pakg.m.e.d
-com.pakg.m.e.e
-com.pakg.m.e.g
-com.pakg.m.e.h
-com.pakg.m.f.b
-com.pakg.m.f.c
-com.pakg.m.f.c: c(android.content.Context)
-com.pakg.m.f.d
-com.pakg.m.f.e
-com.pakg.m.g.a
-com.pakg.m.g.c
-com.pakg.m.h
-com.pakg.m.i
-com.pakg.m.inter.JavaInterCallback
-com.pakg.m.inter.JavaInterCallback: void exit()
-com.pakg.m.inter.JavaInterCallback: void share(java.lang.String,java.lang.String)
-com.pakg.m.inter.JavaInterCallback: void download(java.lang.String,int,java.lang.String,int,java.lang.String,int,int)
-com.pakg.m.inter.JavaInterCallback: void updateClickState(int,int,int)
-com.pakg.m.j
-com.pakg.m.view.ImageGallery
-com.pakg.m.view.ImageGallery: ImageGallery(android.content.Context)
-com.pakg.m.view.ImageGallery: ImageGallery(android.content.Context,android.util.AttributeSet)
-com.pakg.m.view.MyGridView
-com.pakg.m.view.MyGridView: MyGridView(android.content.Context,android.util.AttributeSet)
-com.pakg.m.view.MyGridView: MyGridView(android.content.Context)
-com.pakg.m.view.a
-com.pakg.m.view.a: a(android.content.Context)
-com.pakg.m.view.e
-com.pakg.m.view.e: e(android.content.Context)
-com.pakg.m.view.h
-com.pakg.m.view.j
 com.umeng.analytics.Gender
 com.umeng.analytics.Gender: com.umeng.analytics.Gender Male
 com.umeng.analytics.Gender: com.umeng.analytics.Gender Female

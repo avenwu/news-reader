@@ -245,29 +245,6 @@ com.koushikdutta.urlimageviewhelper.UrlImageViewHelper:
     813:813:public static int getPendingDownloads()
 com.openaphid.flip.BuildConfig:
     public static final boolean DEBUG
-com.pakg.m.MediaManager:
-    public static final int LEFT_TOP
-    public static final int LEFT_CENTER
-    public static final int LEFT_BOTTOM
-    public static final int CENTER_TOP
-    public static final int CENTER_CENTER
-    public static final int CENTER_BOTTOM
-    public static final int RIGHT_TOP
-    public static final int RIGHT_CENTER
-    public static final int RIGHT_BOTTOM
-    public static final int RANDOM
-    public static void startAd(android.content.Context,int,java.lang.String,java.lang.String)
-    private static void setAlarmRequest(android.content.Context,int,java.lang.Class,int)
-    public static void showExitDialog(android.app.Activity,int,java.lang.String,java.lang.String)
-    static synthetic void access$000(android.content.Context,int,java.lang.Class,int)
-com.pakg.m.c.o:
-    public static boolean a(android.content.Context,java.lang.String,java.lang.String)
-com.pakg.m.c.s:
-    public static boolean b()
-    public static java.lang.Class b(android.content.Context,java.lang.Class)
-    public static boolean c(android.content.Context,java.lang.String)
-com.pakg.m.f
-com.pakg.m.g
 org.apache.commons.io.ByteOrderMark:
     private static final long serialVersionUID
     87:87:public java.lang.String getCharsetName()
