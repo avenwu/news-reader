@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.avenwu.ereader">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".activity.HomeActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MANAGE_NETWORK_USAGE"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.CnblogsNewsFeedActivity">
+        </activity>
+
+        <activity
+            android:name=".activity.Splash"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name=".activity.BlogArticalActivity">
+        </activity>
+        <activity
+            android:name=".activity.CSDNNewsFeedActivity"
+            android:label="@string/geek_news">
+        </activity>
+        <activity
+            android:name=".activity.BaiduPhotosActivity"
+            android:label="@string/baidu_photos">
+        </activity>
+        <activity
+            android:name=".activity.PhotoDetailActivity">
+        </activity>
+        <activity
+            android:name=".activity.WebNewsActivity">
+        </activity>
+        <activity
+            android:name=".activity.NeteaseActivity"
+            android:label="@string/netease">
+        </activity>
+
+        <meta-data
+            android:value="5220316356240b03c8001942"
+            android:name="UMENG_APPKEY"/>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="anzhuoshichang"/>
+    </application>
+
+</manifest>

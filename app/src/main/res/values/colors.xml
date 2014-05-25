@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="light_blue_33B5E5">#33B5E5</color>
+    <color name="light_blue_0099cc">#0099CC</color>
+    <color name="light_purple_AA66CC">#AA66CC</color>
+    <color name="light_purple_9933CC">#9933CC</color>
+    <color name="light_green_99CC00">#99CC00</color>
+    <color name="light_green_669900">#669900</color>
+    <color name="light_orige_FFBB33">#FFBB33</color>
+    <color name="light_orige_FF8800">#FF8800</color>
+    <color name="light_red_FF4444">#FF4444</color>
+    <color name="light_red_CC0000">#CC0000</color>
+
+    <!-- item background -->
+    <color name="blue_2cb1e1">#2cb1e1</color>
+    <color name="blue_50c0e9">#50c0e9</color>
+    <color name="grey_f1f1f1">#f1f1f1</color>
+    <color name="umeng_fb_color_btn_pressed">#1495F7</color>
+    <color name="umeng_fb_color_btn_normal">#333333</color>
+</resources>

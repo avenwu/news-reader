@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/grey_background_pattern">
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/BaseMargin"
+        android:layout_alignParentLeft="true"
+        android:text="News Title"
+        android:textColor="@color/light_blue_0099cc"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/tv_summary"
+        style="@style/BaseMargin"
+        android:layout_width="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_title"
+        android:layout_marginTop="10dp"
+        android:text="summary content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/tv_author_name"
+        style="@style/BaseMargin"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_summary"
+        android:layout_marginTop="10dp"
+        android:text="name"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/light_blue_33B5E5" />
+
+    <TextView
+        android:id="@+id/tv_published"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_author_name"
+        android:layout_alignBottom="@+id/tv_author_name"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/tv_author_name"
+        android:text="@string/published_at"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/tv_commented_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_published"
+        android:layout_alignBottom="@+id/tv_published"
+        android:layout_toRightOf="@+id/tv_published"
+        android:text="@string/comment"
+        android:textColor="@android:color/black"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_read_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_commented_count"
+        android:layout_alignBottom="@+id/tv_commented_count"
+        android:layout_toRightOf="@+id/tv_commented_count"
+        android:text="@string/read"
+        android:textColor="@android:color/black"
+        android:visibility="gone" />
+
+
+
+</RelativeLayout>

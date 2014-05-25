@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/parent_rl"
+                android:layout_gravity="center"
+                android:background="@drawable/grey_background_pattern"
+                android:orientation="vertical">
+
+    <GridView
+            android:id="@+id/gv_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:horizontalSpacing="5dp"
+            android:layoutAnimation="@anim/layout_grid_inverse_fade"
+            android:numColumns="1"
+            android:cacheColorHint="@null"
+            android:listSelector="@android:color/transparent"
+            android:stretchMode="columnWidth"
+            android:divider="@null"
+            android:scrollbars="none"
+            android:verticalSpacing="5dp">
+    </GridView>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@drawable/icon_bottom_bar"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@android:color/transparent"
+            android:layout_alignParentBottom="true"
+            android:onClick="onBottomTabClicked"/>
+
+    <ImageView
+            android:layout_width="200dp"
+            android:layout_height="90dp"
+            android:background="@android:color/transparent"
+            android:layout_alignParentBottom="true"
+            android:onClick="onBottomTabClicked"
+            android:layout_alignParentRight="true"/>
+
+    <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/btn_setting"
+            android:background="@drawable/setting_bg"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:layout_alignParentRight="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_version"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:textColor="@android:color/white"
+            android:layout_alignParentLeft="true"/>
+
+
+</RelativeLayout>

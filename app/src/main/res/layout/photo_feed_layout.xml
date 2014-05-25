@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:background="@drawable/grey_background_pattern" >
+
+    <com.handmark.pulltorefresh.library.PullToRefreshGridView
+        android:id="@+id/lv_photo_feed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:horizontalSpacing="5dp"
+        android:listSelector="@null"
+        android:numColumns="2"
+        android:paddingTop="5dp"
+        android:scrollbarStyle="insideOverlay"
+        android:verticalSpacing="5dp" />
+    <ImageView
+        android:id="@+id/iv_up_top"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:onClick="up2Top"
+        android:rotation="180"/>
+
+</RelativeLayout>

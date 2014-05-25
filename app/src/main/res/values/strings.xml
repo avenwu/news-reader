@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="menu_settings">Settings</string>
+    <string name="url_home_page">http://feed.cnblogs.com/blog/sitehome/rss</string>
+    <string name="url_picked_page">http://feed.cnblogs.com/blog/picked/rss</string>
+    <string name="url_candidate_page">http://feed.cnblogs.com/blog/candidate/rss</string>
+    <string name="url_news_page">http://feed.cnblogs.com/news/rss</string>
+    <!-- csdn -->
+    <string name="url_csdn_geek_news">http://geek.csdn.net/news/rss</string>
+    <!-- news menu item -->
+    <string name="cnblog_description">The world is changing by code</string>
+    <string name="app_name">E读</string>
+    <!-- cnblogs sumary fo each newsfeed -->
+    <string name="published_at"> 发表于 </string>
+    <string name="comment">评论(%s)</string>
+    <string name="read">阅读(%s)</string>
+
+    <!-- artical detail -->
+    <string name="author">作者: %s</string>
+    <string name="timestamp">时间: %s</string>
+
+    <!-- network -->
+    <string name="wifi_connected">Wifi 已连接.</string>
+    <string name="network_lost">网络未连接!</string>
+    <string name="failed_to_get_content">获取内容失败.</string>
+    <!-- news menu item -->
+    <string name="title_cnblogs">博客园</string>
+    <string name="confirm">确定</string>
+    <string name="cnblog_home">博客园 - 首页</string>
+    <string name="cnblog_picked">博客园 - 精华</string>
+    <string name="cnblog_candicate">博客园 - 候选</string>
+    <string name="cnblog_news">博客园 - 新闻</string>
+    <string name="geek_news">极客头条</string>
+    <string name="baidu_photos">百度热图</string>
+    <string name="refresh">刷新</string>
+    <string name="load_more">更多</string>
+    <string name="url_invalid">呃，出错了，休息一下吧！</string>
+    <!-- net ease -->
+    <string name="netease">网易新闻</string>
+    <string name="netease_news">新闻</string>
+    <string name="netease_sports">体育</string>
+    <string name="netease_entertainment">娱乐</string>
+    <string name="netease_video">视频</string>
+    <string name="netease_science">科技</string>
+    <string name="netease_finace_economics">财经</string>
+    <string name="netease_car">汽车</string>
+    <string name="netease_digital">数码</string>
+    <string name="netease_phone">手机</string>
+    <string name="netease_women">女性</string>
+    <string name="netease_estate">房产</string>
+    <string name="netease_games">游戏</string>
+    <string name="netease_books">读书</string>
+    <string name="netease_media">媒体</string>
+    <string name="netease_community">公益</string>
+    <string name="netease_campus">校园</string>
+    <string name="netease_travel">旅游</string>
+    <string name="netease_education">教育</string>
+    <string name="netease_bbs">论坛</string>
+    <string name="netease_blog">博客</string>
+    <string name="netease_marketing">营销</string>
+    <string name="web_client">浏览器</string>
+    <string name="No.x">No.%d</string>
+    <string name="read_more">e读，每天多读一点</string>
+    <string name="copy_right">© 2013 多乐工作室</string>
+    <string name="click_to_report">简信: 我有话要说...</string>
+    <string name="clear_cache">单击清除</string>
+    <string name="clear_succes">缓存清理完毕.</string>
+    <string name="email">Email:\ndolerstudio@gmail.com</string>
+    <string name="qq">QQ: 1611964388</string>
+    <string name="cache_info">清除新闻和图片缓存数据...</string>
+    <string name="copyed">已复制到粘贴板</string>
+    <string name="about_us">关于我们</string>
+    <string name="version">Version %s</string>
+</resources>
